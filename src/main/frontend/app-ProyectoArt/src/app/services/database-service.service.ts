@@ -13,7 +13,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class DatabaseServiceService {
 
-  private apiURL = "http://localhost:8080/api/............¿?";
+  private apiURL = "http://localhost:8080/v1/api/idiomas";
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -55,5 +55,6 @@ export class DatabaseServiceService {
 export interface Idioma {
   id: number,
   nombre: string,
+  ultima_actualizacion: string,
   id_oferta: number
 }
