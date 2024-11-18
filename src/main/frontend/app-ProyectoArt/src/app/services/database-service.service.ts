@@ -55,6 +55,6 @@ export class DatabaseServiceService {
 export interface Idioma {
   id: number,
   nombre: string,
-  ultima_actualizacion: string,
+  ultimaActualizacion: string,
   id_oferta: number
 }

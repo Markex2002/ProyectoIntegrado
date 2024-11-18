@@ -1,0 +1,9 @@
+Datos a tener en cuenta.
+
+Bootstrap instalado automaticamente con Ng Install.
+El archivo angular.json contiene las rutas al Bootstrap interno.
+
+styles[], scripts[].
+FontAwesome instalado de la misma manera
+
+INSTALAR BOOTSTRAP DE FORMA DISTINTA, PARA PODER EDITAR ESTILOS
