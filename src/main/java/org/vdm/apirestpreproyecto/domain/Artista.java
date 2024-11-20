@@ -21,16 +21,22 @@ import java.util.Set;
 @NoArgsConstructor
 public class Artista extends Usuario {
     private String nombre;
+    private String descripcionCorta;
+    private String descripcionLarga;
     private int yearsOfExperience;
 
     @Builder
-    public Artista(long id, String username, String password, String email, String nombre, int yearsOfExperience, List<Idioma> idiomasHablados, List<Imagen> portfolio, Set<OfertaTrabajo> ofertasTrabajos) {
+    public Artista(long id, String username, String password, String email, String nombre,
+                   int yearsOfExperience, List<Idioma> idiomasHablados,
+                   List<Imagen> portfolio, Set<OfertaTrabajo> ofertasTrabajos) {
         super(id, username, password, email);
         this.nombre = nombre;
+        this.descripcionCorta = descripcionCorta;
         this.yearsOfExperience = yearsOfExperience;
         this.idiomasHablados = idiomasHablados;
         this.portfolio = portfolio;
         this.ofertasTrabajos = ofertasTrabajos;
+
     }
 
 

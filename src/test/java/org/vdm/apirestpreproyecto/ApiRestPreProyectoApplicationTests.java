@@ -138,10 +138,24 @@ class ApiRestPreProyectoApplicationTests {
                 .yearsOfExperience(10)
                 .build();
         artistaService.save(artista3);
+        Artista artista4 = Artista.builder()
+                .nombre("Artista1")
+                .password("1234")
+                .username("user1")
+                .yearsOfExperience(10)
+                .build();
+        artistaService.save(artista4);
+        Artista artista5 = Artista.builder()
+                .nombre("Artista2")
+                .password("1234")
+                .username("user2")
+                .yearsOfExperience(10)
+                .build();
+        artistaService.save(artista5);
 
 
         //BORRAR
-        artistaService.delete(3L);
+        //artistaService.delete(3L);
 
         //EDITAR
         artista2.setNombre("SrPelonazo");

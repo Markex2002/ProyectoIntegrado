@@ -17,29 +17,14 @@
 
     <div class="row d-flex justify-content-center py-4">
       <div class="card-group">
-        <div class="card mx-4" >
+        <div class="card mx-4"  *ngFor="let artista of artistas | slice:0:3">
 
-          <img src="assets/Portfolio1.jpg" class="mg-fluid" alt="..." >
+          <img [src]="findFirstImageOfArtist(artista)" class="mg-fluid" alt="..." >
+
           <div class="card-body">
-            <h5 class="card-title">Artista 1</h5>
-            <p class="card-text">Profesional con 6 años de experiencia en el desarrollo de ilustraciones en 2D, tanto de paisajes como de ilustraciones</p>
+            <h5 class="card-title">{{artista.nombre}}</h5>
+            <p class="card-text">{{artista.descripcionCorta}}</p>
             <a href="artista1.html" class="btn btn-primary ">Detalles</a>
-          </div>
-        </div>
-        <div class="card mx-4">
-          <img src="assets/Portfolio7.jpg" class="card-img-top img-fluid" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Artista 2</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="artista2.html" class="btn btn-primary">Detalles</a>
-          </div>
-        </div>
-        <div class="card mx-4 ">
-          <img src="assets/Portfolio4.png" class="card-img-top img-fluid" alt="..." >
-          <div class="card-body">
-            <h5 class="card-title">Artista 3</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="artista3.html" class="btn btn-primary">Detalles</a>
           </div>
         </div>
       </div>

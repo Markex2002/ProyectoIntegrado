@@ -1,17 +1,16 @@
-<!-- ////NAV////
 <nav class="navbar navbar-expand-lg bg-dark py-2">
   <div class="container-xl">
-    <a class="navbar-brand text-light" href="#">Inicio</a>
+    <a class="navbar-brand text-light" routerLink="/home" routerLinkActive="active" > Inicio</a>
     <button class="navbar-toggler btn btn-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link active text-light" aria-current="page" [routerLink]="['/home']">Artistas</a>
+        <li class="nav-item">
+          <a class="nav-link active text-light" aria-current="page" routerLink="/artistas" routerLinkActive="active" >Artistas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="ofertas.html">Ofertas</a>
+          <a class="nav-link text-light" routerLink="/ofertas" routerLinkActive="active" >Ofertas</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -38,8 +37,3 @@
     </div>
   </div>
 </nav>
-
-
--->
-
-

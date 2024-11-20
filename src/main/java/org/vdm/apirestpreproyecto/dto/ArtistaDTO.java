@@ -19,6 +19,7 @@ public class ArtistaDTO {
     //ATRIBUTOS DE ARTISTA
     private long id_artista;
     private String nombre;
+    private String descripcionCorta;
     private int yearsOfExperience;
     private List<Imagen> portfolio;
     private List<Idioma> idiomasHablados;

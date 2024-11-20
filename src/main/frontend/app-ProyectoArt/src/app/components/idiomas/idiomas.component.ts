@@ -19,7 +19,7 @@ export class IdiomasComponent implements OnInit{
 
 
   ngOnInit(): void{
-    this.databaseService.getAll().subscribe((data: Idioma[]) =>{
+    this.databaseService.getAllIdiomas().subscribe((data: Idioma[]) =>{
       this.idiomas = data;
       console.log(this.idiomas)
     })
