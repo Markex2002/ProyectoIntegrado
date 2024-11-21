@@ -25,12 +25,9 @@ export class HomeComponent implements OnInit {
 
     this.databaseService.getAllArtistas().subscribe((data: Artista[]) =>{
       this.artistas = data;
-      console.log(this.artistas)
-
     })
     this.databaseService.getAllImagenes().subscribe((data: Imagen[]) =>{
       this.imagenes = data;
-      console.log(this.imagenes)
     })
   }
 
