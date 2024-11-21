@@ -25,6 +25,7 @@ public class Artista extends Usuario {
     private String descripcionLarga;
     private int yearsOfExperience;
 
+
     @Builder
     public Artista(long id, String username, String password, String email, String nombre,
                    int yearsOfExperience, List<Idioma> idiomasHablados,

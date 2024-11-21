@@ -1,1 +1,114 @@
-<p>artista works!</p>
+<!-- ////MAIN//// -->
+<main class="container-xl bg-light py-4">
+  <!-- ////BREADCRUMP//// -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/artistas']">Artistas</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Artista1</li>
+    </ol>
+  </nav>
+
+  <div class="row">
+    <div class="row d-flex justify-content-between align-items-center py-4">
+      <h1 class="col-sm-6 ">ARTISTA1</h1>
+    </div>
+
+    <hr>
+
+    <!-- ////DATOS PRINCIPALES//// -->
+    <div class="row d-flex justify-content-center py-4">
+      <div class="col-12 col-sm-6">
+        <div class="card w-100" style="width: 18rem;">
+          <img [src]="findFirstImageOfArtist()" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h3 class="card-title text-center my-3">Artista 1</h3>
+            <p>Curso de Desarrollo de personajes 2D</p>
+            <p>Grado superior de bellas Artes</p>
+
+            <ul class="my-4">
+              <li>2 años de experiencia como Ilustrador en GilhbyStudios</li>
+              <li>3 años de experiencia como pixel artist en FishStudios</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-12 col-sm-6 d-flex flex-wrap">
+        <div class="d-flex justify-content-center my-4">
+          <p class="text-center w-75 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eius ratione esse voluptatibus.
+            Modi inventore aliquid nostrum exercitationem fugiat alias veritatis sunt. At fugit impedit sunt neque eveniet? Unde, officiis?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eius ratione esse voluptatibus.
+            Modi inventore aliquid nostrum exercitationem fugiat alias veritatis sunt. At fugit impedit sunt neque eveniet? Unde, officiis?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur eius ratione esse voluptatibus.
+            Modi inventore aliquid nostrum exercitationem fugiat alias veritatis sunt. At fugit impedit sunt neque eveniet? Unde, officiis?
+          </p>
+        </div>
+
+
+        <div class="d-grid gap-2 col-6 mx-auto align-self-end">
+          <button class="btn btn-primary" type="button">Contactar</button>
+          <button class="btn btn-success" type="button">Contratar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+
+
+
+<!-- ////ASIDE//// -->
+<aside class="container-xl bg-light py-4">
+
+  <h1 class="col-sm-6 ">PORTFOLIO</h1>
+
+  <hr class="my-4">
+
+  <!-- ////PORTFOLIO//// -->
+  <div class="row">
+    <div class="row col-sm-12">
+
+      <div class="row d-flex justify-content-center my-4">
+        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
+        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
+        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
+        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
+        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
+        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
+        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
+        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
+        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ////RECOMENDADOS//// -->
+  <h2 class="my-4">Tambien te podrian Interesar...</h2>
+  <hr class="my-4">
+
+  <div class="row d-flex justify-content-center py-4">
+    <div class="card-group">
+      <div class="card mx-4" >
+        <img src="" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Artista 2</h5>
+          <p class="card-text">Profesional con 6 años de experiencia en el desarrollo de ilustraciones en 2D, tanto de paisajes como de ilustraciones</p>
+          <a href="" class="btn btn-primary ">Go somewhere</a>
+        </div>
+      </div>
+      <div class="card mx-4">
+        <img src="" class="card-img-top " alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Artista 3</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</aside>

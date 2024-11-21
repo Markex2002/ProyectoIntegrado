@@ -13,11 +13,12 @@ import {Artista, DatabaseServiceService, Imagen} from '../../services/database-s
 export class ArtistasPageComponent implements OnInit {
 
   artistas: Artista[] = [];
+  idArtistaSeleccionado! : number;
   imagenes: Imagen[] = [];
   aviso:string = "";
 
   //Inicializamos los services
-  constructor(private databaseService: DatabaseServiceService) {}
+  constructor(protected databaseService: DatabaseServiceService) {}
 
   //Cargamos nuestros artistas y su base de datos de Imagenes
   ngOnInit(): void{
@@ -39,11 +40,15 @@ export class ArtistasPageComponent implements OnInit {
         imgSrc = imagen.url;
       }
     })
-
     return imgSrc;
   }
 
 
+
+  //Funcion para pasar el Id de un artista al componente Hijo
+  seleccionarArtista(idArtista: number){
+    this.idArtistaSeleccionado = idArtista;
+  }
 
 
 

@@ -20,7 +20,12 @@ export class DatabaseServiceService {
   private apiURLEmpresa = "http://localhost:8080/v1/api/empresas";
   private apiURLAdministrador = "http://localhost:8080/v1/api/administradores";
 
+  //IdArtistaParaLasPaginas
+  idArtista : number = 0;
 
+  setIdArtista(nuevoIdArtista:number){
+    this.idArtista = nuevoIdArtista;
+  }
 
 
   httpOptions = {
