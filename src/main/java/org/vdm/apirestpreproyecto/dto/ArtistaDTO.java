@@ -20,6 +20,7 @@ public class ArtistaDTO {
     private long id_artista;
     private String nombre;
     private String descripcionCorta;
+    private String descripcionLarga;
     private int yearsOfExperience;
     private List<Imagen> portfolio;
     private List<Idioma> idiomasHablados;

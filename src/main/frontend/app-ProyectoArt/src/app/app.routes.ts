@@ -6,6 +6,7 @@ import {ArtistaComponent} from './components/artistas-page/artista/artista.compo
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent},
+  { path: 'home/artistas/:nombre', component: ArtistaComponent},
   { path: 'artistas', component: ArtistasPageComponent},
   { path: 'artistas/:nombre', component: ArtistaComponent},
   { path: 'ofertas', component: OfertasPageComponent},

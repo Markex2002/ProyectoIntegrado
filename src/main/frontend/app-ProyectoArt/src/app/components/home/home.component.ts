@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   aviso:string = "";
 
   //Inicializamos los services
-  constructor(private databaseService: DatabaseServiceService) {}
+  constructor(protected databaseService: DatabaseServiceService) {}
 
 
   //Cargamos nuestros artistas y su base de datos de Imagenes

@@ -82,7 +82,7 @@ class ApiRestPreProyectoApplicationTests {
         //PRUEBA DE LA CREACION DE MANYTOMANY//
         //CREAMOS VARIAS OFERTAS DE TRABAJO//
         OfertaTrabajo ofertaTrabajo1 = OfertaTrabajo.builder()
-                .empresa(empresaService.one(5L))
+                .empresa(empresaService.one(6L))
                 .duracionJornada(20)
                 .avaiablePositions(2)
                 .salarioBrutoMin(10000)
@@ -91,7 +91,7 @@ class ApiRestPreProyectoApplicationTests {
                 .build();
         ofertaService.save(ofertaTrabajo1);
         OfertaTrabajo ofertaTrabajo2 = OfertaTrabajo.builder()
-                .empresa(empresaService.one(6L))
+                .empresa(empresaService.one(7L))
                 .duracionJornada(20)
                 .avaiablePositions(2)
                 .salarioBrutoMin(6000)
@@ -100,7 +100,7 @@ class ApiRestPreProyectoApplicationTests {
                 .build();
         ofertaService.save(ofertaTrabajo2);
         OfertaTrabajo ofertaTrabajo3 = OfertaTrabajo.builder()
-                .empresa(empresaService.one(5L))
+                .empresa(empresaService.one(8L))
                 .duracionJornada(20)
                 .avaiablePositions(1)
                 .salarioBrutoMin(12000)
@@ -122,6 +122,8 @@ class ApiRestPreProyectoApplicationTests {
                 .password("1234")
                 .email("email@gmail.com")
                 .yearsOfExperience(6)
+                .descripcionCorta("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150")
+                .descripcionLarga("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.")
                 .build();
         artistaService.save(artista1);
         Artista artista2 = Artista.builder()
@@ -129,6 +131,8 @@ class ApiRestPreProyectoApplicationTests {
                 .username("MrPlXx")
                 .password("1234")
                 .yearsOfExperience(4)
+                .descripcionCorta("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150")
+                .descripcionLarga("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.")
                 .build();
         artistaService.save(artista2);
         Artista artista3 = Artista.builder()
@@ -136,6 +140,8 @@ class ApiRestPreProyectoApplicationTests {
                 .password("psswd")
                 .username("markex2002")
                 .yearsOfExperience(10)
+                .descripcionCorta("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150")
+                .descripcionLarga("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.")
                 .build();
         artistaService.save(artista3);
         Artista artista4 = Artista.builder()
@@ -143,6 +149,8 @@ class ApiRestPreProyectoApplicationTests {
                 .password("1234")
                 .username("user1")
                 .yearsOfExperience(10)
+                .descripcionCorta("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150")
+                .descripcionLarga("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.")
                 .build();
         artistaService.save(artista4);
         Artista artista5 = Artista.builder()
@@ -150,6 +158,8 @@ class ApiRestPreProyectoApplicationTests {
                 .password("1234")
                 .username("user2")
                 .yearsOfExperience(10)
+                .descripcionCorta("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150")
+                .descripcionLarga("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.")
                 .build();
         artistaService.save(artista5);
 
@@ -191,13 +201,13 @@ class ApiRestPreProyectoApplicationTests {
         Empresa empresa4 = Empresa.builder()
                 .nombreEmpresa("Mobius")
                 .nombreRepresentante("Juan")
-                .numTlf(222333444)
+                .numTlf(111333666)
                 .build();
         EmpresaService.save(empresa4);
 
 
         //BORRAR
-        empresaService.delete(4L);
+        empresaService.delete(9L);
 
         //EDITAR
         empresa1.setNombreEmpresa("Noentiendo");
@@ -309,33 +319,46 @@ class ApiRestPreProyectoApplicationTests {
     @Order(4)
     void pruebaCRUDImagen(){
         //Importante que esto no este vacio o fallará
-        Artista artista = artistaService.one(1L);
+        Artista artista1 = artistaService.one(1L);
+        Artista artista2 = artistaService.one(2L);
+        Artista artista3 = artistaService.one(3L);
+        Artista artista4 = artistaService.one(4L);
+        Artista artista5 = artistaService.one(5L);
+
+
+
 
         //CREAR
         Imagen imagen1 = Imagen.builder()
-                .artista(artista)
-                .url("/imgs/img1.png")
+                .artista(artista1)
+                .url("/assets/Portfolio1.jpg")
                 .nombre("img1")
                 .build();
         Imagen imagen2 = Imagen.builder()
-                .artista(artista)
-                .url("/imgs/img2.png")
+                .artista(artista2)
+                .url("/assets/Portfolio2.jpg")
                 .nombre("img2")
                 .build();
         Imagen imagen3 = Imagen.builder()
-                .artista(artista)
-                .url("/imgs/img3.png")
+                .artista(artista3)
+                .url("/assets/Portfolio3.jpg")
                 .nombre("img3")
                 .build();
         Imagen imagen4 = Imagen.builder()
-                .artista(artista)
-                .url("/imgs/img4.png")
+                .artista(artista4)
+                .url("/assets/Portfolio4.png")
                 .nombre("img4")
+                .build();
+        Imagen imagen5 = Imagen.builder()
+                .artista(artista5)
+                .url("/assets/Portfolio5.jpg")
+                .nombre("img5")
                 .build();
         imagenService.save(imagen1);
         imagenService.save(imagen2);
         imagenService.save(imagen3);
         imagenService.save(imagen4);
+        imagenService.save(imagen5);
 
         //BORRAR
         imagenService.delete(4L);

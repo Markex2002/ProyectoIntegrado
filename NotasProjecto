@@ -1,1 +1,33 @@
 Cuando llegue el momento preguntar por páginación
+
+
+
+
+-------------PUNTOS A DESTACAR PARA LA DOCUMENTACIÓN-------------
+
+FRONTEND
+---------
+
+Se ha usado Routes para poder navegar por la Página.
+
+Uso de LocalStorage para no perder los datos del artista que estamos visitando en caso de refrescar.
+
+
+
+
+
+
+BACKEND
+
+
+
+
+
+
+
+
+
+
+
+
+

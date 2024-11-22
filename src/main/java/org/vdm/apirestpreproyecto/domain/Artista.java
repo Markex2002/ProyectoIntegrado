@@ -21,23 +21,29 @@ import java.util.Set;
 @NoArgsConstructor
 public class Artista extends Usuario {
     private String nombre;
+
+    @Column(length = 500)
     private String descripcionCorta;
+
+    @Column(columnDefinition = "TEXT")
     private String descripcionLarga;
+
     private int yearsOfExperience;
 
 
     @Builder
     public Artista(long id, String username, String password, String email, String nombre,
                    int yearsOfExperience, List<Idioma> idiomasHablados,
-                   List<Imagen> portfolio, Set<OfertaTrabajo> ofertasTrabajos) {
+                   List<Imagen> portfolio, Set<OfertaTrabajo> ofertasTrabajos, String descripcionCorta,
+                    String descripcionLarga) {
         super(id, username, password, email);
         this.nombre = nombre;
         this.descripcionCorta = descripcionCorta;
+        this.descripcionLarga = descripcionLarga;
         this.yearsOfExperience = yearsOfExperience;
         this.idiomasHablados = idiomasHablados;
         this.portfolio = portfolio;
         this.ofertasTrabajos = ofertasTrabajos;
-
     }
 
 

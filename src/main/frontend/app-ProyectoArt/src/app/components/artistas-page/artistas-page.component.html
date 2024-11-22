@@ -117,7 +117,7 @@
           <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{artista.nombre}}</h5>
             <p class="card-text">{{artista.descripcionCorta}}</p>
-            <a [routerLink]="['/artista', artista.id]" class="btn btn-primary mt-auto align-self-start">Detalles</a>
+            <a (click)="databaseService.setIdArtista(artista.id)" [routerLink]="[artista.nombre]" class="btn btn-primary mt-auto align-self-start">Detalles</a>
           </div>
         </div>
         </div>
