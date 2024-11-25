@@ -30,12 +30,14 @@ public class Artista extends Usuario {
 
     private int yearsOfExperience;
 
+    @ElementCollection
+    private List<String> categorias  = new ArrayList<>();
 
     @Builder
     public Artista(long id, String username, String password, String email, String nombre,
                    int yearsOfExperience, List<Idioma> idiomasHablados,
                    List<Imagen> portfolio, Set<OfertaTrabajo> ofertasTrabajos, String descripcionCorta,
-                    String descripcionLarga) {
+                    String descripcionLarga, List<String> categorias) {
         super(id, username, password, email);
         this.nombre = nombre;
         this.descripcionCorta = descripcionCorta;
@@ -44,7 +46,9 @@ public class Artista extends Usuario {
         this.idiomasHablados = idiomasHablados;
         this.portfolio = portfolio;
         this.ofertasTrabajos = ofertasTrabajos;
+        this.categorias = categorias;
     }
+
 
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "artista")

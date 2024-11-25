@@ -1,43 +1,49 @@
 {
-  "hash": "9faa9b1d",
-  "configHash": "d0c3236d",
+  "hash": "adef2b6a",
+  "configHash": "94879481",
   "lockfileHash": "4ac2a31e",
-  "browserHash": "e42c4b34",
+  "browserHash": "bf764b46",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "9b96c5f0",
+      "fileHash": "46b2ac4b",
       "needsInterop": false
     },
     "@angular/common/http": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
       "file": "@angular_common_http.js",
-      "fileHash": "eea7c6a9",
+      "fileHash": "70ad94c5",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "805b7795",
+      "fileHash": "f1678faa",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "801e036f",
+      "fileHash": "1db79117",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "faa9cf92",
+      "fileHash": "5ae27957",
       "needsInterop": false
     },
     "rxjs": {
       "src": "../../../../../../node_modules/rxjs/dist/esm5/index.js",
       "file": "rxjs.js",
-      "fileHash": "037fe852",
+      "fileHash": "1b331eed",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "bac40961",
       "needsInterop": false
     }
   },

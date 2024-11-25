@@ -41,9 +41,6 @@ export class DatabaseServiceService {
   }
 
 
-
-
-
   //ARTISTA
   getAllArtistas(): Observable<Artista[]>{
     return this.httpClient.get<Artista[]>(this.apiBaseUrl + "artistas/")
@@ -141,6 +138,7 @@ export interface Artista {
   ofertasTrabajo: OfertaTrabajo[],
   descripcionCorta: string,
   descripcionLarga: string
+  categorias: string[],
 }
 
 export interface Imagen {
