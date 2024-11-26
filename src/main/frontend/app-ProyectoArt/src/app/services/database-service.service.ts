@@ -4,21 +4,17 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 
 
-
-
-
-
 @Injectable({
   providedIn: 'root'
 })
-export class DatabaseServiceService {
 
+export class DatabaseServiceService {
   private apiBaseUrl = "http://localhost:8080/v1/api/";
 
   //IdArtistaParaLasPaginas
-  idArtista : number = 0;
+  idArtista : number | undefined = 0;
 
-  setIdArtista(nuevoIdArtista:number){
+  setIdArtista(nuevoIdArtista: number | undefined){
     this.idArtista = nuevoIdArtista;
   }
 
@@ -44,6 +40,12 @@ export class DatabaseServiceService {
   //ARTISTA
   getAllArtistas(): Observable<Artista[]>{
     return this.httpClient.get<Artista[]>(this.apiBaseUrl + "artistas/")
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+  create(artista: Artista): Observable<Artista> {
+    return this.httpClient.post<Artista>(this.apiBaseUrl + "artistas/", JSON.stringify(artista), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
@@ -119,14 +121,14 @@ export class DatabaseServiceService {
 
 //INTERFACES EXPORTS
 export interface Idioma {
-  id: number,
+  id?: number,
   nombre: string,
   ultimaActualizacion: string,
   id_oferta: number
 }
 
 export interface Artista {
-  id: number,
+  id?: number,
   username: string,
   password: string;
   email: string;
@@ -142,14 +144,14 @@ export interface Artista {
 }
 
 export interface Imagen {
-  idImagen: number,
+  idImagen?: number,
   url: string,
   nombre: string,
   artista: Artista,
 }
 
 export interface Empresa {
-  id: number,
+  id?: number,
   username: string,
   password: string,
   email: string,
@@ -160,7 +162,7 @@ export interface Empresa {
 }
 
 export interface OfertaTrabajo {
-  id_oferta: number,
+  id_oferta?: number,
   salarioBrutoMin : number,
   salarioBrutoMax: number,
   avaiablePositions: number,

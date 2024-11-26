@@ -1,0 +1,29 @@
+<div class="container-xl my-4">
+  <p>signup works!</p>
+
+
+
+  <form [formGroup]="artistForm" (ngSubmit)="submit()" class="my-4">
+    <div class="my-2">
+      <label for="username">Username:</label>
+      <input id="username" formControlName="username" />
+    </div>
+    <div class="my-2">
+      <label for="password">Password:</label>
+      <input id="password" formControlName="password" />
+    </div>
+    <div class="my-2">
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" />
+    </div>
+    <button type="submit" [disabled]="artistForm.invalid">Add Artist</button>
+  </form>
+
+
+
+  <div *ngFor="let a of artistas" class="row top5 align-items-center">
+    <div class="col-md-3">{{ a.id }}</div>
+    <div class="col-md-3">{{ a.username }}</div>
+    <div class="col-md-3">{{ a.password}}</div>
+  </div>
+</div>

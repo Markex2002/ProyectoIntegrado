@@ -47,19 +47,6 @@ export class ArtistasPageComponent implements OnInit {
   }
 
 
-  filtrarArtistas(categoriasSeleccionadas: string){
-    let listaFiltrada: Artista[];
-
-    this.artistas.forEach(a => {
-      if (a.categorias.includes(categoriasSeleccionadas)){
-        listaFiltrada.push(a)
-      }
-    })
-
-    // @ts-ignore
-    this.artistas = listaFiltrada;
-  }
-
 
 
 
