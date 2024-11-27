@@ -1,26 +1,30 @@
 import { Injectable } from '@angular/core';
+import {Idioma, Imagen, OfertaTrabajo} from './database-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserLoginService {
-
   constructor() { }
 
-  // Save a boolean value
-  setUserLogged(key: string, value: boolean): void {
-    localStorage.setItem(key, value.toString());
+
+  setBoolean(key: string, value: boolean): void {
+    localStorage.setItem(key, JSON.stringify(value));
   }
-  // Get a boolean value
-  getUserLogged(key: string): boolean {
-    return localStorage.getItem(key) === 'true';
+  getBoolean(key: string): boolean {
+    return JSON.parse(localStorage.getItem(key) || 'false');
   }
-  // Remove an item from LocalStorage
-  removeItem(key: string): void {
-    localStorage.removeItem(key);
+  setIdUsuarioLoged(key: string, value: number): void {
+    localStorage.setItem(key, JSON.stringify(value));
   }
-  // Clear all LocalStorage
-  clear(): void {
-    localStorage.clear();
+  getIdUsuarioLoged(key: string): number {
+    return JSON.parse(localStorage.getItem(key) || 'false');
   }
+}
+
+
+export interface Usuario {
+  id?: number,
+  username: string,
+  password: string;
 }

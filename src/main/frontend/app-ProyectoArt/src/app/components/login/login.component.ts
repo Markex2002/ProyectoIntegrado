@@ -42,21 +42,24 @@ export class LoginComponent implements OnInit{
   }
 
 
-  //Metodo para comprobar si las credenciales son correctas y se consigue el Login
+  //Metodo para comprobar si las credenciales son correctas y si se consigue el Login
   submit(){
     let loginSuccesfull: boolean = false;
 
     if (this.loginForm.valid) {
       const newArtist: Artista = this.loginForm.value;
 
-
       this.artistas.forEach(a => {
         if ((a.username === newArtist.username) && (a.password === newArtist.password)){
           console.log('User logged succesfully');
+          loginSuccesfull = true;
         }
       })
 
-
+      //Guardamos en LocalStorage si el Usuario se ha Logeado Correctamente
+      this.userService.setBoolean('isLoggedIn', loginSuccesfull);
+      const isLoggedIn = this.userService.getBoolean('isLoggedIn');
+      console.log(isLoggedIn); // Output: true
 
     } else {
       console.error('Error creating Artist')
