@@ -36,7 +36,6 @@ export class DatabaseServiceService {
     )
   }
 
-
   //ARTISTA
   getAllArtistas(): Observable<Artista[]>{
     return this.httpClient.get<Artista[]>(this.apiBaseUrl + "artistas/")
@@ -51,8 +50,6 @@ export class DatabaseServiceService {
       )
   }
 
-
-
   //EMPRESA
   getAllEmpresa(): Observable<Empresa[]>{
     return this.httpClient.get<Empresa[]>(this.apiBaseUrl + "empresas/")
@@ -60,8 +57,6 @@ export class DatabaseServiceService {
         catchError(this.errorHandler)
       )
   }
-
-
 
   //IMAGENES
   getAllImagenes(): Observable<Imagen[]>{
@@ -71,10 +66,6 @@ export class DatabaseServiceService {
       )
   }
 
-
-
-
-
   //OFERTAS
   getAllOfertas(): Observable<OfertaTrabajo[]>{
     return this.httpClient.get<OfertaTrabajo[]>(this.apiBaseUrl + "ofertas/")
@@ -82,15 +73,6 @@ export class DatabaseServiceService {
         catchError(this.errorHandler)
       )
   }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -161,8 +143,11 @@ export interface Empresa {
 
 export interface OfertaTrabajo {
   id_oferta?: number,
-  salarioBrutoMin : number,
-  salarioBrutoMax: number,
   avaiablePositions: number,
   duracionJornada: number,
+  empresa: Empresa,
+  fechaPublicacion: Date,
+  inscripcionHasta: Date,
+  salarioBrutoMin : number,
+  salarioBrutoMax: number,
 }

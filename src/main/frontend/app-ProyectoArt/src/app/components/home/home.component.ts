@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {Artista, DatabaseServiceService, Imagen} from '../../services/database-service.service';
 import {CommonModule, NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, RouterOutlet, NgForOf, CommonModule],
+    imports: [RouterLink, RouterOutlet, NgForOf, CommonModule, RouterLinkActive],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

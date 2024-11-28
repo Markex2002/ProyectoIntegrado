@@ -10,10 +10,13 @@ import org.vdm.apirestpreproyecto.domain.*;
 import org.vdm.apirestpreproyecto.service.*;
 
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.*;
+
+import static com.fasterxml.jackson.databind.type.LogicalType.DateTime;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -78,6 +81,9 @@ class ApiRestPreProyectoApplicationTests {
         listaArtistas3.add(artistaService.one(1L));
         listaArtistas3.add(artistaService.one(2L));
 
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+
 
         //PRUEBA DE LA CREACION DE MANYTOMANY//
         //CREAMOS VARIAS OFERTAS DE TRABAJO//
@@ -85,6 +91,8 @@ class ApiRestPreProyectoApplicationTests {
                 .empresa(empresaService.one(6L))
                 .duracionJornada(20)
                 .avaiablePositions(2)
+                .fechaPublicacion(calendar.getTime())
+                .inscripcionHasta(calendar.getTime())
                 .salarioBrutoMin(10000)
                 .salarioBrutoMax(14000)
                 .artistas(listaArtistas1)

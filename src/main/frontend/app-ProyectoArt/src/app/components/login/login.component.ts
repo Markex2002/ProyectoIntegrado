@@ -3,13 +3,16 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/
 import {Artista, DatabaseServiceService} from '../../services/database-service.service';
 import {NgForOf} from '@angular/common';
 import {UserLoginService} from '../../services/user-login.service';
+import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
     NgForOf,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink,
+    RouterLinkActive
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -25,7 +28,8 @@ export class LoginComponent implements OnInit{
   constructor(
     protected databaseService: DatabaseServiceService,
     protected userService: UserLoginService,
-    private fb: FormBuilder)
+    private fb: FormBuilder,
+    private router: Router,)
   {
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
@@ -61,6 +65,15 @@ export class LoginComponent implements OnInit{
       const isLoggedIn = this.userService.getBoolean('isLoggedIn');
       console.log(isLoggedIn); // Output: true
 
+
+      // Use a micro-task to ensure state update is reflected
+      setTimeout(() => {
+        if (isLoggedIn) {
+          this.router.navigate(['/home']);
+        } else {
+          console.error('Login failed. Please check your credentials.');
+        }
+      }, 0);
     } else {
       console.error('Error creating Artist')
     }

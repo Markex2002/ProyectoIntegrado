@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
-import {Idioma, Imagen, OfertaTrabajo} from './database-service.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserLoginService {
-  constructor() { }
+  isUserLogged: boolean = false;
+
+  constructor() {
+    this.isUserLogged = this.getBoolean('isLoggedIn');
+    console.log('isUserLogged');
+  }
 
 
   setBoolean(key: string, value: boolean): void {
