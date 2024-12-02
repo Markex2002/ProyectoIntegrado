@@ -143,6 +143,7 @@ export interface Empresa {
 
 export interface OfertaTrabajo {
   id_oferta?: number,
+  nombrePuesto: string,
   avaiablePositions: number,
   duracionJornada: number,
   empresa: Empresa,

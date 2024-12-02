@@ -25,6 +25,7 @@ public class OfertaTrabajo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     private long id_oferta;
+    private String nombrePuesto;
     private int salarioBrutoMin;
     private int salarioBrutoMax;
     private int avaiablePositions;

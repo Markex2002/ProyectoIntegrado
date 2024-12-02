@@ -93,7 +93,6 @@
       </div>
     </form>
 
-
     <!-- ////OFERTAS//// -->
     <div class="ofertas col-12 col-md-8">
       <section class="row bg-dark py-2">
@@ -103,12 +102,18 @@
         <p class="text-light col-12 col-sm-2">Empresa</p>
       </section>
 
-      <div *ngFor="let oferta of ofertas">
-        <section class="row bg-secondary py-2">
-          <p class="text-light col-12 col-sm-3">{{oferta.fechaPublicacion}}</p>
-          <p class="text-light col-12 col-sm-3">{{oferta.inscripcionHasta}}</p>
-          <p class="text-light col-12 col-sm-4"></p>
-          <p class="text-light col-12 col-sm-2">{{oferta.empresa.nombreEmpresa}}</p>
+      <div *ngFor="let oferta of ofertas; let i = index">
+        <section class="row py-2"
+                 [ngClass]="{'bg-secondary': i %2 === 0,'bg-secondary-subtle': i %2 !== 0,}"
+        >
+          <p class="col-12 col-sm-3" [ngClass]="{'text-light': i %2 === 0}">
+            {{oferta.fechaPublicacion}}</p>
+          <p class="text-light col-12 col-sm-3" [ngClass]="{'text-light': i %2 === 0}">
+            {{oferta.inscripcionHasta}}</p>
+          <p class="text-light col-12 col-sm-4" [ngClass]="{'text-light': i %2 === 0}">
+            {{oferta.nombrePuesto}}</p>
+          <p class="text-light col-12 col-sm-2" [ngClass]="{'text-light': i %2 === 0}">
+            {{oferta.empresa.nombreEmpresa}}</p>
         </section>
       </div>
 

@@ -89,6 +89,7 @@ class ApiRestPreProyectoApplicationTests {
         //CREAMOS VARIAS OFERTAS DE TRABAJO//
         OfertaTrabajo ofertaTrabajo1 = OfertaTrabajo.builder()
                 .empresa(empresaService.one(6L))
+                .nombrePuesto("Diseñador de personajes 2D")
                 .duracionJornada(20)
                 .avaiablePositions(2)
                 .fechaPublicacion(calendar.getTime())
@@ -100,8 +101,11 @@ class ApiRestPreProyectoApplicationTests {
         ofertaService.save(ofertaTrabajo1);
         OfertaTrabajo ofertaTrabajo2 = OfertaTrabajo.builder()
                 .empresa(empresaService.one(7L))
+                .nombrePuesto("Diseñador de personajes 3D")
                 .duracionJornada(20)
                 .avaiablePositions(2)
+                .fechaPublicacion(calendar.getTime())
+                .inscripcionHasta(calendar.getTime())
                 .salarioBrutoMin(6000)
                 .salarioBrutoMax(20000)
                 .artistas(listaArtistas2)
@@ -109,8 +113,11 @@ class ApiRestPreProyectoApplicationTests {
         ofertaService.save(ofertaTrabajo2);
         OfertaTrabajo ofertaTrabajo3 = OfertaTrabajo.builder()
                 .empresa(empresaService.one(8L))
+                .nombrePuesto("Diseñador de personajes 4D")
                 .duracionJornada(20)
                 .avaiablePositions(1)
+                .fechaPublicacion(calendar.getTime())
+                .inscripcionHasta(calendar.getTime())
                 .salarioBrutoMin(12000)
                 .salarioBrutoMax(24000)
                 .artistas(listaArtistas3)
