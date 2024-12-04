@@ -44,7 +44,7 @@ public class OfertaTrabajo {
 
     //ManyToOne en el que la empresa tendra varias Ofertas
     @ManyToOne()
-    @JoinColumn(name = "id", nullable = false)
+    @JoinColumn(name = "id_Empresa", nullable = false)
     private Empresa empresa;
 
 

@@ -38,7 +38,9 @@ export class SignupComponent implements OnInit{
 
 
 
-    submit(){
+  submit(){
+    /*
+
     if (this.artistForm.valid) {
       const newArtist: Artista = this.artistForm.value;
       this.databaseService.create(newArtist).subscribe(res => {
@@ -48,11 +50,15 @@ export class SignupComponent implements OnInit{
     } else {
       console.error('Error creating Artist')
     }
-  }
 
+     */
 
-
-
+    const newArtist: Artista = this.artistForm.value;
+    this.databaseService.create(newArtist).subscribe(res => {
+      console.log('Artista creada correctamente! + res');
+      this.artistForm.reset();
+    })
+}
 
 
 

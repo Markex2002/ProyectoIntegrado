@@ -5,6 +5,7 @@ import {OfertasPageComponent} from './components/ofertas-page/ofertas-page.compo
 import {ArtistaComponent} from './components/artistas-page/artista/artista.component';
 import {SignupComponent} from './components/signup/signup.component';
 import {LoginComponent} from './components/login/login.component';
+import {OfertaComponent} from './components/ofertas-page/oferta/oferta.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -15,7 +16,10 @@ export const routes: Routes = [
 
   { path: 'artistas', component: ArtistasPageComponent},
   { path: 'artistas/:nombre', component: ArtistaComponent},
+
   { path: 'ofertas', component: OfertasPageComponent},
+  { path: 'ofertas/:nombre', component: OfertaComponent},
+
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   //{ path: '**', component: PageNotFoundComponent }, //WildCard para el error 404
 ];

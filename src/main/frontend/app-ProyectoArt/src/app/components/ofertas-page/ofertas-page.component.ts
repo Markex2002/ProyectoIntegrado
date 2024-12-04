@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {DatabaseServiceService, OfertaTrabajo} from '../../services/database-service.service';
 import {CommonModule, NgFor} from '@angular/common';
+import {RouterLink, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-ofertas-page',
   standalone: true,
-  imports: [CommonModule, NgFor],
+  imports: [CommonModule, NgFor, RouterLink, RouterOutlet],
   templateUrl: './ofertas-page.component.html',
   styleUrl: './ofertas-page.component.scss'
 })

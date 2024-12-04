@@ -47,36 +47,31 @@
 
     <div class="ofertas col-12">
       <section class="row bg-dark py-2">
+        <p class="text-light col-12 col-sm-4">Puesto</p>
         <p class="text-light col-12 col-sm-3">Fecha de Publicacion</p>
         <p class="text-light col-12 col-sm-3">Fecha Limite</p>
-        <p class="text-light col-12 col-sm-4">Puesto</p>
         <p class="text-light col-12 col-sm-2">Empresa</p>
       </section>
 
-      <section class="row bg-secondary py-2">
-        <p class="text-light col-12 col-sm-3">12/02/2023</p>
-        <p class="text-light col-12 col-sm-3">28/02/2023</p>
-        <a href="oferta1.html" class="text-light col-12 col-sm-4">Ilustracion de Personajes 2D</a>
-        <p class="text-light col-12 col-sm-2">Mojang</p>
-      </section>
-      <section class="row bg-secondary-subtle py-2">
-        <p class="col-12 col-sm-3">12/02/2023</p>
-        <p class="col-12 col-sm-3">28/02/2023</p>
-        <a href="oferta1.html" class="col-12 col-sm-4 text-black">Ilustracion de Personajes 3D</a>
-        <p class="col-12 col-sm-2">Capcom</p>
-      </section>
-      <section class="row bg-secondary py-2">
-        <p class="text-light col-12 col-sm-3">12/02/2023</p>
-        <p class="text-light col-12 col-sm-3">28/02/2023</p>
-        <a href="oferta1.html" class="text-light col-12 col-sm-4">Ilustracion de Personajes 2D</a>
-        <p class="text-light col-12 col-sm-2">Nintendo</p>
-      </section>
-      <section class="row bg-secondary-subtle py-2">
-        <p class="col-12 col-sm-3">12/02/2023</p>
-        <p class="col-12 col-sm-3">28/02/2023</p>
-        <a href="oferta1.html" class="col-12 col-sm-4 text-black">Ilustracion de Personajes 3D</a>
-        <p class="col-12 col-sm-2">Mobius</p>
-      </section>
+      <div *ngFor="let oferta of ofertas | slice:0:5; let i = index">
+        <section class="row py-2"
+                 [ngClass]="{'bg-secondary': i %2 === 0,'bg-secondary-subtle': i %2 !== 0,}"
+        >
+
+          <a (click)="databaseService.setIdOferta(oferta.id_oferta)" [routerLink]="[oferta.nombrePuesto]"
+             [ngClass]="{'text-light': i %2 === 0,'text-black': i %2 !== 0,}"
+             class="text-light col-12 col-sm-4">
+            {{oferta.nombrePuesto}}
+          </a>
+
+          <p class="col-12 col-sm-3" [ngClass]="{'text-light': i %2 === 0}">
+            {{oferta.fechaPublicacion}}</p>
+          <p class="text-light col-12 col-sm-3" [ngClass]="{'text-light': i %2 === 0}">
+            {{oferta.inscripcionHasta}}</p>
+          <p class="text-light col-12 col-sm-2" [ngClass]="{'text-light': i %2 === 0}">
+            {{oferta.empresa.nombreEmpresa}}</p>
+        </section>
+      </div>
     </div>
   </div>
 </aside>

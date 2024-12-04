@@ -13,10 +13,17 @@ export class DatabaseServiceService {
 
   //IdArtistaParaLasPaginas
   idArtista : number | undefined = 0;
-
   setIdArtista(nuevoIdArtista: number | undefined){
     this.idArtista = nuevoIdArtista;
   }
+
+  //IdOfertaParaLasPaginas
+  idOferta : number | undefined = 0;
+  setIdOferta(nuevoIdOferta: number | undefined){
+    this.idOferta = nuevoIdOferta;
+  }
+
+
 
 
   httpOptions = {

@@ -1,5 +1,13 @@
 Cuando llegue el momento preguntar por páginación
 
+Usar las erramientas de localizacion para cambiar el Idioma de ciertos textos
+
+Hacer Cookies, Terminos y Condiciones, Politica de privacidad,
+un popup que pregunte, y que se guarde en LocalStorage la respuesta
+
+Crear la validacion de creación de cuenta
+
+
 
 
 
@@ -15,19 +23,20 @@ Uso de LocalStorage para no perder los datos del artista que estamos visitando e
 
 
 
-
-
 BACKEND
 
 
 
 
 
+FUNCIONES O PAGINAS COMPLETADAS
+=================================
 
-
-
-
-
-
-
+HOME
+----LOGIN----
+REGISTER
+ARTISTAS
+ARTISTA
+OFERTAS
+OFERTA
 

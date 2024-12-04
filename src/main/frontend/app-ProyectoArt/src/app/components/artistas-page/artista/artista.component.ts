@@ -64,17 +64,11 @@ export class ArtistaComponent {
   }
 
 
-
-
-
-
   /////LOCALSTORAGE/////
   saveIdArtista(nuevoId: number | undefined): void {
     // Save the value to localStorage
     localStorage.setItem('valorIdArtista', String(nuevoId));
   }
-
-
 
 
   /////AVISO ERROR/////

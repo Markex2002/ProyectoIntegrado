@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Artista, DatabaseServiceService} from '../../services/database-service.service';
-import {NgForOf} from '@angular/common';
+import {CommonModule, NgForOf} from '@angular/common';
 import {UserLoginService} from '../../services/user-login.service';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 
@@ -9,6 +9,7 @@ import {Router, RouterLink, RouterLinkActive} from '@angular/router';
   selector: 'app-login',
   standalone: true,
   imports: [
+    CommonModule,
     NgForOf,
     ReactiveFormsModule,
     RouterLink,
@@ -49,6 +50,7 @@ export class LoginComponent implements OnInit{
   //Metodo para comprobar si las credenciales son correctas y si se consigue el Login
   submit(){
     let loginSuccesfull: boolean = false;
+    this.aviso= '' ;
 
     if (this.loginForm.valid) {
       const newArtist: Artista = this.loginForm.value;
@@ -71,11 +73,11 @@ export class LoginComponent implements OnInit{
         if (isLoggedIn) {
           this.router.navigate(['/home']);
         } else {
-          console.error('Login failed. Please check your credentials.');
+          this.aviso = "Username or contraseña Incorrecta";
         }
       }, 0);
     } else {
-      console.error('Error creating Artist')
+      this.aviso = "Por favor, inserte su username y contraseña";
     }
   }
 }
