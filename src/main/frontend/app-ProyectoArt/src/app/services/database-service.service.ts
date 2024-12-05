@@ -43,6 +43,16 @@ export class DatabaseServiceService {
     )
   }
 
+
+  //USUARIO
+  getAllUsuarios(): Observable<Usuario[]>{
+    return this.httpClient.get<Usuario[]>(this.apiBaseUrl + "usuarios/")
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+
   //ARTISTA
   getAllArtistas(): Observable<Artista[]>{
     return this.httpClient.get<Artista[]>(this.apiBaseUrl + "artistas/")
@@ -112,6 +122,13 @@ export interface Idioma {
   nombre: string,
   ultimaActualizacion: string,
   id_oferta: number
+}
+
+export interface Usuario {
+  id?: number,
+  username: string,
+  password: string;
+  email: string;
 }
 
 export interface Artista {

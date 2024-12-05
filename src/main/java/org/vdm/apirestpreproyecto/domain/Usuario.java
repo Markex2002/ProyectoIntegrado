@@ -27,6 +27,7 @@ public class Usuario {
     @Size(max = 20, message = "{usuario.error.username.size.max")
     private String username;
     @NotBlank(message = "{usuario.error.password")
+    @Size(max = 30, min = 6, message = "{usuario.error.username.size.max}")
     private String password;
     @Email(
             message = "{cliente.error.correo",

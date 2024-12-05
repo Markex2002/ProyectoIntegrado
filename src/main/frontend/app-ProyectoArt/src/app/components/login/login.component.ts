@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Artista, DatabaseServiceService} from '../../services/database-service.service';
+import {Artista, DatabaseServiceService, Usuario} from '../../services/database-service.service';
 import {CommonModule, NgForOf} from '@angular/common';
 import {UserLoginService} from '../../services/user-login.service';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
@@ -21,8 +21,8 @@ import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 export class LoginComponent implements OnInit{
 
   loginForm: FormGroup;
-  artistas: Artista[] = [];
-  todosArtistas: Artista[] = [];
+  usuarios: Usuario[] = [];
+  todosUsuarios: Usuario[] = [];
   aviso:string = "";
 
   //Inicializamos los services
@@ -40,9 +40,9 @@ export class LoginComponent implements OnInit{
 
   //Cargamos nuestros artistas y su base de datos de Imagenes
   ngOnInit(): void{
-    this.databaseService.getAllArtistas().subscribe((data: Artista[]) =>{
-      this.artistas = data;
-      this.todosArtistas = data;
+    this.databaseService.getAllArtistas().subscribe((data: Usuario[]) =>{
+      this.usuarios = data;
+      this.todosUsuarios = data;
     })
   }
 
@@ -53,10 +53,10 @@ export class LoginComponent implements OnInit{
     this.aviso= '' ;
 
     if (this.loginForm.valid) {
-      const newArtist: Artista = this.loginForm.value;
+      const newUser: Usuario = this.loginForm.value;
 
-      this.artistas.forEach(a => {
-        if ((a.username === newArtist.username) && (a.password === newArtist.password)){
+      this.usuarios.forEach(u => {
+        if ((u.username === newUser.username) && (u.password === newUser.password)){
           console.log('User logged succesfully');
           loginSuccesfull = true;
         }
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit{
       console.log(isLoggedIn); // Output: true
 
 
-      // Use a micro-task to ensure state update is reflected
+      //Use a micro-task to ensure state update is reflected
       setTimeout(() => {
         if (isLoggedIn) {
           this.router.navigate(['/home']);
