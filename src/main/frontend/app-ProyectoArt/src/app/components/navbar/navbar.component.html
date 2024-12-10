@@ -28,7 +28,7 @@
 
       <div class="d-flex">
         <div class="navbar-nav me-auto mb-2 mb-lg-0">
-          <ul *ngIf="!userService.isUserLogged">
+          <ul *ngIf="!userService.isUserLogged" class="my-0">
             <button class="btn btn-outline-success border-3 mx-2 my-1" type="submit" routerLink="/login" routerLinkActive="active">Iniciar Sesion</button>
             <button class="btn btn-outline-success border-3 mx-2 my-1" type="submit" routerLink="/signUp" routerLinkActive="active">Registrarse</button>
           </ul>
