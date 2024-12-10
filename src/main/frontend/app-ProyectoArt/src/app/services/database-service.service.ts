@@ -51,6 +51,12 @@ export class DatabaseServiceService {
         catchError(this.errorHandler)
       )
   }
+  createUser(usuario: Usuario): Observable<Usuario> {
+    return this.httpClient.post<Usuario>(this.apiBaseUrl + "usuarios/", JSON.stringify(usuario), this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
 
 
   //ARTISTA
@@ -60,7 +66,7 @@ export class DatabaseServiceService {
         catchError(this.errorHandler)
       )
   }
-  create(artista: Artista): Observable<Artista> {
+  createArtista(artista: Artista): Observable<Artista> {
     return this.httpClient.post<Artista>(this.apiBaseUrl + "artistas/", JSON.stringify(artista), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
