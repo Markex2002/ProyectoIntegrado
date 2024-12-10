@@ -142,7 +142,7 @@ class ApiRestPreProyectoApplicationTests {
         Artista artista1 = Artista.builder()
                 .nombre("VanGogh")
                 .username("Markex133")
-                .password("1234")
+                .password("12345678")
                 .email("email@gmail.com")
                 .yearsOfExperience(6)
                 .descripcionCorta("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150")
@@ -153,7 +153,7 @@ class ApiRestPreProyectoApplicationTests {
         Artista artista2 = Artista.builder()
                 .nombre("SrPelo")
                 .username("MrPlXx")
-                .password("1234")
+                .password("12345678")
                 .yearsOfExperience(4)
                 .categorias(categorias2)
                 .descripcionCorta("Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150")
@@ -162,7 +162,7 @@ class ApiRestPreProyectoApplicationTests {
         artistaService.save(artista2);
         Artista artista3 = Artista.builder()
                 .nombre("Markex")
-                .password("psswd")
+                .password("12345678")
                 .username("markex2002")
                 .yearsOfExperience(10)
                 .categorias(categorias1)
@@ -172,7 +172,7 @@ class ApiRestPreProyectoApplicationTests {
         artistaService.save(artista3);
         Artista artista4 = Artista.builder()
                 .nombre("Artista1")
-                .password("1234")
+                .password("12345678")
                 .username("user1")
                 .yearsOfExperience(10)
                 .categorias(categorias1)
@@ -182,7 +182,7 @@ class ApiRestPreProyectoApplicationTests {
         artistaService.save(artista4);
         Artista artista5 = Artista.builder()
                 .nombre("Artista2")
-                .password("1234")
+                .password("12345678")
                 .username("user2")
                 .yearsOfExperience(10)
                 .categorias(categorias2)
@@ -208,26 +208,37 @@ class ApiRestPreProyectoApplicationTests {
         //PRUEBA CREAR Y GUARDAR VARIAS EMPRESAS
         Empresa empresa1 = Empresa.builder()
                 .nombreEmpresa("Nintendo")
+                .username("nintenUser1")
+                .email("email@gmail.com")
                 .numTlf(521522523)
-                .password("1234")
+                .password("12345678")
                 .email("nintendo@gmail.com")
                 .nombreRepresentante("Pedro")
                 .build();
         EmpresaService.save(empresa1);
         Empresa empresa2 = Empresa.builder()
                 .nombreEmpresa("Sega")
+                .password("12345678")
+                .username("segaUser1")
+                .email("email@gmail.com")
                 .numTlf(123456789)
                 .nombreRepresentante("Lucas")
                 .build();
         EmpresaService.save(empresa2);
         Empresa empresa3 = Empresa.builder()
                 .nombreEmpresa("Capcom")
+                .username("capcomUser1")
+                .email("email@gmail.com")
+                .password("12345678")
                 .nombreRepresentante("Marcos")
                 .numTlf(222333444)
                 .build();
         EmpresaService.save(empresa3);
         Empresa empresa4 = Empresa.builder()
                 .nombreEmpresa("Mobius")
+                .username("mobiusUser1")
+                .email("email@gmail.com")
+                .password("12345678")
                 .nombreRepresentante("Juan")
                 .numTlf(111333666)
                 .build();
@@ -251,6 +262,7 @@ class ApiRestPreProyectoApplicationTests {
         Administrador administrador1 = Administrador.builder()
                 .privilegeLevel(1)
                 .nombre("Maximo")
+                .username("maximoUser1")
                 .email("admin@gmail.com")
                 .password("1234Admin")
                 .build();
@@ -258,16 +270,25 @@ class ApiRestPreProyectoApplicationTests {
         Administrador administrador2 = Administrador.builder()
                 .privilegeLevel(2)
                 .nombre("Steven")
+                .username("stevenUser1")
+                .email("admin@gmail.com")
+                .password("1234Admin")
                 .build();
         administradorService.save(administrador2);
         Administrador administrador3 = Administrador.builder()
                 .privilegeLevel(3)
                 .nombre("Mario")
+                .username("marioUser1")
+                .email("admin@gmail.com")
+                .password("1234Admin")
                 .build();
         administradorService.save(administrador3);
         Administrador administrador4 = Administrador.builder()
                 .privilegeLevel(2)
                 .nombre("Luigi")
+                .username("luigiUser1")
+                .email("admin@gmail.com")
+                .password("1234Admin")
                 .build();
         administradorService.save(administrador4);
 
