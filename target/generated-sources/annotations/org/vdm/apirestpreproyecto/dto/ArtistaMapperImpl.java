@@ -13,7 +13,7 @@ import org.vdm.apirestpreproyecto.domain.OfertaTrabajo;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-11-15T13:18:25+0100",
+    date = "2024-12-10T14:07:48+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 23.0.1 (Oracle Corporation)"
 )
 @Component
@@ -28,6 +28,8 @@ public class ArtistaMapperImpl implements ArtistaMapper {
         ArtistaDTO artistaDTO = new ArtistaDTO();
 
         artistaDTO.setNombre( artista.getNombre() );
+        artistaDTO.setDescripcionCorta( artista.getDescripcionCorta() );
+        artistaDTO.setDescripcionLarga( artista.getDescripcionLarga() );
         artistaDTO.setYearsOfExperience( artista.getYearsOfExperience() );
         List<Imagen> list = artista.getPortfolio();
         if ( list != null ) {
