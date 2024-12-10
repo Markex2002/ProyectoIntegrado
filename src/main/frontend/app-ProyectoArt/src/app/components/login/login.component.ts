@@ -71,7 +71,10 @@ export class LoginComponent implements OnInit{
       //Use a micro-task to ensure state update is reflected
       setTimeout(() => {
         if (isLoggedIn) {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/home']).then(() => {
+            // Reload after navigation
+            window.location.reload();
+          });
         } else {
           this.aviso = "Username or contraseña Incorrecta";
         }

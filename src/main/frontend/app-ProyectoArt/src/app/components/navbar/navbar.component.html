@@ -34,6 +34,7 @@
           </ul>
           <div *ngIf="userService.isUserLogged" class="my-0">
             <p style="color: white" class="my-0">Welcome, user! You are logged in.</p>
+            <button (click)="userService.logout()">LogOut</button>
           </div>
         </div>
       </div>

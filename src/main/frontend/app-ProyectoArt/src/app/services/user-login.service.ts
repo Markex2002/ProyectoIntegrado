@@ -18,6 +18,14 @@ export class UserLoginService {
   getBoolean(key: string): boolean {
     return JSON.parse(localStorage.getItem(key) || 'false');
   }
+
+  logout(): void {
+    localStorage.removeItem('isLoggedIn');
+    window.location.reload();
+  }
+
+
+
   setIdUsuarioLoged(key: string, value: number): void {
     localStorage.setItem(key, JSON.stringify(value));
   }

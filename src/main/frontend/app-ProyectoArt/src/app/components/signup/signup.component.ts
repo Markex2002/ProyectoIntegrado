@@ -86,8 +86,10 @@ export class SignupComponent implements OnInit{
       //Guardamos en LocalStorage el Inicio de Sesion
       this.userService.setBoolean('isLoggedIn', true);
       //Volvemos a Inicio
-      this.router.navigate(['/home']);
-
+      this.router.navigate(['/home']).then(() => {
+        // Reload after navigation
+        window.location.reload();
+      });
     } else {
       //En caso de que falle la validacion
       if (this.artistForm.hasError('passwordMismatch')) {
