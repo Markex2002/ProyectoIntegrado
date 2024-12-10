@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {Artista, DatabaseServiceService} from '../../services/database-service.service';
+import {Artista, DatabaseServiceService, Usuario} from '../../services/database-service.service';
 import {UserLoginService} from '../../services/user-login.service';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 
@@ -42,7 +42,7 @@ export class SignupComponent implements OnInit{
         confirmPassword: ['', Validators.required],
         email: ['', [Validators.required, Validators.pattern(emailRegex)]], // Email validation
       },
-      { validator: this.matchPasswords('password', 'confirmPassword') } // Add custom validator at the form group level
+      { validator: this.matchPasswords('password', 'confirmPassword')}
     );
   }
 
@@ -76,10 +76,10 @@ export class SignupComponent implements OnInit{
     this.aviso= '' ;
 
     if (this.artistForm.valid) {
-      const newArtist: Artista = this.artistForm.value;
+      const newUser: Usuario = this.artistForm.value;
 
-      this.databaseService.create(newArtist).subscribe(res => {
-        console.log('Artista creada correctamente! + res');
+      this.databaseService.createUser(newUser).subscribe(res => {
+        console.log('Usuario creada correctamente! + res');
         this.artistForm.reset();
       })
 
@@ -94,8 +94,10 @@ export class SignupComponent implements OnInit{
         this.aviso = 'Las contraseñas no coinciden.';
       } else if (this.artistForm.get('email')?.hasError('pattern')) {
         this.aviso = 'Por favor, introduzca un correo electrónico válido.';
-      } else if (this.artistForm.get('password') !== this.artistForm.get('confirmPassword')) {
+      } else if (this.artistForm.get('password')?.value !== this.artistForm.get('confirmPassword')?.value) {
         this.aviso = 'Las contraseñas no coinciden.';
+      } else if (this.artistForm.get('password')?.value.length < 6) {
+        this.aviso = 'La contraseña debe tener más de 6 carácteres.';
       } else {
         this.aviso = "Por favor inserte sus datos en todos los campos";
       }
