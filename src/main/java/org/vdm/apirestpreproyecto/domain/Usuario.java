@@ -29,6 +29,7 @@ public class Usuario {
     @NotBlank(message = "{usuario.error.password")
     @Size(max = 30, min = 6, message = "{usuario.error.password.size.max}")
     private String password;
+    @NotBlank
     @Email(
             message = "{cliente.error.correo",
             regexp = "^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\\.[a-zA-Z.]{2,5}"
