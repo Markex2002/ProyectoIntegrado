@@ -8,9 +8,20 @@
   <h2>Administrar Usuarios</h2>
   <hr>
 
-  <div>
+  <div class="row py-2">
+    <p class="col-1">id</p>
+    <p class="col-2">username</p>
+    <p class="col-2">email</p>
+  </div>
 
-
-
+  <div *ngFor="let usuario of usuarios" class="row py-2">
+    <p class="col-1">{{usuario.id}}</p>
+    <p class="col-2">{{usuario.username}}</p>
+    <p class="col-2">{{usuario.email}}</p>
+    <button class="mx-2 col-2 btn btn-warning">Editar</button>
+    <button (click)="deleteUserInfo(usuario.id)" class="mx-2 col-2 btn btn-danger">Eliminar</button>
   </div>
 </div>
+
+
+<div class="footer bg-danger" *ngIf="aviso.length>0">{{ aviso }}</div>

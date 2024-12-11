@@ -41,18 +41,37 @@ export class DatabaseServiceService {
   }
 
 
-  //USUARIO
+  //////USUARIO//////
   getAllUsuarios(): Observable<Usuario[]>{
     return this.httpClient.get<Usuario[]>(this.apiBaseUrl + "usuarios/")
       .pipe(
         catchError(this.errorHandler)
       )
   }
-  createUser(usuario: Usuario): Observable<Usuario> {
+  //Funcion para crear un nuevo Usuario
+  createUser(usuario: Usuario): Observable<Object> {
     return this.httpClient.post<Usuario>(this.apiBaseUrl + "usuarios/", JSON.stringify(usuario), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
+  }
+  //Funcion para eliminar un Usuario con su Id
+  deleteUser(id: number | undefined): Observable<unknown> {
+    return this.httpClient.delete<void>(
+      this.apiBaseUrl + "usuarios/" + id, this.httpOptions).pipe(
+      catchError(this.errorHandler)
+    );
+
+  }
+  //Funcion para Editar un Usuario
+  updateUser(usuario: Usuario): Observable<Usuario> {
+    return this.httpClient.put<Usuario>(
+      this.apiBaseUrl + "usuarios/" + usuario.id,
+      JSON.stringify(usuario),
+      this.httpOptions
+    ).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
 
