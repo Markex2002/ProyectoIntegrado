@@ -78,6 +78,14 @@ export class DatabaseServiceService {
       )
   }
 
+  //ADMINISTRADOR
+  getAllAdministrador(): Observable<Administrador[]>{
+    return this.httpClient.get<Administrador[]>(this.apiBaseUrl + "administradores/")
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
   //IMAGENES
   getAllImagenes(): Observable<Imagen[]>{
     return this.httpClient.get<Imagen[]>(this.apiBaseUrl + "imagenes/")
@@ -166,6 +174,15 @@ export interface Empresa {
   numTlf: number,
   nombreRepresentante: string,
   listadoOfertas: OfertaTrabajo[]
+}
+
+export interface Administrador {
+  id?: number,
+  username: string,
+  password: string,
+  email: string,
+  nombre: string,
+  privilegeLevel: number,
 }
 
 export interface OfertaTrabajo {

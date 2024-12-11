@@ -33,7 +33,7 @@
             <button class="btn btn-outline-success border-3 mx-2 my-1" type="submit" routerLink="/signUp" routerLinkActive="active">Registrarse</button>
           </ul>
           <div *ngIf="userService.isUserLogged" class="my-0">
-            <p style="color: white" class="my-0">Welcome, user! You are logged in.</p>
+            <p style="color: white" class="my-0">Welcome, user! {{userService.userType}}.</p>
             <button (click)="userService.logout()">LogOut</button>
           </div>
         </div>

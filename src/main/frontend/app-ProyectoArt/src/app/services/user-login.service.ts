@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class UserLoginService {
   isUserLogged: boolean = false;
+  userType: string = "usuario";
 
   constructor() {
     this.isUserLogged = this.getBoolean('isLoggedIn');
@@ -23,6 +24,8 @@ export class UserLoginService {
     localStorage.removeItem('isLoggedIn');
     window.location.reload();
   }
+
+
 
 
 

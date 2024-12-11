@@ -1,6 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Artista, DatabaseServiceService, Usuario} from '../../services/database-service.service';
+import {
+  Administrador,
+  Artista,
+  DatabaseServiceService,
+  Empresa,
+  Usuario
+} from '../../services/database-service.service';
 import {CommonModule, NgForOf} from '@angular/common';
 import {UserLoginService} from '../../services/user-login.service';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
@@ -10,7 +16,6 @@ import {Router, RouterLink, RouterLinkActive} from '@angular/router';
   standalone: true,
   imports: [
     CommonModule,
-    NgForOf,
     ReactiveFormsModule,
     RouterLink,
     RouterLinkActive
@@ -38,9 +43,9 @@ export class LoginComponent implements OnInit{
     });
   }
 
-  //Cargamos nuestros artistas y su base de datos de Imagenes
+  //Cargamos nuestros usuarios
   ngOnInit(): void{
-    this.databaseService.getAllArtistas().subscribe((data: Usuario[]) =>{
+    this.databaseService.getAllUsuarios().subscribe((data: Usuario[]) =>{
       this.usuarios = data;
       this.todosUsuarios = data;
     })
@@ -57,8 +62,9 @@ export class LoginComponent implements OnInit{
 
       this.usuarios.forEach(u => {
         if ((u.username === newUser.username) && (u.password === newUser.password)){
-          console.log('User logged succesfully');
+          //UNA VEZ QUE HEMOS LOGEADO, COMPROBAMOS QUE TIPO DE USUARIO ES
           loginSuccesfull = true;
+          this.checkUserType(u.id);
         }
       })
 
@@ -82,5 +88,41 @@ export class LoginComponent implements OnInit{
     } else {
       this.aviso = "Por favor, inserte su username y contraseña";
     }
+  }
+
+
+
+  //METODO PARA COMPROBAR QUE TIPO DE USUARIO SE HA LOGEADO
+  checkUserType(idUser: number | undefined){
+    let artistas: Artista[] = [];
+    let administradores: Administrador[] = [];
+    let empresas: Empresa[] = [];
+
+    this.databaseService.getAllArtistas().subscribe((data: Artista[]) =>{
+      artistas = data;
+    })
+    this.databaseService.getAllAdministrador().subscribe((data: Administrador[]) =>{
+      administradores = data;
+    })
+    this.databaseService.getAllEmpresa().subscribe((data: Empresa[]) =>{
+      empresas = data;
+    })
+
+    //COMPROBAMOS A CUAL PERTENECEMOS
+    artistas.forEach((a) => {
+      if (a.id == idUser){
+        this.userService.userType = "artista";
+      }
+    });
+    empresas.forEach((e) => {
+      if (e.id == idUser){
+        this.userService.userType = "empresa";
+      }
+    });
+    administradores.forEach((ad) => {
+      if (ad.id == idUser){
+        this.userService.userType = "administradores";
+      }
+    });
   }
 }
