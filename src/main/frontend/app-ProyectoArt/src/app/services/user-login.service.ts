@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,9 +8,9 @@ export class UserLoginService {
   isUserLogged: boolean = false;
   userType: string = "usuario";
 
-  constructor() {
+  constructor(private router: Router) {
     this.isUserLogged = this.getBoolean('isLoggedIn');
-    console.log('isUserLogged');
+    this.userType = this.getString('userType');
   }
 
 
@@ -19,10 +20,21 @@ export class UserLoginService {
   getBoolean(key: string): boolean {
     return JSON.parse(localStorage.getItem(key) || 'false');
   }
+  setString(key: string, value: string): void {
+    localStorage.setItem(key, JSON.stringify(value));
+  }
+  getString(key: string): string {
+    return JSON.parse(<string>localStorage.getItem(key));
+  }
 
   logout(): void {
     localStorage.removeItem('isLoggedIn');
-    window.location.reload();
+    localStorage.removeItem('userType');
+
+    this.router.navigate(['/home']).then(() => {
+      //Reiniciamos la pagina para que se reflejen los cambios
+      window.location.reload();
+    });
   }
 
 

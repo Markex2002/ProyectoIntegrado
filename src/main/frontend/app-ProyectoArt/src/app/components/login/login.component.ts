@@ -71,14 +71,12 @@ export class LoginComponent implements OnInit{
       //Guardamos en LocalStorage si el Usuario se ha Logeado Correctamente
       this.userService.setBoolean('isLoggedIn', loginSuccesfull);
       const isLoggedIn = this.userService.getBoolean('isLoggedIn');
-      console.log(isLoggedIn); // Output: true
-
 
       //Use a micro-task to ensure state update is reflected
       setTimeout(() => {
         if (isLoggedIn) {
           this.router.navigate(['/home']).then(() => {
-            // Reload after navigation
+            //Reiniciamos la pagina para que se reflejen los cambios
             window.location.reload();
           });
         } else {
@@ -100,29 +98,32 @@ export class LoginComponent implements OnInit{
 
     this.databaseService.getAllArtistas().subscribe((data: Artista[]) =>{
       artistas = data;
+      //COMPROBAMOS A CUAL PERTENECE EL USUARIO QUE SE HA LOGEADO
+      artistas.forEach((a) => {
+        if (a.id == idUser){
+          this.userService.userType = "artista";
+          this.userService.setString('userType', this.userService.userType);
+        }
+      });
     })
     this.databaseService.getAllAdministrador().subscribe((data: Administrador[]) =>{
       administradores = data;
+      administradores.forEach((ad) => {
+        if (ad.id == idUser){
+          this.userService.userType = "administrador";
+          this.userService.setString('userType', this.userService.userType);
+        }
+      });
     })
     this.databaseService.getAllEmpresa().subscribe((data: Empresa[]) =>{
       empresas = data;
+      empresas.forEach((e) => {
+        if (e.id == idUser){
+          this.userService.userType = "empresa";
+          this.userService.setString('userType', this.userService.userType);
+        }
+      });
     })
 
-    //COMPROBAMOS A CUAL PERTENECEMOS
-    artistas.forEach((a) => {
-      if (a.id == idUser){
-        this.userService.userType = "artista";
-      }
-    });
-    empresas.forEach((e) => {
-      if (e.id == idUser){
-        this.userService.userType = "empresa";
-      }
-    });
-    administradores.forEach((ad) => {
-      if (ad.id == idUser){
-        this.userService.userType = "administradores";
-      }
-    });
   }
 }

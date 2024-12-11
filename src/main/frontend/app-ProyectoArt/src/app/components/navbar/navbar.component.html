@@ -35,6 +35,10 @@
           <div *ngIf="userService.isUserLogged" class="my-0">
             <p style="color: white" class="my-0">Welcome, user! {{userService.userType}}.</p>
             <button (click)="userService.logout()">LogOut</button>
+
+            <div *ngIf="userService.userType == 'administrador'" class="my-0">
+              <button routerLink="/administracion" routerLinkActive="active">Administrar</button>
+            </div>
           </div>
         </div>
       </div>

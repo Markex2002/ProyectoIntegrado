@@ -6,6 +6,10 @@ import {ArtistaComponent} from './components/artistas-page/artista/artista.compo
 import {SignupComponent} from './components/signup/signup.component';
 import {LoginComponent} from './components/login/login.component';
 import {OfertaComponent} from './components/ofertas-page/oferta/oferta.component';
+import {AdministracionComponent} from './components/administracion/administracion.component';
+import {
+  UsuariosAdministracionComponent
+} from './components/administracion/usuarios-administracion/usuarios-administracion.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent},
@@ -19,6 +23,11 @@ export const routes: Routes = [
 
   { path: 'ofertas', component: OfertasPageComponent},
   { path: 'ofertas/:nombre', component: OfertaComponent},
+
+  { path: 'administracion', component: AdministracionComponent},
+  { path: 'usuariosAdministracion', component: UsuariosAdministracionComponent},
+
+
 
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   //{ path: '**', component: PageNotFoundComponent }, //WildCard para el error 404
