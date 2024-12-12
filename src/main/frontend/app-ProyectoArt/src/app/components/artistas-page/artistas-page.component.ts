@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import {RouterLink} from '@angular/router';
 import {CommonModule, NgForOf, SlicePipe} from "@angular/common";
 import {Artista, DatabaseServiceService, Imagen} from '../../services/database-service.service';
 import {FormsModule} from '@angular/forms';
@@ -7,7 +7,7 @@ import {FormsModule} from '@angular/forms';
 @Component({
   selector: 'app-artistas-page',
   standalone: true,
-  imports: [CommonModule, RouterLink, RouterOutlet, NgForOf, SlicePipe, FormsModule],
+  imports: [CommonModule, RouterLink, NgForOf, SlicePipe, FormsModule],
   templateUrl: './artistas-page.component.html',
   styleUrl: './artistas-page.component.scss'
 })
@@ -60,28 +60,29 @@ export class ArtistasPageComponent implements OnInit {
   /////CATEGORIAS/////
   categories = [
     {
-      name: 'Categoria 1',
+      name: 'Medio Artístico',
       items: [
-        { label: 'First checkbox', value: 'categoria1', checked: false },
-        { label: 'Second checkbox', value: 'categoria2', checked: false },
-        { label: 'Third checkbox', value: 'categoria3', checked: false }
+        { label: 'Pintura', value: 'pintura', checked: false },
+        { label: 'Arte Digital 2D', value: 'digital2d', checked: false },
+        { label: 'Arte y Modelaje Digital 3D', value: 'digital3d', checked: false }
       ]
     },
     {
-      name: 'Categoria 2',
+      name: 'Estilo Artistico',
       items: [
-        { label: 'First checkbox', value: 'first2', checked: false },
-        { label: 'Second checkbox', value: 'second2', checked: false },
-        { label: 'Third checkbox', value: 'third2', checked: false },
-        { label: 'Forth checkbox', value: 'forth2', checked: false },
-        { label: 'Fiveth checkbox', value: 'fifth2', checked: false }
+        { label: 'Realismo', value: 'realismo', checked: false },
+        { label: 'Surrealismo', value: 'surrealismo', checked: false },
+        { label: 'Anime', value: 'anime', checked: false },
+        { label: 'Manga', value: 'manga', checked: false },
+        { label: 'PixelArt', value: 'pixelart', checked: false }
       ]
     },
     {
-      name: 'Categoria 3',
+      name: 'Tema',
       items: [
-        { label: 'First checkbox', value: 'first3', checked: false },
-        { label: 'Second checkbox', value: 'second3', checked: false }
+        { label: 'Naturaleza', value: 'naturaleza', checked: false },
+        { label: 'Retratos', value: 'retratos', checked: false },
+        { label: 'Fantasía', value: 'fantasia', checked: false }
       ]
     }
   ];

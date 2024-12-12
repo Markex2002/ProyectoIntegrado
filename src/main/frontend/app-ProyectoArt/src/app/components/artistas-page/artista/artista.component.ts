@@ -1,14 +1,16 @@
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {Artista, DatabaseServiceService, Imagen} from '../../../services/database-service.service';
-import {NgIf} from '@angular/common';
+import {NgFor, NgIf, SlicePipe} from '@angular/common';
 
 @Component({
   selector: 'app-artista',
   standalone: true,
   imports: [
     RouterLink,
-    NgIf
+    NgIf,
+    NgFor,
+    SlicePipe
   ],
   templateUrl: './artista.component.html',
   styleUrl: './artista.component.scss'
@@ -16,13 +18,15 @@ import {NgIf} from '@angular/common';
 export class ArtistaComponent {
 
   artistas: Artista[] = [];
+  artistasRecomendados: Artista[] = [];
   artista!: Artista;
   imagenes: Imagen[] = [];
+  imagenesArtista: Imagen[] = [];
   aviso:string = "";
 
 
   //Inicializamos los services
-  constructor(private databaseService: DatabaseServiceService) {}
+  constructor(protected databaseService: DatabaseServiceService) {}
 
   //Cargamos nuestros artistas y su base de datos de Imagenes
   ngOnInit(): void{
@@ -41,27 +45,51 @@ export class ArtistaComponent {
     this.databaseService.getAllArtistas().subscribe((data: Artista[]) =>{
       this.artistas = data;
       this.artista = this.artistas.find(a => a.id === this.databaseService.idArtista)!;
-      console.log(this.artista.descripcionLarga)
+      this.seleccionarArtistasRecomendados();
+      console.log(this.artistasRecomendados)
 
     })
     this.databaseService.getAllImagenes().subscribe((data: Imagen[]) =>{
       this.imagenes = data;
+      this.imagenes.forEach(imagen => {
+
+        // @ts-ignore
+        if (imagen.artista.id === this.artista.id){
+          this.imagenesArtista.push(imagen)
+        }
+      })
     })
   }
 
-
   //Funcion para encontrar la Imagen destacada del Artista
-  findFirstImageOfArtist(){
+  findFirstImageOfArtist(artista: Artista){
     let imgSrc = "";
     this.imagenes.forEach(imagen => {
-
-      // @ts-ignore
-      if (imagen.artista.id === this.artista.id){
+      if (imagen.artista.id === artista.id){
         imgSrc = imagen.url;
       }
     })
     return imgSrc;
   }
+
+  seleccionarArtistasRecomendados(): void {
+    // Randomly select two different artists
+    const selectedArtists: Artista[] = [];
+    console.log("hola")
+    while (selectedArtists.length < 2) {
+      const randomIndex = Math.floor(Math.random() * this.artistas.length);
+      const selectedArtist = this.artistas[randomIndex];
+
+      // Avoid duplicates
+      if (!selectedArtists.includes(selectedArtist) && (selectedArtist.id !== this.artista.id)) {
+        selectedArtists.push(selectedArtist);
+      }
+    }
+
+    this.artistasRecomendados = selectedArtists;
+  }
+
+
 
 
   /////LOCALSTORAGE/////
@@ -69,7 +97,6 @@ export class ArtistaComponent {
     // Save the value to localStorage
     localStorage.setItem('valorIdArtista', String(nuevoId));
   }
-
 
   /////AVISO ERROR/////
   setAviso(texto:string){

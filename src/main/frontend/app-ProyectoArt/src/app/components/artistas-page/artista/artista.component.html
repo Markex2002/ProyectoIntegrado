@@ -21,7 +21,7 @@
     <div class="row d-flex justify-content-center py-4">
       <div class="col-12 col-sm-6">
         <div class="card w-100" style="width: 18rem;">
-          <img [src]="findFirstImageOfArtist()" class="card-img-top" alt="...">
+          <img [src]="findFirstImageOfArtist(artista)" class="card-img-top" alt="...">
           <div class="card-body">
             <h3 class="card-title text-center my-3">{{artista.nombre}}</h3>
 
@@ -56,23 +56,14 @@
 <aside *ngIf="artista" class="container-xl bg-light py-4">
 
   <h1 class="col-sm-6 ">PORTFOLIO</h1>
-
   <hr class="my-4">
 
   <!-- ////PORTFOLIO//// -->
   <div class="row">
     <div class="row col-sm-12">
 
-      <div class="row d-flex justify-content-center my-4">
-        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
-        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
-        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
-        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
-        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
-        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
-        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
-        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
-        <img src="" class="col-12 col-md-4 col-sm-6 my-4" alt="">
+      <div class="row d-flex justify-content-center my-4" *ngFor="let imagen of imagenesArtista">
+        <img [src]="imagen.url" class="col-12 col-md-4 col-sm-6 my-4" alt="">
       </div>
     </div>
   </div>
@@ -84,20 +75,14 @@
 
   <div class="row d-flex justify-content-center py-4">
     <div class="card-group">
-      <div class="card mx-4" >
-        <img src="" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Artista 2</h5>
-          <p class="card-text">Profesional con 6 años de experiencia en el desarrollo de ilustraciones en 2D, tanto de paisajes como de ilustraciones</p>
-          <a href="" class="btn btn-primary ">Go somewhere</a>
-        </div>
-      </div>
-      <div class="card mx-4">
-        <img src="" class="card-img-top " alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Artista 3</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="" class="btn btn-primary">Go somewhere</a>
+      <div class="card mx-4" *ngFor="let artista of artistasRecomendados">
+
+        <img [src]="findFirstImageOfArtist(artista)" class="img-fluid" alt="..." >
+
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{artista.nombre}}</h5>
+          <p class="card-text">{{artista.descripcionCorta}}</p>
+          <a (click)="databaseService.setIdArtista(artista.id)" [routerLink]="[artista.nombre]" class="btn btn-primary mt-auto align-self-start">Detalles</a>
         </div>
       </div>
     </div>

@@ -12,16 +12,24 @@
         <li class="nav-item">
           <a class="nav-link text-light" routerLink="/ofertas" routerLinkActive="active" >Ofertas</a>
         </li>
-        <li clalsss="nav-item dropdown">
-          <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Cursos
-          </a>
-          <ul class="dropdown-menu bg-dark">
-            <li><a class="dropdown-item text-light bg-dark" href="#">Ilustracion 3D</a></li>
-            <li><a class="dropdown-item text-light bg-dark" href="#">Ilustracion 2D</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-light bg-dark" href="#">Something else here</a></li>
-          </ul>
+
+        <li>
+          <div class="dropdown">
+            <button
+              class="btn btn-dark dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Cursos
+            </button>
+            <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item text-light bg-dark" href="#">Ilustracion 3D</a></li>
+              <li><a class="dropdown-item text-light bg-dark" href="#">Ilustracion 2D</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-light bg-dark" href="#">Something else here</a></li>
+            </ul>
+          </div>
         </li>
       </ul>
 

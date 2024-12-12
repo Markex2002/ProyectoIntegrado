@@ -26,7 +26,6 @@ export class OfertasPageComponent implements OnInit{
     this.databaseService.getAllOfertas().subscribe((data: OfertaTrabajo[]) =>{
       this.ofertas = data;
       this.todosOfertas = data;
-      console.log(this.ofertas);
     })
   }
 
