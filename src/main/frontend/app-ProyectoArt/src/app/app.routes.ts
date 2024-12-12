@@ -7,9 +7,8 @@ import {SignupComponent} from './components/signup/signup.component';
 import {LoginComponent} from './components/login/login.component';
 import {OfertaComponent} from './components/ofertas-page/oferta/oferta.component';
 import {AdministracionComponent} from './components/administracion/administracion.component';
-import {
-  UsuariosAdministracionComponent
-} from './components/administracion/usuarios-administracion/usuarios-administracion.component';
+import {UsuariosAdministracionComponent} from './components/administracion/usuarios-administracion/usuarios-administracion.component';
+
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent},

@@ -6,9 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.vdm.apirestpreproyecto.Exception.ArtistaNotFoundException;
 import org.vdm.apirestpreproyecto.Exception.UsuarioNotFoundException;
-import org.vdm.apirestpreproyecto.domain.Artista;
 import org.vdm.apirestpreproyecto.domain.Usuario;
 import org.vdm.apirestpreproyecto.repository.UsuarioRepository;
 
