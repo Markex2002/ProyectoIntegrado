@@ -1,7 +1,7 @@
 Instrucciones de Instalación del projecto
 ============================================
 
-Para Instalar el proyecto es necesario tener instalado Mysql server instalado. 
+Para Instalar el proyecto es necesario tener instalado Mysql server. 
 Una vez lo hayamos instalado, usamos Intellij para descargar el proyecto mediante Github.
 Cuando el projecto haya sido descargado, procedemos a conectarnos a la base de datos que hayamos creado previamente.
 Una vez conectados, nos aseguramos de que el Jdk este correctamente configurado y que el Maven tenga sus dependencias bien configuradas.
