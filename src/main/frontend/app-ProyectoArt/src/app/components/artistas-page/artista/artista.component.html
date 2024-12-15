@@ -59,14 +59,14 @@
   <hr class="my-4">
 
   <!-- ////PORTFOLIO//// -->
-  <div class="row">
-    <div class="row col-sm-12">
-
-      <div class="row d-flex justify-content-center my-4" *ngFor="let imagen of imagenesArtista">
-        <img [src]="imagen.url" class="col-12 col-md-4 col-sm-6 my-4" alt="">
-      </div>
+  <div class="row justify-content-center py-4">
+    <div class="col-xl-4 col-md-6 col-sm-12" *ngFor="let imagen of imagenesArtista">
+      <img [src]="imagen.url" class="w-100 my-4" alt="">
     </div>
   </div>
+
+
+
 
 
   <!-- ////RECOMENDADOS//// -->
