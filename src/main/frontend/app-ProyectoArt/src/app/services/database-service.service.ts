@@ -61,7 +61,6 @@ export class DatabaseServiceService {
       this.apiBaseUrl + "usuarios/" + id, this.httpOptions).pipe(
       catchError(this.errorHandler)
     );
-
   }
   //Funcion para Editar un Usuario
   updateUser(usuario: Usuario): Observable<Usuario> {
@@ -75,6 +74,7 @@ export class DatabaseServiceService {
   }
 
   //METODO PARA LOGUEARSE
+  /*
   loginUser(user: { username: string; password: string }) {
     this.httpClient.post(this.apiBaseUrl + '/api/login', user).subscribe(response => {
       console.log('Login successful:', response);
@@ -82,9 +82,10 @@ export class DatabaseServiceService {
       console.error('Login failed:', error);
     });
   }
+   */
 
 
-  //ARTISTA
+  /////ARTISTA/////
   getAllArtistas(): Observable<Artista[]>{
     return this.httpClient.get<Artista[]>(this.apiBaseUrl + "artistas/")
       .pipe(
@@ -92,13 +93,32 @@ export class DatabaseServiceService {
       )
   }
   createArtista(artista: Artista): Observable<Artista> {
-    return this.httpClient.post<Artista>(this.apiBaseUrl + "artistas/", JSON.stringify(artista), this.httpOptions)
+    return this.httpClient.post<Artista>(
+      this.apiBaseUrl + "artistas/",
+      JSON.stringify(artista),
+      this.httpOptions
+    )
       .pipe(
         catchError(this.errorHandler)
       )
   }
+  updateArtista(artista: Artista | null): Observable<Artista> {
+    if (artista === null) {
+      throw new Error("Artista no puede ser null");
+    }
 
-  //EMPRESA
+    return this.httpClient.put<Artista>(
+      this.apiBaseUrl + "artistas/" + artista.id,
+      JSON.stringify(artista),
+      this.httpOptions
+    ).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+
+
+  /////EMPRESA/////
   getAllEmpresa(): Observable<Empresa[]>{
     return this.httpClient.get<Empresa[]>(this.apiBaseUrl + "empresas/")
       .pipe(

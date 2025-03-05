@@ -2,11 +2,27 @@
   <h1>Perfil</h1>
 
   <div *ngIf="isArtista">
-    <p> Username: {{ loggedInArtista?.username }} </p>
-    <p> Email: {{ loggedInArtista?.email }} </p>
-    <p> Nombre: {{ loggedInArtista?.username }} </p>
-    <p> Años de Experiencia: {{ loggedInArtista?.yearsOfExperience }} </p>
+    <p>Username: {{ loggedInArtista?.username }} </p>
+    <p>Email: {{ loggedInArtista?.email }} </p>
+
+    <p>
+      Nombre:
+      <span *ngIf="!isEditing['nombre']">{{ loggedInArtista?.nombre }}</span>
+      <input *ngIf="isEditing['nombre']" [(ngModel)]="loggedInArtista!.nombre" />
+      <button *ngIf="!isEditing['nombre']" (click)="activarEdicion('nombre')">Editar</button>
+      <button *ngIf="isEditing['nombre']" (click)="guardarCampo('nombre')">Guardar</button>
+    </p>
+
+    <p>Años de Experiencia: {{ loggedInArtista?.yearsOfExperience }} </p>
+
+    <p class="my-2">Descripcion Corta: {{ loggedInArtista?.descripcionCorta }} </p>
+    <button class="my-2">Editar</button>
+
+    <p class="my-2">Descripcion Larga: {{ loggedInArtista?.descripcionLarga }} </p>
+    <button class="my-2">Editar</button>
   </div>
+
+
 
   <div *ngIf="isEmpresa">
     <p> Username: {{ loggedInEmpresa?.username }} </p>

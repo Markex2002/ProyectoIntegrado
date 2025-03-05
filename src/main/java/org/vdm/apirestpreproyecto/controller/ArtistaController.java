@@ -36,6 +36,7 @@ public class ArtistaController {
         for (Artista artista : artistas) {
             ArtistaDTO artistaDTO = ArtistaMapper.INSTANCE.artistaAArtistaDTO(artista);
             artistaDTO.setTotalIdiomasHablados(artistaDTO.getIdiomasHablados().size());
+            artistasDTOs.add(artistaDTO);
         }
 
         log.info("Accediendo a todos las artistas");

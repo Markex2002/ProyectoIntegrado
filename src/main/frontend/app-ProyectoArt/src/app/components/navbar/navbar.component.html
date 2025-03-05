@@ -49,7 +49,10 @@
           </ul>
           <div *ngIf="userService.isUserLogged" class="my-0">
             <p style="color: white" class="my-0">Welcome, user!</p>
-            <button routerLink="/usuario" routerLinkActive="active" >Perfil</button>
+            <button *ngIf="userService.userType == 'artista' || userService.userType == 'empresa'"
+                    routerLink="/usuario" routerLinkActive="active" >
+              Perfil
+            </button>
             <button (click)="userService.logout()">LogOut</button>
 
             <div *ngIf="userService.userType == 'administrador'" class="my-0">
