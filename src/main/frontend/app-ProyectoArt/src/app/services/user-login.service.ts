@@ -19,17 +19,33 @@ export class UserLoginService {
   }
 
 
-  // Store user object
-  setUser(user: Artista | Empresa | Usuario): void {
+  //Guardamos Usuario, Artista o Empresa
+  setUser(user: Usuario): void {
     localStorage.setItem('currentUser', JSON.stringify(user));
-    this.setString('userType', user.hasOwnProperty('username') ? 'artist' : 'business');
   }
-
-  // Retrieve user object
-  getUser(): Artista | Empresa | Usuario | null {
+  setArtista(user: Artista): void {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+  }
+  setEmpresa(user: Empresa): void {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+  }
+  //Sacamos Usuario, Artista o Empresa
+  getUser(): Usuario | null {
     const userData = localStorage.getItem('currentUser');
     return userData ? JSON.parse(userData) : null;
   }
+  //Sacamos Usuario, Artista o Empresa
+  getArtista(): Artista | null {
+    const userData = localStorage.getItem('currentUser');
+    return userData ? JSON.parse(userData) : null;
+  }
+  //Sacamos Usuario, Artista o Empresa
+  getEmpresa(): Empresa | null {
+    const userData = localStorage.getItem('currentUser');
+    return userData ? JSON.parse(userData) : null;
+  }
+
+
 
   setBoolean(key: string, value: boolean): void {
     localStorage.setItem(key, JSON.stringify(value));

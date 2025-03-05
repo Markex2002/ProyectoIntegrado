@@ -1,18 +1,17 @@
 <div class="container-xl my-4 min-vh-100">
   <h1>Perfil</h1>
 
-  <div *ngIf="isArtist && loggedInUser as artist">
-    <p>Hola Artista</p>
-    <p> {{ artist.username }} </p>
-    <p> {{ artist.email }} </p>
-    <p> {{ artist.nombre }} </p>
+  <div *ngIf="isArtista">
+    <p> Username: {{ loggedInArtista?.username }} </p>
+    <p> Email: {{ loggedInArtista?.email }} </p>
+    <p> Nombre: {{ loggedInArtista?.username }} </p>
+    <p> Años de Experiencia: {{ loggedInArtista?.yearsOfExperience }} </p>
   </div>
 
-  <div *ngIf="isBusiness && loggedInUser as business">
-    <p>Hola Empresa</p>
-    <p> {{ business.username }} </p>
-    <p> {{ business.email }} </p>
-    <p> {{ business.nombreEmpresa }} </p>
+  <div *ngIf="isEmpresa">
+    <p> Username: {{ loggedInEmpresa?.username }} </p>
+    <p> Email: {{ loggedInEmpresa?.email }} </p>
+    <p> Nombre Empresa: {{ loggedInEmpresa?.nombreEmpresa }} </p>
+    <p> Años de Experiencia: {{ loggedInEmpresa?.nombreRepresentante }} </p>
   </div>
-
 </div>

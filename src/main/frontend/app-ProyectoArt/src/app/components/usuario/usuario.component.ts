@@ -17,9 +17,12 @@ import {CommonModule} from '@angular/common';
 })
 
 export class UsuarioComponent implements OnInit{
-  loggedInUser: Artista | Empresa | Usuario | null = null;
-  isArtist: boolean = false;
-  isBusiness: boolean = false;
+  loggedInUser: Usuario | null = null;
+  loggedInArtista: Artista | null = null;
+  loggedInEmpresa: Empresa | null = null;
+
+  isArtista: boolean = false;
+  isEmpresa: boolean = false;
 
   constructor(
     protected userService: UserLoginService,
@@ -27,15 +30,14 @@ export class UsuarioComponent implements OnInit{
 
 
   ngOnInit(): void{
-    const loggedInUser = this.userService.getUser();
-    console.log("Logged in user:", loggedInUser);
-
-    if (this.userService.userType === 'artist') {
-      this.isArtist = true;
-      console.log("Artista")
-    } else if (this.userService.userType === 'empresa') {
-      this.isBusiness = true;
-      console.log("Empresa")
+    if (this.userService.userType == 'artista'){
+      this.isArtista = true;
+      this.loggedInArtista = this.userService.getArtista();
+      console.log("Hola aqui un artista");
+    } else if (this.userService.userType == 'empresa'){
+      this.isEmpresa = true;
+      this.loggedInEmpresa = this.userService.getEmpresa();
+      console.log("Hola aqui un empresa");
     }
   }
 }
