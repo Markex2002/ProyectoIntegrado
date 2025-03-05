@@ -1,1 +1,75 @@
-<p>oferta works!</p>
+<!-- ////MAIN//// -->
+<!-- NgIf, en caso de que no le haya dado tiempo a Cargar la Oferta -->
+<main *ngIf="oferta else alternateContent" class="container-xl bg-light py-4">
+  <!-- ////BREADCRUMB//// -->
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+      <li class="breadcrumb-item"><a [routerLink]="['/ofertas']">Ofertas de Trabajo</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{oferta.nombrePuesto}}</li>
+    </ol>
+  </nav>
+
+  <div class="row">
+    <div class="row d-flex justify-content-between align-items-center py-4">
+      <h1 class="col-sm-6">{{oferta.nombrePuesto}}</h1>
+    </div>
+
+    <hr>
+
+    <!-- ////DATOS PRINCIPALES//// -->
+    <div class="row d-flex justify-content-center py-4">
+      <div class="col-12 col-sm-6">
+        <div class="card w-100">
+          <div class="card-body">
+            <h3 class="card-title text-center my-3">{{oferta.empresa.nombreEmpresa}}</h3>
+            <p><strong>Posiciones disponibles:</strong> {{oferta.avaiablePositions}}</p>
+            <p><strong>Duración jornada:</strong> {{oferta.duracionJornada}} horas</p>
+            <p><strong>Fecha de publicación:</strong> {{oferta.fechaPublicacion}}</p>
+            <p><strong>Inscripción hasta:</strong> {{oferta.inscripcionHasta}}</p>
+            <p><strong>Salario bruto:</strong> {{oferta.salarioBrutoMin}} - {{oferta.salarioBrutoMax}} €</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 d-flex flex-wrap">
+        <div class="d-grid gap-2 col-6 mx-auto align-self-end">
+          <!-- Display the message -->
+          <div *ngIf="mensaje">
+            <p [ngClass]="mensajeClase" >{{ mensaje }}</p>
+          </div>
+
+          <button (click)="aplicarOfertas()" class="btn btn-primary" type="button">Aplicar</button>
+          <button (click)="guardarOfertas()" class="btn btn-success" type="button">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ////ASIDE//// -->
+<!--
+<aside *ngIf="oferta" class="container-xl bg-light py-4">
+  <h1 class="col-sm-6">OFERTAS SIMILARES</h1>
+  <hr class="my-4">
+
+  <div class="row d-flex justify-content-center py-4">
+    <div class="card-group">
+      <div class="card mx-4" *ngFor="let ofertaRecomendada of ofertasRecomendadas">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ofertaRecomendada.nombrePuesto}}</h5>
+          <p><strong>Empresa:</strong> {{ofertaRecomendada.empresa.nombreEmpresa}}</p>
+          <p><strong>Salario:</strong> {{ofertaRecomendada.salarioBrutoMin}} - {{ofertaRecomendada.salarioBrutoMax}} €</p>
+          <a (click)="databaseService.setIdOferta(ofertaRecomendada.id_oferta)" [routerLink]="[ofertaRecomendada.nombrePuesto]" class="btn btn-primary mt-auto align-self-start">Detalles</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</aside>
+-->
+
+
+<ng-template #alternateContent>
+  <p>CARGANDO...</p>
+</ng-template>

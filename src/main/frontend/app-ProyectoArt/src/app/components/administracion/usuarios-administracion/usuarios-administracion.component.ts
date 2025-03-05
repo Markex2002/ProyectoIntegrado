@@ -43,6 +43,7 @@ export class UsuariosAdministracionComponent implements OnInit{
           this.setAviso('Error al eliminar producto.')
         })});
 
+    window.location.reload();
   }
 
 

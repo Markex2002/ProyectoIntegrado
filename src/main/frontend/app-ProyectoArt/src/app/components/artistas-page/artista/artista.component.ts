@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {RouterLink} from '@angular/router';
 import {Artista, DatabaseServiceService, Imagen} from '../../../services/database-service.service';
-import {NgFor, NgIf, SlicePipe} from '@angular/common';
+import {NgClass, NgFor, NgIf, SlicePipe} from '@angular/common';
+import {UserLoginService} from '../../../services/user-login.service';
 
 @Component({
   selector: 'app-artista',
@@ -10,7 +11,8 @@ import {NgFor, NgIf, SlicePipe} from '@angular/common';
     RouterLink,
     NgIf,
     NgFor,
-    SlicePipe
+    SlicePipe,
+    NgClass
   ],
   templateUrl: './artista.component.html',
   styleUrl: './artista.component.scss'
@@ -23,10 +25,12 @@ export class ArtistaComponent {
   imagenes: Imagen[] = [];
   imagenesArtista: Imagen[] = [];
   aviso:string = "";
+  mensaje: string = '';
+  mensajeClase: string = '';
 
 
   //Inicializamos los services
-  constructor(protected databaseService: DatabaseServiceService) {}
+  constructor(protected databaseService: DatabaseServiceService, protected userService: UserLoginService,) {}
 
   //Cargamos nuestros artistas y su base de datos de Imagenes
   ngOnInit(): void{
@@ -89,6 +93,17 @@ export class ArtistaComponent {
     this.artistasRecomendados = selectedArtists;
   }
 
+
+
+  contactarArtista(): void{
+    if (this.userService.isUserLogged){
+      this.mensaje = 'Solicitud enviada';
+      this.mensajeClase = 'mensaje-exito';
+    } else {
+      this.mensaje = 'Debe estar registrado para hacer esto';
+      this.mensajeClase = 'mensaje-error';
+    }
+  }
 
 
 

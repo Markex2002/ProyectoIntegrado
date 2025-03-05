@@ -1,0 +1,18 @@
+<div class="container-xl my-4 min-vh-100">
+  <h1>Perfil</h1>
+
+  <div *ngIf="isArtist && loggedInUser as artist">
+    <p>Hola Artista</p>
+    <p> {{ artist.username }} </p>
+    <p> {{ artist.email }} </p>
+    <p> {{ artist.nombre }} </p>
+  </div>
+
+  <div *ngIf="isBusiness && loggedInUser as business">
+    <p>Hola Empresa</p>
+    <p> {{ business.username }} </p>
+    <p> {{ business.email }} </p>
+    <p> {{ business.nombreEmpresa }} </p>
+  </div>
+
+</div>

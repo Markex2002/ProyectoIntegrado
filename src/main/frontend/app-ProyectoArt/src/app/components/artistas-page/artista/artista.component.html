@@ -40,8 +40,10 @@
 
 
         <div class="d-grid gap-2 col-6 mx-auto align-self-end">
-          <button class="btn btn-primary" type="button">Contactar</button>
-          <button class="btn btn-success" type="button">Contratar</button>
+          <div *ngIf="mensaje">
+            <p [ngClass]="mensajeClase" >{{ mensaje }}</p>
+          </div>
+          <button (click)="contactarArtista()" class="btn btn-primary" type="button">Contactar</button>
         </div>
       </div>
     </div>
@@ -60,8 +62,8 @@
 
   <!-- ////PORTFOLIO//// -->
   <div class="row justify-content-center py-4">
-    <div class="col-xl-4 col-md-6 col-sm-12" *ngFor="let imagen of imagenesArtista">
-      <img [src]="imagen.url" class="w-100 my-4" alt="">
+    <div class="col-xl-4 col-md-6 col-sm-12 my-4" *ngFor="let imagen of imagenesArtista">
+      <img [src]="imagen.url" class="img-fluid"  alt="">
     </div>
   </div>
 

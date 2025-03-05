@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.vdm.apirestpreproyecto.Exception.ArtistaNotFoundException;
 import org.vdm.apirestpreproyecto.domain.Artista;
@@ -16,9 +17,12 @@ import java.util.*;
 public class ArtistaService {
 
     private final ArtistaRepository artistaRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public ArtistaService(ArtistaRepository artistaRepository) {
+
+    public ArtistaService(ArtistaRepository artistaRepository, PasswordEncoder passwordEncoder) {
         this.artistaRepository = artistaRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<Artista> all() {
@@ -40,6 +44,7 @@ public class ArtistaService {
     }
 
     public Artista save(Artista artista) {
+        artista.setPassword(passwordEncoder.encode(artista.getPassword()));
         return this.artistaRepository.save(artista);
     }
 

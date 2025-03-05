@@ -74,6 +74,15 @@ export class DatabaseServiceService {
     );
   }
 
+  //METODO PARA LOGUEARSE
+  loginUser(user: { username: string; password: string }) {
+    this.httpClient.post(this.apiBaseUrl + '/api/login', user).subscribe(response => {
+      console.log('Login successful:', response);
+    }, error => {
+      console.error('Login failed:', error);
+    });
+  }
+
 
   //ARTISTA
   getAllArtistas(): Observable<Artista[]>{
@@ -92,6 +101,13 @@ export class DatabaseServiceService {
   //EMPRESA
   getAllEmpresa(): Observable<Empresa[]>{
     return this.httpClient.get<Empresa[]>(this.apiBaseUrl + "empresas/")
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  createEmpresa(empresa: Empresa): Observable<Empresa> {
+    return this.httpClient.post<Empresa>(this.apiBaseUrl + "empresas/", JSON.stringify(empresa), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )

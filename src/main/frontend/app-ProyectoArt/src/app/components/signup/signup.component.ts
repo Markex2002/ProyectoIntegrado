@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {Artista, DatabaseServiceService, Usuario} from '../../services/database-service.service';
+import {Artista, DatabaseServiceService, Empresa, Usuario} from '../../services/database-service.service';
 import {UserLoginService} from '../../services/user-login.service';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 
@@ -22,6 +22,10 @@ export class SignupComponent implements OnInit{
   artistForm: FormGroup;
   artistas: Artista[] = [];
   todosArtistas: Artista[] = [];
+
+  //Para controlar las opciones que aparecen en el formulario
+  userType: string = '';
+
   aviso:string = "";
 
 
@@ -41,6 +45,13 @@ export class SignupComponent implements OnInit{
         password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
         confirmPassword: ['', Validators.required],
         email: ['', [Validators.required, Validators.pattern(emailRegex)]], // Email validation
+        userType: ['', Validators.required], // Only one option can be selected now
+
+        // Additional fields (initialized but not required at first)
+        nombre: [''],
+        yearsOfExperience: [''],
+        businessName: [''],
+        businessWebsite: ['']
       },
       { validator: this.matchPasswords('password', 'confirmPassword')}
     );
@@ -70,18 +81,40 @@ export class SignupComponent implements OnInit{
     })
   }
 
+  onUserTypeChange() {
+    this.userType = this.artistForm.get('userType')?.value;
+  }
+
 
 
   submit(){
     this.aviso= '' ;
 
     if (this.artistForm.valid) {
-      const newUser: Usuario = this.artistForm.value;
 
+      //Controlamos si el nuevo usuario es un Artista o una Empresa
+      if (this.userType == "artist"){
+        const newArtist: Artista = this.artistForm.value
+        this.databaseService.createArtista(newArtist).subscribe(res => {
+          console.log('Artista creado correctamente! + res');
+          this.artistForm.reset();
+        })
+      }
+      if (this.userType == "business"){
+        const newEmpresa: Empresa = this.artistForm.value
+        this.databaseService.createEmpresa(newEmpresa).subscribe(res => {
+          console.log('Empresa creada correctamente! + res');
+          this.artistForm.reset();
+        })
+      }
+
+      /*
+      const newUser: Usuario = this.artistForm.value;
       this.databaseService.createUser(newUser).subscribe(res => {
         console.log('Usuario creada correctamente! + res');
         this.artistForm.reset();
       })
+      */
 
       //Guardamos en LocalStorage el Inicio de Sesion
       this.userService.setBoolean('isLoggedIn', true);

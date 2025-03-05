@@ -20,10 +20,51 @@
         <input id="email" type="email" class="form-control" formControlName="email" />
       </div>
 
+      <!-- Radio buttons for Artist or Business -->
+      <div class="mb-3">
+        <label class="form-label">¿Eres un Artista o un Negocio?</label><br />
+        <div>
+          <input type="radio"  id="artist" formControlName="userType" value="artist" (change)="onUserTypeChange()">
+          <label for="artist">Artista</label>
+        </div>
+        <div>
+          <input type="radio" id="business" formControlName="userType" value="business" (change)="onUserTypeChange()">
+          <label for="business">Negocio</label>
+        </div>
+      </div>
+
+
+
+      <!-- Extra Fields for Artists -->
+      <div *ngIf="userType === 'artist'">
+        <div class="mb-3">
+          <label for="nombre">Nombre</label>
+          <input type="text" class="form-control" id="nombre" formControlName="nombre">
+        </div>
+        <div class="mb-3">
+          <label for="yearsOfExperience">Años de Experiencia en el sector</label>
+          <input type="number" class="form-control" id="yearsOfExperience" formControlName="yearsOfExperience">
+        </div>
+      </div>
+
+      <!-- Extra Fields for Businesses -->
+      <div *ngIf="userType === 'business'">
+        <div class="mb-3">
+          <label for="businessName">Nombre del Negocio</label>
+          <input type="text" class="form-control" id="businessName" formControlName="businessName">
+        </div>
+        <div class="mb-3">
+          <label for="businessWebsite">Página Web</label>
+          <input type="url" class="form-control" id="businessWebsite" formControlName="businessWebsite">
+        </div>
+      </div>
+
+
+
       <div *ngIf="aviso" class="alert alert-danger mt-3">
         {{aviso}}
       </div>
-      <button type="submit" class="btn btn-success">Continuar</button>
+      <button type="submit" class="btn btn-success">Crear Cuenta</button>
     </form>
   </div>
 

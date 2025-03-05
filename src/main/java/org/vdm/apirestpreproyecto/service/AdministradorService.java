@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.vdm.apirestpreproyecto.Exception.AdministradorNotFoundException;
 import org.vdm.apirestpreproyecto.domain.Administrador;
@@ -16,9 +17,12 @@ import java.util.*;
 public class AdministradorService {
 
     private final AdministradorRepository administradorRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public AdministradorService(AdministradorRepository administradorRepository) {
+
+    public AdministradorService(AdministradorRepository administradorRepository, PasswordEncoder passwordEncoder) {
         this.administradorRepository = administradorRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<Administrador> all() {
@@ -40,6 +44,7 @@ public class AdministradorService {
     }
 
     public Administrador save(Administrador administrador) {
+        administrador.setPassword(passwordEncoder.encode(administrador.getPassword()));
         return this.administradorRepository.save(administrador);
     }
 

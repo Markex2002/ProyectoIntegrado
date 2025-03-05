@@ -13,8 +13,10 @@
           <a class="nav-link text-light" routerLink="/ofertas" routerLinkActive="active" >Ofertas</a>
         </li>
 
+
         <li>
           <div class="dropdown">
+            <!--
             <button
               class="btn btn-dark dropdown-toggle"
               type="button"
@@ -23,12 +25,17 @@
               aria-expanded="false">
               Cursos
             </button>
+            -->
+
+            <!--
             <ul class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
               <li><a class="dropdown-item text-light bg-dark" href="#">Ilustracion 3D</a></li>
               <li><a class="dropdown-item text-light bg-dark" href="#">Ilustracion 2D</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item text-light bg-dark" href="#">Something else here</a></li>
             </ul>
+            -->
+
           </div>
         </li>
       </ul>
@@ -41,7 +48,8 @@
             <button class="btn btn-outline-success border-3 mx-2 my-1" type="submit" routerLink="/signUp" routerLinkActive="active">Registrarse</button>
           </ul>
           <div *ngIf="userService.isUserLogged" class="my-0">
-            <p style="color: white" class="my-0">Welcome, user! {{userService.userType}}.</p>
+            <p style="color: white" class="my-0">Welcome, user!</p>
+            <button routerLink="/usuario" routerLinkActive="active" >Perfil</button>
             <button (click)="userService.logout()">LogOut</button>
 
             <div *ngIf="userService.userType == 'administrador'" class="my-0">

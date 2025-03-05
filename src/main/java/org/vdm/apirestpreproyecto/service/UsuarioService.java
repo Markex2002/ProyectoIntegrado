@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.vdm.apirestpreproyecto.Exception.UsuarioNotFoundException;
 import org.vdm.apirestpreproyecto.domain.Usuario;
@@ -16,9 +17,11 @@ import java.util.*;
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UsuarioService(UsuarioRepository artistaRepository) {
+    public UsuarioService(UsuarioRepository artistaRepository, PasswordEncoder passwordEncoder) {
         this.usuarioRepository = artistaRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<Usuario> all() {
@@ -40,6 +43,8 @@ public class UsuarioService {
     }
 
     public Usuario save(Usuario usuario) {
+        //EPICAMENTE HASHEAMOS LA CONTRASEÑA
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         return this.usuarioRepository.save(usuario);
     }
 

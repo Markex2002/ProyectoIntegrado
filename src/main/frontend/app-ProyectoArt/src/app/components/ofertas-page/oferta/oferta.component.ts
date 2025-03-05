@@ -1,10 +1,19 @@
 import { Component } from '@angular/core';
 import {Artista, DatabaseServiceService, OfertaTrabajo} from '../../../services/database-service.service';
+import {NgClass, NgForOf, NgIf, SlicePipe} from '@angular/common';
+import {RouterLink} from '@angular/router';
+import {UserLoginService} from '../../../services/user-login.service';
 
 @Component({
   selector: 'app-oferta',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink,
+    NgForOf,
+    NgIf,
+    SlicePipe,
+    NgClass
+  ],
   templateUrl: './oferta.component.html',
   styleUrl: './oferta.component.scss'
 })
@@ -12,11 +21,16 @@ export class OfertaComponent {
 
   ofertas: OfertaTrabajo[] = [];
   oferta!: OfertaTrabajo;
+  ofertasRecomendadas: OfertaTrabajo[] = [];
   aviso:string = "";
+  mensaje: string = '';
+  mensajeClase: string = '';
+
 
 
   //Inicializamos los services
-  constructor(private databaseService: DatabaseServiceService) {}
+  constructor(protected databaseService: DatabaseServiceService, protected userService: UserLoginService,) {}
+
 
 
   /////LOCALSTORAGE/////
@@ -46,6 +60,37 @@ export class OfertaComponent {
       console.log(this.oferta.nombrePuesto)
     })
   }
+
+
+
+  aplicarOfertas(): void{
+    if (this.userService.isUserLogged){
+      this.mensaje = 'Oferta Aplicada';
+      this.mensajeClase = 'mensaje-exito';
+    } else {
+      this.mensaje = 'Debe estar registrado para hacer esto';
+      this.mensajeClase = 'mensaje-error';
+    }
+  }
+
+
+  guardarOfertas(): void{
+    if (this.userService.isUserLogged){
+      this.mensaje = 'Oferta Guardada';
+      this.mensajeClase = 'mensaje-exito';
+    } else {
+      this.mensaje = 'Debe estar registrado para hacer esto';
+      this.mensajeClase = 'mensaje-error';
+    }
+  }
+
+
+
+
+
+
+
+
 
 
 

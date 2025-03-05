@@ -10,6 +10,7 @@ import {
 import {CommonModule, NgForOf} from '@angular/common';
 import {UserLoginService} from '../../services/user-login.service';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
+import * as bcrypt from 'bcryptjs';
 
 @Component({
   selector: 'app-login',
@@ -55,15 +56,17 @@ export class LoginComponent implements OnInit{
   //Metodo para comprobar si las credenciales son correctas y si se consigue el Login
   submit(){
     let loginSuccesfull: boolean = false;
-    this.aviso= '' ;
+    this.aviso= '';
 
     if (this.loginForm.valid) {
       const newUser: Usuario = this.loginForm.value;
 
       this.usuarios.forEach(u => {
-        if ((u.username === newUser.username) && (u.password === newUser.password)){
+        //Usamos Bcrypt para comparar el texto plano con la contraseña guardada Hasheada
+        if ((u.username === newUser.username) && bcrypt.compareSync(newUser.password, u.password)){
           //UNA VEZ QUE HEMOS LOGEADO, COMPROBAMOS QUE TIPO DE USUARIO ES
           loginSuccesfull = true;
+          this.userService.setUser(u); //Guardamos la información del Usuario
           this.checkUserType(u.id);
         }
       })
@@ -124,6 +127,5 @@ export class LoginComponent implements OnInit{
         }
       });
     })
-
   }
 }

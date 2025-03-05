@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.vdm.apirestpreproyecto.Exception.EmpresaNotFoundException;
 import org.vdm.apirestpreproyecto.domain.Empresa;
@@ -16,9 +17,12 @@ import java.util.*;
 public class EmpresaService {
 
     private final EmpresaRepository empresaRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public EmpresaService(EmpresaRepository empresaRepository) {
+
+    public EmpresaService(EmpresaRepository empresaRepository, PasswordEncoder passwordEncoder) {
         this.empresaRepository = empresaRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<Empresa> all() {
@@ -40,6 +44,7 @@ public class EmpresaService {
     }
 
     public Empresa save(Empresa empresa) {
+        empresa.setPassword(passwordEncoder.encode(empresa.getPassword()));
         return this.empresaRepository.save(empresa);
     }
 

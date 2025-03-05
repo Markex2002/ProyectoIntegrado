@@ -67,8 +67,8 @@
         </button>
 
         <div *ngIf="filtrosSeleccionados.length !== 0" class="d-flex flex-wrap bg-white p-2 my-2">
-          <p class="my-0">Filtros Activos: &nbsp;</p>
-          <div *ngFor="let filtro of filtrosSeleccionados" class="d-inline-block me-2 mb-2">
+          <p class="my-0 mx-1">Filtros Activos: &nbsp;</p>
+          <div *ngFor="let filtro of filtrosSeleccionados" class="d-inline-block mx-1">
             <p class="my-0">{{filtro}},</p>
           </div>
         </div>
