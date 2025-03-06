@@ -22,6 +22,7 @@ public class PreProyectoApplication implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args){
+		/*
 		log.info("*******************************");
 		log.info("*Prueba de arranque ClienteDAO*");
 		log.info("*******************************");
@@ -30,5 +31,6 @@ public class PreProyectoApplication implements CommandLineRunner{
 		log.info("************************************");
 		log.info("*FIN: Prueba de arranque ComercialDAO*");
 		log.info("************************************");
+		 */
 	}
 }

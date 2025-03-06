@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, RouterLink, RouterLinkActive} from '@angular/router';
+import {RouterLink, RouterLinkActive} from '@angular/router';
 import {UserLoginService} from '../../services/user-login.service';
 import {Artista, DatabaseServiceService, Empresa, Usuario} from '../../services/database-service.service';
 import {CommonModule} from '@angular/common';

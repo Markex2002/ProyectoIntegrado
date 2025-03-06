@@ -1,6 +1,9 @@
 package org.vdm.apirestpreproyecto.service;
 
 
+import jakarta.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +19,7 @@ import java.util.*;
 @Service
 public class ArtistaService {
 
+    private static final Logger log = LoggerFactory.getLogger(ArtistaService.class);
     private final ArtistaRepository artistaRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -53,18 +57,34 @@ public class ArtistaService {
                 .orElseThrow(() -> new ArtistaNotFoundException(id));
     }
 
+    @Transactional
     public Artista replace(Long id, Artista artista) {
-        return this.artistaRepository.findById(id).map( p -> (id.equals(artista.getId())  ?
-                                                            this.artistaRepository.save(artista) : null))
+        log.info("Searching for artist with ID: {}", id);
+
+        Artista existingArtista = artistaRepository.findById(id)
                 .orElseThrow(() -> new ArtistaNotFoundException(id));
+
+        log.info("Found artist: {}", existingArtista);
+
+        // Now update fields (make sure they are not null!)
+        existingArtista.setNombre(artista.getNombre());
+        existingArtista.setDescripcionCorta(artista.getDescripcionCorta());
+        existingArtista.setDescripcionLarga(artista.getDescripcionLarga());
+        existingArtista.setYearsOfExperience(artista.getYearsOfExperience());
+        existingArtista.setCategorias(artista.getCategorias());
+
+        log.info("Updated artist: {}", existingArtista);
+
+        return artistaRepository.save(existingArtista); // <-- Check if this is failing
     }
+
 
     public void delete(Long id) {
         this.artistaRepository.findById(id).map(p -> {this.artistaRepository.delete(p);
                                                         return p;})
                 .orElseThrow(() -> new ArtistaNotFoundException(id));
     }
-    //
+
     public List<Artista>allByQueryFiltersStream(Optional<String> buscarOptional, Optional<String> ordenarOptional){
         List<Artista> resultado = new ArrayList<>();
 

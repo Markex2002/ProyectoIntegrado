@@ -95,15 +95,17 @@ export class SignupComponent implements OnInit{
       //Controlamos si el nuevo usuario es un Artista o una Empresa
       if (this.userType == "artist"){
         const newArtist: Artista = this.artistForm.value
+        this.userService.setString('userType', "artista");
+        this.userService.setUser(newArtist);
         this.databaseService.createArtista(newArtist).subscribe(res => {
-          console.log('Artista creado correctamente! + res');
           this.artistForm.reset();
         })
       }
       if (this.userType == "business"){
         const newEmpresa: Empresa = this.artistForm.value
+        this.userService.setString('userType', "empresa");
+        this.userService.setUser(newEmpresa);
         this.databaseService.createEmpresa(newEmpresa).subscribe(res => {
-          console.log('Empresa creada correctamente! + res');
           this.artistForm.reset();
         })
       }

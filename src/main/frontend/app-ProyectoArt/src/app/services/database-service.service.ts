@@ -74,7 +74,6 @@ export class DatabaseServiceService {
   }
 
   //METODO PARA LOGUEARSE
-  /*
   loginUser(user: { username: string; password: string }) {
     this.httpClient.post(this.apiBaseUrl + '/api/login', user).subscribe(response => {
       console.log('Login successful:', response);
@@ -82,7 +81,6 @@ export class DatabaseServiceService {
       console.error('Login failed:', error);
     });
   }
-   */
 
 
   /////ARTISTA/////
@@ -102,17 +100,28 @@ export class DatabaseServiceService {
         catchError(this.errorHandler)
       )
   }
+
+  find(id: number): Observable<Artista> {
+    return this.httpClient.get<Artista>(this.apiBaseUrl + "artistas/" + id)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
   updateArtista(artista: Artista | null): Observable<Artista> {
     if (artista === null) {
       throw new Error("Artista no puede ser null");
     }
 
+    console.log(artista);
+
     return this.httpClient.put<Artista>(
-      this.apiBaseUrl + "artistas/" + artista.id,
-      JSON.stringify(artista),
-      this.httpOptions
+      `${this.apiBaseUrl}artistas/${artista.id}`, artista, this.httpOptions
     ).pipe(
-      catchError(this.errorHandler)
+      catchError((error) => {
+        console.error("Error updating Artista:", error);
+        return throwError(() => new Error("Failed to update Artista"));
+      })
     );
   }
 
