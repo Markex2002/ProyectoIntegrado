@@ -1,0 +1,49 @@
+<div class="container-xl my-4 min-vh-100">
+  <h2>Editar Usuario</h2>
+  <hr>
+
+
+  <form [formGroup]="loginForm" (ngSubmit)="submit()" class="w-50 p-4 border border-3 bg-body-secondary">
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
+      <input type="text" class="form-control" id="username" formControlName="username" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password"  class="form-control" id="password" formControlName="password">
+    </div>
+
+
+    <div *ngIf="aviso" class="alert alert-danger mt-3">
+      {{aviso}}
+    </div>
+
+    <button type="submit" class="btn btn-success">Login</button>
+  </form>
+
+
+  <div>
+    <label>Id:</label>
+    <input [(ngModel)]="usuario.id" class="form-control" type="text" />
+  </div>
+
+  <div>
+    <label>Username:</label>
+    <input [(ngModel)]="usuario.username" class="form-control" type="text" />
+  </div>
+
+
+  <div>
+    <label>Password:</label>
+    <input [(ngModel)]="usuario.password" class="form-control" type="text" />
+  </div>
+
+  <div>
+    <label>Email:</label>
+    <input [(ngModel)]="usuario.email" class="form-control" type="email" />
+  </div>
+
+
+
+
+</div>

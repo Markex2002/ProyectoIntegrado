@@ -87,12 +87,23 @@
       <!--NOMBRE EMPRESA-->
       <div class="bg-secondary row py-2 border">
         <p class="text-white col-md-2 fw-bold my-0 py-0">Nombre Empresa:  </p>
-        <p class="text-white col-md-10 py-0 my-0">{{ loggedInEmpresa?.nombreEmpresa }}</p>
+        <span class="col-md-8 text-white my-0 py-0" *ngIf="!editandoNombreEmpresa">{{ loggedInEmpresa?.nombreEmpresa }}</span>
+        <input class="col-md-8 my-0 py-0" *ngIf="editandoNombreEmpresa"
+               [formControl]="nombreEmpresaControl"
+               placeholder="{{loggedInEmpresa!.nombreEmpresa}}"/>
+        <button class="col-md-2 my-0 py-0" *ngIf="!editandoNombreEmpresa" (click)="activarEdicionNombreEmpresa()">Editar</button>
+        <button class="col-md-2 my-0 py-0" *ngIf="editandoNombreEmpresa" (click)="guardarCampo()">Guardar</button>
       </div>
+
       <!--NOMBRE REPRESENTANTE-->
       <div class="bg-secondary-subtle row py-2 border">
         <p class="col-md-2 fw-bold my-0 py-0">Nombre Representante:  </p>
-        <p class="col-md-10 py-0 my-0">{{ loggedInEmpresa?.nombreRepresentante }}</p>
+        <span class="col-md-8 my-0 py-0" *ngIf="!editandoRepresentante">{{ loggedInEmpresa?.nombreRepresentante }}</span>
+        <input class="col-md-8 my-0 py-0" *ngIf="editandoRepresentante"
+               [formControl]="nombreRepresentanteControl"
+               placeholder="{{loggedInEmpresa!.nombreRepresentante}}"/>
+        <button class="col-md-2 my-0 py-0" *ngIf="!editandoRepresentante" (click)="activarEdicionRepresentante()">Editar</button>
+        <button class="col-md-2 my-0 py-0" *ngIf="editandoRepresentante" (click)="guardarCampo()">Guardar</button>
       </div>
       <!--NUM TELEFONO-->
       <div class="bg-secondary row py-2 border">

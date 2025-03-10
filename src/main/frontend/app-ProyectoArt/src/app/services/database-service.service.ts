@@ -48,6 +48,12 @@ export class DatabaseServiceService {
         catchError(this.errorHandler)
       )
   }
+  finduser(id: number): Observable<Usuario> {
+    return this.httpClient.get<Usuario>(this.apiBaseUrl + "usuarios/" + id)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
   //Funcion para crear un nuevo Usuario
   createUser(usuario: Usuario): Observable<Object> {
     return this.httpClient.post<Usuario>(this.apiBaseUrl + "usuarios/", JSON.stringify(usuario), this.httpOptions)

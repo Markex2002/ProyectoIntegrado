@@ -9,6 +9,9 @@ import {OfertaComponent} from './components/ofertas-page/oferta/oferta.component
 import {AdministracionComponent} from './components/administracion/administracion.component';
 import {UsuariosAdministracionComponent} from './components/administracion/usuarios-administracion/usuarios-administracion.component';
 import {UsuarioComponent} from './components/usuario/usuario.component';
+import {
+  EditarUsuarioComponent
+} from './components/administracion/usuarios-administracion/editar-usuario/editar-usuario.component';
 
 
 export const routes: Routes = [
@@ -27,6 +30,7 @@ export const routes: Routes = [
 
   { path: 'administracion', component: AdministracionComponent},
   { path: 'usuariosAdministracion', component: UsuariosAdministracionComponent},
+  { path: 'editar-usuario/:id', component: EditarUsuarioComponent},
 
 
 

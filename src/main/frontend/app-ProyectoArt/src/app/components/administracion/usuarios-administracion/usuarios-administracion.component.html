@@ -18,7 +18,8 @@
     <p class="col-1">{{usuario.id}}</p>
     <p class="col-2">{{usuario.username}}</p>
     <p class="col-2">{{usuario.email}}</p>
-    <button class="mx-2 col-2 btn btn-warning">Editar</button>
+
+    <button class="mx-2 col-2 btn btn-warning" [routerLink]="['/editar-usuario', usuario.id]">Editar</button>
     <button (click)="deleteUserInfo(usuario.id)" class="mx-2 col-2 btn btn-danger">Eliminar</button>
   </div>
 </div>

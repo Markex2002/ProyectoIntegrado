@@ -42,7 +42,11 @@ export class UsuarioComponent implements OnInit{
 
   //EMPRESA
   numTelefonoControl =
-    new FormControl('', [Validators.required, Validators.minLength(0), Validators.maxLength(12)]);
+    new FormControl('', [Validators.required,Validators.min(0) , Validators.minLength(9), Validators.maxLength(9)]);
+  nombreEmpresaControl =
+    new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]);
+  nombreRepresentanteControl =
+    new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]);
 
 
   constructor(
@@ -98,9 +102,23 @@ export class UsuarioComponent implements OnInit{
 
   //EMPRESAS
   editandoNumTelefono: boolean = false;
+  editandoRepresentante: boolean = false;
+  editandoNombreEmpresa: boolean = false;
   //METODOS
   activarEdicionTelefono() {
     this.editandoNumTelefono = true;
+    this.editandoRepresentante = false;
+    this.editandoNombreEmpresa = false;
+  }
+  activarEdicionRepresentante() {
+    this.editandoNumTelefono = false;
+    this.editandoRepresentante = true;
+    this.editandoNombreEmpresa = false;
+  }
+  activarEdicionNombreEmpresa() {
+    this.editandoNumTelefono = false;
+    this.editandoRepresentante = false;
+    this.editandoNombreEmpresa = true;
   }
 
 
@@ -155,8 +173,19 @@ export class UsuarioComponent implements OnInit{
         } else {
           alert("Por favor, ingresa un Telefono Válido");
         }
+      } else if(this.editandoRepresentante){
+        if (this.nombreRepresentanteControl.valid){
+          this.loggedInEmpresa.nombreRepresentante = String(this.nombreRepresentanteControl.value);
+        } else {
+          alert("Por favor, ingrese un nombre Válido");
+        }
+      } else if(this.editandoNombreEmpresa){
+        if (this.nombreEmpresaControl.valid){
+          this.loggedInEmpresa.nombreEmpresa = String(this.nombreEmpresaControl.value);
+        } else {
+          alert("Por favor, ingrese un nombre Válido");
+        }
       }
-
 
 
       //MANDAMOS LOS DATOS RECIBIDOS DE LA EMPRESA, HAYA O NO HABIDO CAMBIOS
