@@ -1,43 +1,116 @@
-<div class="container-xl my-4 min-vh-100">
-  <h1>Perfil</h1>
-  <div *ngIf="isArtista">
+<div class="container-xl py-4 min-vh-100">
+  <div class="row">
+    <h1 class="p-0 m-0">Perfil</h1>
+    <hr class="my-4">
 
-    <p>Username: {{ loggedInArtista?.username }} </p>
+    <div *ngIf="isArtista">
+      <!--USERNAME-->
+      <div class="bg-secondary row py-2 border">
+        <p class="text-white col-md-2 fw-bold my-0 py-0">Username:  </p>
+        <p class="text-white col-md-10 py-0 my-0">{{ loggedInArtista?.username }}</p>
+      </div>
+      <!--EMAIL-->
+      <div class="bg-secondary-subtle row py-2 border">
+        <p class="col-md-2 fw-bold my-0 py-0">Email:  </p>
+        <p class="col-md-10 py-0 my-0">{{ loggedInArtista?.email }}</p>
+      </div>
+      <!--NOMBRE-->
+      <div class="bg-secondary row py-2 border">
+        <p class="text-white col-md-2 fw-bold my-0 py-0">Nombre:  </p>
+        <span class="col-md-8 text-white my-0 py-0" *ngIf="!editandoNombre">{{ loggedInArtista?.nombre }}</span>
+        <input class="col-md-8 my-0 py-0" *ngIf="editandoNombre"
+               [formControl]="nombreArtistaControl"
+               placeholder="{{loggedInArtista!.nombre}}"/>
+        <button class="col-md-2 my-0 py-0" *ngIf="!editandoNombre" (click)="activarEdicionNombre()">Editar</button>
+        <button class="col-md-2 my-0 py-0" *ngIf="editandoNombre" (click)="guardarCampo()">Guardar</button>
+      </div>
+      <!--AÑOS DE EXPERIENCIA-->
+      <div class="bg-secondary-subtle row py-2 border">
+        <p class="col-md-2 fw-bold my-0 py-0">Años de Experiencia:  </p>
+        <span class="col-md-8 my-0 py-0" *ngIf="!editandoTiempoExperiencia">{{ loggedInArtista?.yearsOfExperience }}</span>
+        <input type="number" class="col-md-8 my-0 py-0" *ngIf="editandoTiempoExperiencia"
+               [formControl]="tiempoExperienciaControl"
+               placeholder="{{loggedInArtista!.yearsOfExperience}}"/>
+        <button class="col-md-2 my-0 py-0" *ngIf="!editandoTiempoExperiencia" (click)="activarEdicionExperiencia()">Editar</button>
+        <button class="col-md-2 my-0 py-0" *ngIf="editandoTiempoExperiencia" (click)="guardarCampo()">Guardar</button>
+      </div>
+      <!--DESCRIPCIÓN CORTA-->
+      <div class="bg-secondary row py-2 border">
+        <p class="text-white fw-bold col-md-2 my-0 py-0">Descripción Corta:  </p>
+        <span class="col-md-8 text-white my-0 py-0" *ngIf="!editandoDescripcionCorta">{{ loggedInArtista?.descripcionCorta }}</span>
+        <input class="col-md-8 my-0 py-0" *ngIf="editandoDescripcionCorta"
+               [formControl]="descripcionCortaControl"
+               placeholder="{{loggedInArtista!.descripcionCorta}}"/>
+        <button class="col-md-2 my-0 py-0" *ngIf="!editandoDescripcionCorta" (click)="activarEdicionDescripcionCorta()">Editar</button>
+        <button class="col-md-2 my-0 py-0" *ngIf="editandoDescripcionCorta" (click)="guardarCampo()">Guardar</button>
+      </div>
+      <!--DESCRIPCIÓN LARGA-->
+      <div class="bg-secondary-subtle row py-2 border">
+        <p class="fw-bold col-md-2 my-0 py-0">Descripción Larga:  </p>
+        <span class="col-md-8 my-0 py-0" *ngIf="!editandoDescripcionLarga">{{ loggedInArtista?.descripcionLarga }}</span>
+        <input class="col-md-8 my-0 py-0" *ngIf="editandoDescripcionLarga"
+               [formControl]="descripcionLargaControl"
+               placeholder="{{loggedInArtista!.descripcionLarga}}"/>
+        <button class="col-md-2 my-0 py-0" *ngIf="!editandoDescripcionLarga" (click)="activarEdicionDescripcionLarga()">Editar</button>
+        <button class="col-md-2 my-0 py-0" *ngIf="editandoDescripcionLarga" (click)="guardarCampo()">Guardar</button>
+      </div>
+      <!--CATEGORIAS-->
+      <div class="bg-secondary row py-2 border">
+        <p class="text-white col-md-2 fw-bold my-0 py-0">Categorias:  </p>
+        <p class="text-white col-md-10 py-0 my-0">{{ loggedInArtista?.categorias }}</p>
+      </div>
+      <!--IDIOMAS-->
+      <div class="bg-secondary-subtle row py-2 border">
+        <p class="col-md-2 fw-bold my-0 py-0">Idiomas Hablados:  </p>
+        <p class="col-md-10 py-0 my-0">{{ loggedInArtista?.idiomasHablados }}</p>
+      </div>
+      <!--OFERTAS-->
+      <div class="bg-secondary row py-2 border">
+        <p class="text-white col-md-2 fw-bold my-0 py-0">Ofertas:  </p>
+        <p class="text-white col-md-10 py-0 my-0">{{ loggedInArtista?.ofertasTrabajo }}</p>
+      </div>
+    </div>
 
-    <p>Email: {{ loggedInArtista?.email }} </p>
-
-    <p>
-      Nombre:
-      <span *ngIf="!isEditing">{{ loggedInArtista?.nombre }}</span>
-      <input *ngIf="isEditing" [(ngModel)]="nombre" placeholder="{{loggedInArtista!.nombre}}"/>
-      <button *ngIf="!isEditing" (click)="activarEdicion()">Editar</button>
-      <button *ngIf="isEditing" (click)="guardarCampo()">Guardar</button>
-    </p>
-
-    <p>Años de Experiencia: {{ loggedInArtista?.yearsOfExperience }} </p>
-
-    <p class="my-2">Descripcion Corta: {{ loggedInArtista?.descripcionCorta }} </p>
-
-    <p class="my-2">Descripcion Larga: {{ loggedInArtista?.descripcionLarga }} </p>
-
-    <p class="my-2">Categorias: {{ loggedInArtista?.categorias }} </p>
-
-    <p class="my-2">Idiomas Hablados: {{ loggedInArtista?.idiomasHablados }} </p>
-
-    <p class="my-2">IOfertas Trabajo: {{ loggedInArtista?.ofertasTrabajo }} </p>
 
 
+    <div *ngIf="isEmpresa">
+      <!--USERNAME-->
+      <div class="bg-secondary row py-2 border">
+        <p class="text-white col-md-2 fw-bold my-0 py-0">Username:  </p>
+        <p class="text-white col-md-10 py-0 my-0">{{ loggedInEmpresa?.username }}</p>
+      </div>
+      <!--EMAIL-->
+      <div class="bg-secondary-subtle row py-2 border">
+        <p class="col-md-2 fw-bold my-0 py-0">Email:  </p>
+        <p class="col-md-10 py-0 my-0">{{ loggedInEmpresa?.email }}</p>
+      </div>
+      <!--NOMBRE EMPRESA-->
+      <div class="bg-secondary row py-2 border">
+        <p class="text-white col-md-2 fw-bold my-0 py-0">Nombre Empresa:  </p>
+        <p class="text-white col-md-10 py-0 my-0">{{ loggedInEmpresa?.nombreEmpresa }}</p>
+      </div>
+      <!--NOMBRE REPRESENTANTE-->
+      <div class="bg-secondary-subtle row py-2 border">
+        <p class="col-md-2 fw-bold my-0 py-0">Nombre Representante:  </p>
+        <p class="col-md-10 py-0 my-0">{{ loggedInEmpresa?.nombreRepresentante }}</p>
+      </div>
+      <!--NUM TELEFONO-->
+      <div class="bg-secondary row py-2 border">
+        <p class="text-white col-md-2 fw-bold my-0 py-0">Número Telefono:  </p>
+        <span class="text-white col-md-8 my-0 py-0" *ngIf="!editandoNumTelefono">{{ loggedInEmpresa?.numTlf }}</span>
+        <input type="number" class="col-md-8 my-0 py-0" *ngIf="editandoNumTelefono"
+               [formControl]="numTelefonoControl"
+               placeholder="{{loggedInEmpresa!.numTlf}}"/>
+        <button class="col-md-2 my-0 py-0" *ngIf="!editandoNumTelefono" (click)="activarEdicionTelefono()">Editar</button>
+        <button class="col-md-2 my-0 py-0" *ngIf="editandoNumTelefono" (click)="guardarCampo()">Guardar</button>
+      </div>
+      <!--LISTADO OFERTAS-->
+      <div class="bg-secondary-subtle row py-2 border">
+        <p class="col-md-2 fw-bold my-0 py-0">Ofertas:  </p>
+        <p class="col-md-10 py-0 my-0">{{ loggedInEmpresa?.listadoOfertas }}</p>
+      </div>
 
 
-
-  </div>
-
-
-
-  <div *ngIf="isEmpresa">
-    <p> Username: {{ loggedInEmpresa?.username }} </p>
-    <p> Email: {{ loggedInEmpresa?.email }} </p>
-    <p> Nombre Empresa: {{ loggedInEmpresa?.nombreEmpresa }} </p>
-    <p> Años de Experiencia: {{ loggedInEmpresa?.nombreRepresentante }} </p>
+    </div>
   </div>
 </div>

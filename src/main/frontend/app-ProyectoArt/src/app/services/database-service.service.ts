@@ -112,9 +112,6 @@ export class DatabaseServiceService {
     if (artista === null) {
       throw new Error("Artista no puede ser null");
     }
-    console.log(artista);
-    console.log("Accediendo a back")
-
     return this.httpClient.put<Artista>(("http://localhost:8080/v1/api/artistas/" + artista.id), artista, this.httpOptions
     ).pipe(
       catchError((error) => {
@@ -140,6 +137,21 @@ export class DatabaseServiceService {
         catchError(this.errorHandler)
       )
   }
+
+  updateEmpresa(empresa: Empresa | null): Observable<Empresa> {
+    if (empresa === null) {
+      throw new Error("Empresa no puede ser null");
+    }
+    return this.httpClient.put<Empresa>(("http://localhost:8080/v1/api/empresas/" + empresa.id), empresa, this.httpOptions
+    ).pipe(
+      catchError((error) => {
+        console.error("Error updating Empresa:", error);
+        return throwError(() => new Error("Failed to update Empresa"));
+      })
+    );
+  }
+
+
 
   //ADMINISTRADOR
   getAllAdministrador(): Observable<Administrador[]>{
