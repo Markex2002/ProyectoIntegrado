@@ -60,6 +60,7 @@ public class ArtistaService {
 
     @Transactional
     public Artista replace(Long id, Artista artista) {
+        artista.setPassword(passwordEncoder.encode(artista.getPassword()));
 
         return this.artistaRepository.findById(id).map(p -> (id.equals(artista.getId())  ?
                         this.artistaRepository.save(artista) : null))

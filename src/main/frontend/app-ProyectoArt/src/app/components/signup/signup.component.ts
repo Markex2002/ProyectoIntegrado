@@ -45,12 +45,11 @@ export class SignupComponent implements OnInit{
         password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
         confirmPassword: ['', Validators.required],
         email: ['', [Validators.required, Validators.pattern(emailRegex)]], // Email validation
-        userType: ['', Validators.required], // Only one option can be selected now
+        userType: ['', Validators.required],
 
         //Campos extra dependiendo de la clase
         nombre: ['', [Validators.minLength(4), Validators.maxLength(20)]],
-        yearsOfExperience: ['', [Validators.min(0), Validators.max(99
-        )]],
+        yearsOfExperience: ['', [Validators.min(0), Validators.max(99)]],
         nombreEmpresa: ['', [Validators.minLength(4), Validators.maxLength(20)]],
         nombreRepresentante: ['', [Validators.minLength(4), Validators.maxLength(20)]]
       },
@@ -136,8 +135,16 @@ export class SignupComponent implements OnInit{
         this.aviso = 'Las contraseñas no coinciden.';
       } else if (this.artistForm.get('password')?.value.length < 6) {
         this.aviso = 'La contraseña debe tener más de 6 carácteres.';
+      } else if (this.artistForm.get('nombre')?.value.lenght < 4 || this.artistForm.get('nombre')?.value.lenght > 20) {
+        this.aviso = 'Su nombre no debe tener menos de 4 carácteres o mas de 20.';
+      } else if (this.artistForm.get('yearsOfExperience')?.value < 0 || this.artistForm.get('yearsOfExperience')?.value > 99) {
+        this.aviso = 'Sus años de Experiencia no puede ser un número negativo o Mayor de 99.';
+      } else if (this.artistForm.get('nombreEmpresa')?.value.length < 4 || this.artistForm.get('nombreEmpresa')?.value.length > 20) {
+        this.aviso = 'Su nombre de Empresa no debe tener menos de 4 carácteres o mas de 20.';
+      } else if (this.artistForm.get('nombreRepresentante')?.value.lenght < 4 || this.artistForm.get('nombreRepresentante')?.value.lenght > 20) {
+        this.aviso = 'Su nombre de Representante no debe tener menos de 4 carácteres o mas de 20.';
       } else {
-        this.aviso = "Por favor inserte sus datos en todos los campos";
+        this.aviso = "Por favor rellene todos los campos";
       }
       return;
     }

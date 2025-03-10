@@ -20,16 +20,18 @@
         <input id="email" type="email" class="form-control" formControlName="email" />
       </div>
 
+      <hr>
+
       <!--Preguntamos si es artista o Empresa -->
       <div class="mb-3">
-        <label class="form-label">¿Eres un Artista o un Negocio?</label><br />
+        <label class="form-label">¿Eres un Artista o un Negocio?</label><br/>
         <div>
-          <input type="radio"  id="artist" formControlName="userType" value="artist" (change)="onUserTypeChange()">
-          <label for="artist">Artista</label>
+          <input class="align-middle" type="radio" id="artist" formControlName="userType" value="artist" (change)="onUserTypeChange()">
+          <label class="mx-2" for="artist">Artista</label>
         </div>
         <div>
-          <input type="radio" id="business" formControlName="userType" value="business" (change)="onUserTypeChange()">
-          <label for="business">Negocio</label>
+          <input class="align-middle" type="radio" id="business" formControlName="userType" value="business" (change)="onUserTypeChange()">
+          <label class="mx-2" for="business">Negocio</label>
         </div>
       </div>
 

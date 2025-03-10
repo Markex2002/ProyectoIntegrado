@@ -54,6 +54,7 @@ public class EmpresaService {
     }
 
     public Empresa replace(Long id, Empresa empresa) {
+        empresa.setPassword(passwordEncoder.encode(empresa.getPassword()));
 
         return this.empresaRepository.findById(id).map(p -> (id.equals(empresa.getId())  ?
                                                             this.empresaRepository.save(empresa) : null))

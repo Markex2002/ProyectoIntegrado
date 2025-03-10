@@ -54,6 +54,7 @@ public class AdministradorService {
     }
 
     public Administrador replace(Long id, Administrador administrador) {
+        administrador.setPassword(passwordEncoder.encode(administrador.getPassword()));
 
         return this.administradorRepository.findById(id).map(p -> (id.equals(administrador.getId())  ?
                                                             this.administradorRepository.save(administrador) : null))

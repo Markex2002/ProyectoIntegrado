@@ -106,14 +106,12 @@ export class DatabaseServiceService {
         catchError(this.errorHandler)
       )
   }
-
   find(id: number): Observable<Artista> {
     return this.httpClient.get<Artista>(this.apiBaseUrl + "artistas/" + id)
       .pipe(
         catchError(this.errorHandler)
       )
   }
-
   updateArtista(artista: Artista | null): Observable<Artista> {
     if (artista === null) {
       throw new Error("Artista no puede ser null");
@@ -136,14 +134,12 @@ export class DatabaseServiceService {
         catchError(this.errorHandler)
       )
   }
-
   createEmpresa(empresa: Empresa): Observable<Empresa> {
     return this.httpClient.post<Empresa>(this.apiBaseUrl + "empresas/", JSON.stringify(empresa), this.httpOptions)
       .pipe(
         catchError(this.errorHandler)
       )
   }
-
   updateEmpresa(empresa: Empresa | null): Observable<Empresa> {
     if (empresa === null) {
       throw new Error("Empresa no puede ser null");
@@ -166,6 +162,30 @@ export class DatabaseServiceService {
         catchError(this.errorHandler)
       )
   }
+  createAdministrador(administrador: Administrador): Observable<Administrador> {
+    return this.httpClient.post<Administrador>(this.apiBaseUrl + "administradores/", JSON.stringify(administrador), this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+  updateAdministrador(administrador: Administrador | null): Observable<Administrador> {
+    if (administrador=== null) {
+      throw new Error("Administrador no puede ser null");
+    }
+    return this.httpClient.put<Administrador>(("http://localhost:8080/v1/api/administradores/" + administrador.id), administrador, this.httpOptions
+    ).pipe(
+      catchError((error) => {
+        console.error("Error updating Administrador:", error);
+        return throwError(() => new Error("Failed to update Administrador"));
+      })
+    );
+  }
+
+
+
+
+
+
 
   //IMAGENES
   getAllImagenes(): Observable<Imagen[]>{

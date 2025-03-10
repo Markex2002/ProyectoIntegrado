@@ -2,46 +2,118 @@
   <h2>Editar Usuario</h2>
   <hr>
 
-
-  <form [formGroup]="loginForm" (ngSubmit)="submit()" class="w-50 p-4 border border-3 bg-body-secondary">
+  <!--ARTISTA-->
+  <form *ngIf="esArtista" [formGroup]="editarArtistaForm" (ngSubmit)="submitArtista()">
     <div class="mb-3">
-      <label for="username" class="form-label">Username</label>
-      <input type="text" class="form-control" id="username" formControlName="username" aria-describedby="emailHelp">
+      <label class="form-label">Id:</label>
+      <input class="form-control" [value]="usuario.id" disabled>
     </div>
     <div class="mb-3">
-      <label for="password" class="form-label">Password</label>
-      <input type="password"  class="form-control" id="password" formControlName="password">
+      <label class="form-label">Username:</label>
+      <input type="text" class="form-control" formControlName="username">
     </div>
-
-
-    <div *ngIf="aviso" class="alert alert-danger mt-3">
-      {{aviso}}
+    <div class="mb-3">
+      <label class="form-label">Password:</label>
+      <input type="text" class="form-control" formControlName="password">
     </div>
+    <div class="mb-3">
+      <label class="form-label">Email:</label>
+      <input type="email" class="form-control" formControlName="email">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nombre:</label>
+      <input type="text" class="form-control" formControlName="nombre">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Años de Experiencia:</label>
+      <input type="number" class="form-control" formControlName="yearsOfExperience">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">descripcion Corta:</label>
+      <input type="text" class="form-control"  formControlName="descripcionCorta">
+    </div>    <div class="mb-3">
+    <label class="form-label">descripcion Larga:</label>
+    <input type="text" class="form-control" formControlName="descripcionLarga">
+  </div>
 
-    <button type="submit" class="btn btn-success">Login</button>
+    <button type="submit" class="btn btn-success">Editar</button>
   </form>
 
 
-  <div>
-    <label>Id:</label>
-    <input [(ngModel)]="usuario.id" class="form-control" type="text" />
-  </div>
-
-  <div>
-    <label>Username:</label>
-    <input [(ngModel)]="usuario.username" class="form-control" type="text" />
-  </div>
 
 
-  <div>
-    <label>Password:</label>
-    <input [(ngModel)]="usuario.password" class="form-control" type="text" />
-  </div>
 
-  <div>
-    <label>Email:</label>
-    <input [(ngModel)]="usuario.email" class="form-control" type="email" />
-  </div>
+  <!--EMPRESA-->
+  <form *ngIf="esEmpresa" [formGroup]="editarEmpresaForm" (ngSubmit)="submitEmpresa()">
+    <div class="mb-3">
+      <label class="form-label">Id:</label>
+      <input class="form-control" [value]="usuario.id" disabled>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Username:</label>
+      <input type="text" class="form-control" formControlName="username">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password:</label>
+      <input type="text" class="form-control" formControlName="password">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email:</label>
+      <input type="email" class="form-control" formControlName="email">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nombre Empresa:</label>
+      <input type="text" class="form-control" formControlName="nombreEmpresa">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Numero de Telefono:</label>
+      <input type="number" class="form-control" formControlName="numTlf">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nombre Representante:</label>
+      <input type="text" class="form-control" formControlName="nombreRepresentante">
+    </div>
+
+
+    <button type="submit" class="btn btn-success">Editar</button>
+  </form>
+
+
+
+    <!--ADMINISTRADOR-->
+  <!--EMPRESA-->
+  <form *ngIf="esAdmin" [formGroup]="editarAdminForm" (ngSubmit)="submitAdmin()">
+    <div class="mb-3">
+      <label class="form-label">Id:</label>
+      <input class="form-control" [value]="usuario.id" disabled>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Username:</label>
+      <input type="text" class="form-control" formControlName="username">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password:</label>
+      <input type="text" class="form-control" formControlName="password">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email:</label>
+      <input type="email" class="form-control" formControlName="email">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nombre:</label>
+      <input type="text" class="form-control" formControlName="nombre">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nivel de Privilegio:</label>
+      <input class="form-control" [value]="usuario.privilegeLevel" disabled>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-success">Editar</button>
+  </form>
+
+
 
 
 
