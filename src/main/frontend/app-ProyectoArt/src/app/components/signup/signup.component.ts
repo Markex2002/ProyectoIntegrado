@@ -47,11 +47,12 @@ export class SignupComponent implements OnInit{
         email: ['', [Validators.required, Validators.pattern(emailRegex)]], // Email validation
         userType: ['', Validators.required], // Only one option can be selected now
 
-        // Additional fields (initialized but not required at first)
-        nombre: [''],
-        yearsOfExperience: [''],
-        businessName: [''],
-        businessWebsite: ['']
+        //Campos extra dependiendo de la clase
+        nombre: ['', [Validators.minLength(4), Validators.maxLength(20)]],
+        yearsOfExperience: ['', [Validators.min(0), Validators.max(99
+        )]],
+        nombreEmpresa: ['', [Validators.minLength(4), Validators.maxLength(20)]],
+        nombreRepresentante: ['', [Validators.minLength(4), Validators.maxLength(20)]]
       },
       { validator: this.matchPasswords('password', 'confirmPassword')}
     );

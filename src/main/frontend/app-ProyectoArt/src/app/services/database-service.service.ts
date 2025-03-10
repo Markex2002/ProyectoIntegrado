@@ -112,11 +112,10 @@ export class DatabaseServiceService {
     if (artista === null) {
       throw new Error("Artista no puede ser null");
     }
-
     console.log(artista);
+    console.log("Accediendo a back")
 
-    return this.httpClient.put<Artista>(
-      `${this.apiBaseUrl}artistas/${artista.id}`, artista, this.httpOptions
+    return this.httpClient.put<Artista>(("http://localhost:8080/v1/api/artistas/" + artista.id), artista, this.httpOptions
     ).pipe(
       catchError((error) => {
         console.error("Error updating Artista:", error);

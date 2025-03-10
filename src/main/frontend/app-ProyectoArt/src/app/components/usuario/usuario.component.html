@@ -1,25 +1,35 @@
 <div class="container-xl my-4 min-vh-100">
   <h1>Perfil</h1>
-
   <div *ngIf="isArtista">
+
     <p>Username: {{ loggedInArtista?.username }} </p>
+
     <p>Email: {{ loggedInArtista?.email }} </p>
 
     <p>
       Nombre:
-      <span *ngIf="!isEditing['nombre']">{{ loggedInArtista?.nombre }}</span>
-      <input *ngIf="isEditing['nombre']" [(ngModel)]="loggedInArtista!.nombre" />
-      <button *ngIf="!isEditing['nombre']" (click)="activarEdicion('nombre')">Editar</button>
-      <button *ngIf="isEditing['nombre']" (click)="guardarCampo('nombre')">Guardar</button>
+      <span *ngIf="!isEditing">{{ loggedInArtista?.nombre }}</span>
+      <input *ngIf="isEditing" [(ngModel)]="nombre" placeholder="{{loggedInArtista!.nombre}}"/>
+      <button *ngIf="!isEditing" (click)="activarEdicion()">Editar</button>
+      <button *ngIf="isEditing" (click)="guardarCampo()">Guardar</button>
     </p>
 
     <p>Años de Experiencia: {{ loggedInArtista?.yearsOfExperience }} </p>
 
     <p class="my-2">Descripcion Corta: {{ loggedInArtista?.descripcionCorta }} </p>
-    <button class="my-2">Editar</button>
 
     <p class="my-2">Descripcion Larga: {{ loggedInArtista?.descripcionLarga }} </p>
-    <button class="my-2">Editar</button>
+
+    <p class="my-2">Categorias: {{ loggedInArtista?.categorias }} </p>
+
+    <p class="my-2">Idiomas Hablados: {{ loggedInArtista?.idiomasHablados }} </p>
+
+    <p class="my-2">IOfertas Trabajo: {{ loggedInArtista?.ofertasTrabajo }} </p>
+
+
+
+
+
   </div>
 
 

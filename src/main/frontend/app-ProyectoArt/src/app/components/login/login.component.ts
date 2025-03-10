@@ -75,19 +75,23 @@ export class LoginComponent implements OnInit{
       this.userService.setBoolean('isLoggedIn', loginSuccesfull);
       const isLoggedIn = this.userService.getBoolean('isLoggedIn');
 
-      //Use a micro-task to ensure state update is reflected
+      //Actualizamos para asegurarnos de que los cambios se reflejen
       setTimeout(() => {
         if (isLoggedIn) {
-          this.router.navigate(['/home']).then(() => {
-            //Reiniciamos la pagina para que se reflejen los cambios
-            window.location.reload();
-          });
+          setTimeout(() => {
+            this.router.navigate(['/home']).then(() => {
+              setTimeout(() => {
+                //Reiniciamos la pagina para que se reflejen los cambios
+                window.location.reload();
+              }, 0);
+            });
+          }, 200);
         } else {
-          this.aviso = "Username or contraseña Incorrecta";
+          this.aviso = "Usuario o contraseña Incorrecta";
         }
-      }, 0);
+      }, 300);
     } else {
-      this.aviso = "Por favor, inserte su username y contraseña";
+      this.aviso = "Por favor, inserte su usuario y contraseña";
     }
   }
 

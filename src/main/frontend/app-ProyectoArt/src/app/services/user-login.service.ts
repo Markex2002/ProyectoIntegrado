@@ -20,7 +20,7 @@ export class UserLoginService {
 
 
   //Guardamos Usuario, Artista o Empresa
-  setUser(user: Usuario): void {
+  setUser(user: Usuario | Artista | Empresa | null): void {
     localStorage.setItem('currentUser', JSON.stringify(user));
   }
   setArtista(user: Artista): void {

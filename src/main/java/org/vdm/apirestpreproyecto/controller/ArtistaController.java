@@ -82,12 +82,7 @@ public class ArtistaController {
     @PutMapping("/{id}")
     public Artista updateArtista
             (@RequestBody Artista artista,
-             @PathVariable("id") Long id)
-    {
-        log.info("Incoming PUT request...");
-        log.info("Updating artist with ID: {}", id);
-        log.info("Received artist data: {}", artista);
-
+             @PathVariable("id") Long id) {
         return this.artistaService.replace(id, artista);
     }
 

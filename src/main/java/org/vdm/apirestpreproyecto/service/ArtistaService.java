@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.vdm.apirestpreproyecto.Exception.ArtistaNotFoundException;
+import org.vdm.apirestpreproyecto.Exception.EmpresaNotFoundException;
 import org.vdm.apirestpreproyecto.domain.Artista;
 import org.vdm.apirestpreproyecto.repository.ArtistaRepository;
 
@@ -59,23 +60,10 @@ public class ArtistaService {
 
     @Transactional
     public Artista replace(Long id, Artista artista) {
-        log.info("Searching for artist with ID: {}", id);
 
-        Artista existingArtista = artistaRepository.findById(id)
+        return this.artistaRepository.findById(id).map(p -> (id.equals(artista.getId())  ?
+                        this.artistaRepository.save(artista) : null))
                 .orElseThrow(() -> new ArtistaNotFoundException(id));
-
-        log.info("Found artist: {}", existingArtista);
-
-        // Now update fields (make sure they are not null!)
-        existingArtista.setNombre(artista.getNombre());
-        existingArtista.setDescripcionCorta(artista.getDescripcionCorta());
-        existingArtista.setDescripcionLarga(artista.getDescripcionLarga());
-        existingArtista.setYearsOfExperience(artista.getYearsOfExperience());
-        existingArtista.setCategorias(artista.getCategorias());
-
-        log.info("Updated artist: {}", existingArtista);
-
-        return artistaRepository.save(existingArtista); // <-- Check if this is failing
     }
 
 

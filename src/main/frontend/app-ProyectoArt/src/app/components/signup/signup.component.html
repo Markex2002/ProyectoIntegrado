@@ -20,7 +20,7 @@
         <input id="email" type="email" class="form-control" formControlName="email" />
       </div>
 
-      <!-- Radio buttons for Artist or Business -->
+      <!--Preguntamos si es artista o Empresa -->
       <div class="mb-3">
         <label class="form-label">¿Eres un Artista o un Negocio?</label><br />
         <div>
@@ -50,12 +50,12 @@
       <!-- Extra Fields for Businesses -->
       <div *ngIf="userType === 'business'">
         <div class="mb-3">
-          <label for="businessName">Nombre del Negocio</label>
-          <input type="text" class="form-control" id="businessName" formControlName="businessName">
+          <label for="nombreEmpresa">Nombre del Negocio</label>
+          <input type="text" class="form-control" id="nombreEmpresa" formControlName="nombreEmpresa">
         </div>
         <div class="mb-3">
-          <label for="businessWebsite">Página Web</label>
-          <input type="url" class="form-control" id="businessWebsite" formControlName="businessWebsite">
+          <label for="nombreRepresentante">Nombre del representante</label>
+          <input type="url" class="form-control" id="nombreRepresentante" formControlName="nombreRepresentante">
         </div>
       </div>
 
