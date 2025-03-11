@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {UserLoginService} from '../../services/user-login.service';
-import {Artista, DatabaseServiceService, Empresa, Idioma, Imagen} from '../../services/database-service.service';
+import {Artista, DatabaseServiceService, Empresa, Imagen} from '../../services/database-service.service';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 
