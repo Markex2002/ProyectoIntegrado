@@ -13,7 +13,7 @@ import org.vdm.apirestpreproyecto.domain.OfertaTrabajo;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-03-03T10:06:58+0100",
+    date = "2025-03-11T11:47:29+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.2 (Oracle Corporation)"
 )
 @Component

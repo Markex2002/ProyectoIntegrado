@@ -18,7 +18,6 @@ import {UserLoginService} from '../../../services/user-login.service';
   styleUrl: './artista.component.scss'
 })
 export class ArtistaComponent {
-
   artistas: Artista[] = [];
   artistasRecomendados: Artista[] = [];
   artista!: Artista;
@@ -38,38 +37,36 @@ export class ArtistaComponent {
     //Si en el LocalStorage no hay nada guardado, guardaremos el nuevo Id Introducido,
     // en el caso de que si hubiera un valor, lo recuperaremos,
     // esto sirve en caso de que se refresque esta pagina
-    if(this.databaseService.idArtista !== 0){
-      this.saveIdArtista(this.databaseService.idArtista)
+    //LOCALSTORAGE//
+    if (this.databaseService.idArtista != 0) {
+      this.saveIdArtista(this.databaseService.idArtista);
     } else {
-      const valorIdArtista = localStorage.getItem('valorIdArtista');
-      // @ts-ignore
-      this.databaseService.idArtista = + valorIdArtista;
+      this.databaseService.idArtista = Number(localStorage.getItem('valorIdArtista'));
     }
 
-    this.databaseService.getAllArtistas().subscribe((data: Artista[]) =>{
+    //Primero cargamos a los artistas y guardamos al nuestro
+    this.databaseService.getAllArtistas().subscribe((data: Artista[]) => {
       this.artistas = data;
-      this.artista = this.artistas.find(a => a.id === this.databaseService.idArtista)!;
+      this.artista = this.artistas.find(a => a.id == this.databaseService.idArtista)!;
+
+      //Seleccionamos a los artistas seleccionados
       this.seleccionarArtistasRecomendados();
-      console.log(this.artistasRecomendados)
 
-    })
-    this.databaseService.getAllImagenes().subscribe((data: Imagen[]) =>{
-      this.imagenes = data;
-      this.imagenes.forEach(imagen => {
-
-        // @ts-ignore
-        if (imagen.artista.id === this.artista.id){
-          this.imagenesArtista.push(imagen)
-        }
-      })
-    })
+      //Despues de cargar a los artistas, cargamos las imagenes
+      this.databaseService.getAllImagenes().subscribe((data: Imagen[]) => {
+        this.imagenes = data;
+        this.imagenesArtista = this.imagenes.filter(imagen =>
+          imagen.artista?.id == this.artista.id
+        );
+      });
+    });
   }
 
   //Funcion para encontrar la Imagen destacada del Artista
   findFirstImageOfArtist(artista: Artista){
     let imgSrc = "";
     this.imagenes.forEach(imagen => {
-      if (imagen.artista.id === artista.id){
+      if (imagen.artista?.id === artista.id){
         imgSrc = imagen.url;
       }
     })
@@ -79,7 +76,6 @@ export class ArtistaComponent {
   seleccionarArtistasRecomendados(): void {
     // Randomly select two different artists
     const selectedArtists: Artista[] = [];
-    console.log("hola")
     while (selectedArtists.length < 2) {
       const randomIndex = Math.floor(Math.random() * this.artistas.length);
       const selectedArtist = this.artistas[randomIndex];

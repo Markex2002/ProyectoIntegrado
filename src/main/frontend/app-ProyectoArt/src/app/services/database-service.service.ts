@@ -116,7 +116,7 @@ export class DatabaseServiceService {
     if (artista === null) {
       throw new Error("Artista no puede ser null");
     }
-    return this.httpClient.put<Artista>(("http://localhost:8080/v1/api/artistas/" + artista.id), artista, this.httpOptions
+    return this.httpClient.put<Artista>((this.apiBaseUrl + "artistas/" + artista.id), artista, this.httpOptions
     ).pipe(
       catchError((error) => {
         console.error("Error updating Artista:", error);
@@ -144,7 +144,7 @@ export class DatabaseServiceService {
     if (empresa === null) {
       throw new Error("Empresa no puede ser null");
     }
-    return this.httpClient.put<Empresa>(("http://localhost:8080/v1/api/empresas/" + empresa.id), empresa, this.httpOptions
+    return this.httpClient.put<Empresa>((this.apiBaseUrl + "empresas/" + empresa.id), empresa, this.httpOptions
     ).pipe(
       catchError((error) => {
         console.error("Error updating Empresa:", error);
@@ -172,7 +172,7 @@ export class DatabaseServiceService {
     if (administrador=== null) {
       throw new Error("Administrador no puede ser null");
     }
-    return this.httpClient.put<Administrador>(("http://localhost:8080/v1/api/administradores/" + administrador.id), administrador, this.httpOptions
+    return this.httpClient.put<Administrador>((this.apiBaseUrl + "administradores/" + administrador.id), administrador, this.httpOptions
     ).pipe(
       catchError((error) => {
         console.error("Error updating Administrador:", error);
@@ -183,10 +183,6 @@ export class DatabaseServiceService {
 
 
 
-
-
-
-
   //IMAGENES
   getAllImagenes(): Observable<Imagen[]>{
     return this.httpClient.get<Imagen[]>(this.apiBaseUrl + "imagenes/")
@@ -194,6 +190,22 @@ export class DatabaseServiceService {
         catchError(this.errorHandler)
       )
   }
+  createImagen(imagen: Imagen): Observable<Imagen> {
+    return this.httpClient.post<Imagen>(this.apiBaseUrl + "imagenes/", JSON.stringify(imagen), this.httpOptions)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+
+  //UPLOAD IMAGENES
+  uploadFile(formData: FormData): Observable<any>{
+    return this.httpClient.post(this.apiBaseUrl + 'media/', formData)
+  }
+
+
+
+
+
 
   //OFERTAS
   getAllOfertas(): Observable<OfertaTrabajo[]>{
@@ -262,8 +274,7 @@ export interface Artista {
 export interface Imagen {
   idImagen?: number,
   url: string,
-  nombre: string,
-  artista: Artista,
+  artista: Artista | null,
 }
 
 export interface Empresa {

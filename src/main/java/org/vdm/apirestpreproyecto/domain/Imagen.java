@@ -19,7 +19,6 @@ public class Imagen {
     @EqualsAndHashCode.Include
     private long idImagen;
     private String url;
-    private String nombre;
 
     @ManyToOne()
     @JoinColumn(name = "id", nullable = false)

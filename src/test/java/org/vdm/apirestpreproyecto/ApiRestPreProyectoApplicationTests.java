@@ -45,7 +45,7 @@ class ApiRestPreProyectoApplicationTests {
     @Order(7)
     void testPersistenciaOneToMany() {
         List<Imagen> listaImagenes = artistaService.one(1L).getPortfolio();
-        listaImagenes.forEach(imagen -> System.out.println(imagen.getNombre()));
+        listaImagenes.forEach(imagen -> System.out.println(imagen.getUrl()));
     }
 
 
@@ -392,27 +392,22 @@ class ApiRestPreProyectoApplicationTests {
         Imagen imagen1 = Imagen.builder()
                 .artista(artista1)
                 .url("/assets/Portfolio1.jpg")
-                .nombre("img1")
                 .build();
         Imagen imagen2 = Imagen.builder()
                 .artista(artista2)
                 .url("/assets/Portfolio2.jpg")
-                .nombre("img2")
                 .build();
         Imagen imagen3 = Imagen.builder()
                 .artista(artista3)
                 .url("/assets/Portfolio3.jpg")
-                .nombre("img3")
                 .build();
         Imagen imagen4 = Imagen.builder()
                 .artista(artista4)
                 .url("/assets/Portfolio4.png")
-                .nombre("img4")
                 .build();
         Imagen imagen5 = Imagen.builder()
                 .artista(artista5)
                 .url("/assets/Portfolio5.jpg")
-                .nombre("img5")
                 .build();
         imagenService.save(imagen1);
         imagenService.save(imagen2);
@@ -422,9 +417,5 @@ class ApiRestPreProyectoApplicationTests {
 
         //BORRAR
         imagenService.delete(4L);
-
-        //EDITAR
-        imagen3.setNombre("img999");
-        imagenService.save(imagen3);
     }
 }

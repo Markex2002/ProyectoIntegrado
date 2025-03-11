@@ -38,17 +38,17 @@ export class HomeComponent implements OnInit {
   }
 
 
-  //Funcion para encontrar la Imagen destacada del Artista
-  findFirstImageOfArtist(artista: Artista){
-    let imgSrc = "";
-    this.imagenes.forEach(imagen => {
-      if (imagen.artista.id === artista.id){
-        imgSrc = imagen.url;
-      }
-    })
+    //Funcion para encontrar la Imagen destacada del Artista
+    findFirstImageOfArtist(artista: Artista){
+      let imgSrc = "";
+      this.imagenes.forEach(imagen => {
+        if (imagen.artista?.id === artista.id){
+          imgSrc = imagen.url;
+        }
+      })
 
-    return imgSrc;
-  }
+      return imgSrc;
+    }
 
 
 

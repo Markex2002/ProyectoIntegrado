@@ -67,21 +67,6 @@ public class ImagenService {
     public List<Imagen>allByQueryFiltersStream(Optional<String> buscarOptional, Optional<String> ordenarOptional){
         List<Imagen> resultado = new ArrayList<>();
 
-        if(buscarOptional.isPresent()){
-            resultado = imagenRepository.findByNombreContainingIgnoreCase(buscarOptional.get());
-        }
-        if (ordenarOptional.isPresent()) {
-            if (buscarOptional.isPresent() && "asc".equalsIgnoreCase(ordenarOptional.get())) {
-                resultado = imagenRepository.findByNombreContainingIgnoreCaseOrderByNombreAsc(buscarOptional.get());
-            } else if (buscarOptional.isPresent() && "desc".equalsIgnoreCase(buscarOptional.get())) {
-                resultado = imagenRepository.findByNombreContainingIgnoreCaseOrderByNombreDesc(buscarOptional.get());
-            } else if (buscarOptional.isEmpty() && "asc".equalsIgnoreCase(ordenarOptional.get())) {
-                resultado = imagenRepository.findAllByOrderByNombreAsc();
-            } else if (buscarOptional.isEmpty() && "desc".equalsIgnoreCase(ordenarOptional.get())) {
-                resultado = imagenRepository.findAllByOrderByNombreDesc();
-            }
-        }
-
         return resultado;
     }
 }

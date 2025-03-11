@@ -1,10 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {UserLoginService} from '../../services/user-login.service';
-import {Artista, DatabaseServiceService, Empresa} from '../../services/database-service.service';
+import {Artista, DatabaseServiceService, Empresa, Idioma, Imagen} from '../../services/database-service.service';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-
 
 @Component({
   selector: 'app-usuario',
@@ -26,7 +25,6 @@ export class UsuarioComponent implements OnInit{
   loggedInEmpresa: Empresa | null = null;
   isArtista: boolean = false;
   isEmpresa: boolean = false;
-
 
 
   //VALIDADORES DE FORMULARIOS
@@ -160,7 +158,7 @@ export class UsuarioComponent implements OnInit{
       }
 
       //MANDAMOS LOS DATOS RECIBIDOS DEL ARTISTA, HAYA O NO HABIDO CAMBIOS
-      this.databaseService.updateArtista(this.loggedInArtista).subscribe(res => {
+      this.databaseService.updateArtista(this.loggedInArtista).subscribe(() => {
         console.log('Artista Actualizado actualizada satisfactoriamente!');
       })
       this.userService.setUser(this.loggedInArtista);
@@ -187,14 +185,58 @@ export class UsuarioComponent implements OnInit{
         }
       }
 
-
       //MANDAMOS LOS DATOS RECIBIDOS DE LA EMPRESA, HAYA O NO HABIDO CAMBIOS
-      this.databaseService.updateEmpresa(this.loggedInEmpresa).subscribe(res => {
+      this.databaseService.updateEmpresa(this.loggedInEmpresa).subscribe(() => {
         console.log('Empresa Actualizada actualizada satisfactoriamente!');
       })
       this.userService.setUser(this.loggedInEmpresa);
     }
-
     window.location.reload();
+  }
+
+
+
+
+
+
+  ////////////METODO SUBIR IMAGENES///////////
+  avisoImagen = "";
+  upload(event: any){
+    const file = event.target.files[0];
+
+    //Comprobamos que se halla enviado un archivo
+    if (file){
+      // Get file type and name
+      const allowedTypes = ['image/png', 'image/jpeg', 'image/gif'];
+      const fileType = file.type;
+      // Validate file type
+      if (!allowedTypes.includes(fileType)) {
+        this.avisoImagen = "Formato de archivo no permitido. Solo se aceptan .png, .jpg y .gif";
+        return;
+      }
+
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      //Con el archivo que hemos recibido, vamos a crear un nuevo Objeto de la clase IMAGEN
+      const imagenNueva: Imagen = {
+        url: "/assets/" + file.name,
+        artista: this.loggedInArtista
+      };
+
+      //Guardamos en el Repositorio la clase Imagen creada
+      this.databaseService.createImagen(imagenNueva).subscribe(response =>
+        console.log('response', response))
+      //Mandamos el Archivo a la carpeta Assets
+      this.databaseService.uploadFile(formData).subscribe(response =>
+        console.log('response', response))
+
+      setTimeout(() => {
+        window.location.reload();
+      }, 300)
+    } else {
+      this.avisoImagen = "Por favor, adjunte un archivo de tipo .png, .jpg o .gif";
+    }
   }
 }

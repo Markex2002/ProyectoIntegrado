@@ -39,7 +39,7 @@ export class ArtistasPageComponent implements OnInit {
   findFirstImageOfArtist(artista: Artista){
     let imgSrc = "";
     this.imagenes.forEach(imagen => {
-      if (imagen.artista.id === artista.id){
+      if (imagen.artista?.id === artista.id){
         imgSrc = imagen.url;
       }
     })
