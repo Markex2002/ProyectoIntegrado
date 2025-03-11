@@ -30,6 +30,8 @@ public class OfertaTrabajo {
     private int salarioBrutoMax;
     private int avaiablePositions;
     private int duracionJornada;
+    @Column(columnDefinition = "TEXT")
+    private String descripcionPuesto;
 
     @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss",  shape = JsonFormat.Shape.STRING)
     private Date fechaPublicacion;

@@ -10,13 +10,11 @@ import org.vdm.apirestpreproyecto.domain.*;
 import org.vdm.apirestpreproyecto.service.*;
 
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.*;
 
-import static com.fasterxml.jackson.databind.type.LogicalType.DateTime;
 
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -96,6 +94,7 @@ class ApiRestPreProyectoApplicationTests {
                 .inscripcionHasta(calendar.getTime())
                 .salarioBrutoMin(10000)
                 .salarioBrutoMax(14000)
+                .descripcionPuesto("Diseñador de personajes 2D con experiencia en la creación de personajes originales para videojuegos, animación o cómics. Responsable de conceptualizar, ilustrar y refinar diseños, asegurando coherencia con la estética del proyecto. Domina software como Photoshop, Illustrator o Clip Studio Paint, y comprende principios de anatomía, expresión y color. Colabora con artistas y desarrolladores para adaptar diseños a distintas necesidades. Se valora creatividad, atención al detalle y trabajo en equipo.")
                 .artistas(listaArtistas1)
                 .build();
         ofertaService.save(ofertaTrabajo1);
@@ -108,18 +107,20 @@ class ApiRestPreProyectoApplicationTests {
                 .inscripcionHasta(calendar.getTime())
                 .salarioBrutoMin(6000)
                 .salarioBrutoMax(20000)
+                .descripcionPuesto("Buscamos un Diseñador de Personajes 3D con experiencia en modelado, esculpido y texturizado para videojuegos, cine o animación. Será responsable de crear personajes con alto nivel de detalle, optimizados para motores gráficos como Unreal o Unity. Dominio de herramientas como Blender, ZBrush y Substance Painter. Se valorará conocimiento en rigging y animación. Creatividad, atención al detalle y capacidad para trabajar en equipo son esenciales.")
                 .artistas(listaArtistas2)
                 .build();
         ofertaService.save(ofertaTrabajo2);
         OfertaTrabajo ofertaTrabajo3 = OfertaTrabajo.builder()
                 .empresa(empresaService.one(8L))
-                .nombrePuesto("Diseñador de personajes 4D")
+                .nombrePuesto("Diseñador de Escenarios PixelArt")
                 .duracionJornada(20)
                 .avaiablePositions(1)
                 .fechaPublicacion(calendar.getTime())
                 .inscripcionHasta(calendar.getTime())
                 .salarioBrutoMin(12000)
                 .salarioBrutoMax(24000)
+                .descripcionPuesto("Buscamos un diseñador de escenarios PixelArt para crear entornos detallados y atractivos en juegos 2D. Serás responsable de conceptualizar, ilustrar y animar fondos, asegurando coherencia visual y narrativa. Trabajarás con el equipo de arte y desarrollo para optimizar recursos y garantizar una experiencia envolvente. Se requiere dominio de herramientas como Aseprite o Photoshop, creatividad y comprensión de diseño de niveles en juegos retro y modernos.")
                 .artistas(listaArtistas3)
                 .build();
         ofertaService.save(ofertaTrabajo3);
@@ -152,8 +153,8 @@ class ApiRestPreProyectoApplicationTests {
                 .password("12345678")
                 .email("email@gmail.com")
                 .yearsOfExperience(6)
-                .descripcionCorta("123Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150")
-                .descripcionLarga("123Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.")
+                .descripcionCorta("Soy un diseñador 3D apasionado por crear modelos detallados y realistas para videojuegos, animación y arquitectura. Domino herramientas como Blender y Maya, y disfruto dando vida a ideas con texturas, iluminación y animaciones que transmitan emoción y realismo.")
+                .descripcionLarga("Soy un diseñador 3D apasionado por la creación de modelos, escenarios y animaciones para videojuegos, cine y arquitectura. Me especializo en modelado, texturizado e iluminación, utilizando herramientas como Blender, Maya y ZBrush. Disfruto dando vida a ideas con detalles realistas o estilizados, asegurando calidad y optimización para distintos motores gráficos. Trabajo en equipo con artistas y desarrolladores para lograr experiencias visuales impactantes. Siempre busco innovar, aprender nuevas técnicas y mejorar cada proyecto en el que participo.")
                 .categorias(categorias1)
                 .build();
         artistaService.save(artista1);
@@ -164,8 +165,8 @@ class ApiRestPreProyectoApplicationTests {
                 .email("email@gmail.com")
                 .yearsOfExperience(4)
                 .categorias(categorias1)
-                .descripcionCorta("000Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150")
-                .descripcionLarga("000Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.")
+                .descripcionCorta("Apasionado del arte digital, el diseñador 2D crea ilustraciones, personajes y escenarios para juegos, apps y animaciones. Domina herramientas como Photoshop e Illustrator, combinando creatividad y técnica para transmitir ideas visuales con estilo y coherencia estética.")
+                .descripcionLarga("Creativo y apasionado por el arte digital, el diseñador 2D transforma ideas en ilustraciones, personajes y escenarios para videojuegos, animaciones y aplicaciones. Domina herramientas como Photoshop, Illustrator y Aseprite, combinando técnica y visión artística para dar vida a mundos envolventes. Su enfoque en la composición, color y estilo le permite crear diseños coherentes y atractivos, adaptándose a distintas estéticas y proyectos. Colabora estrechamente con desarrolladores y otros artistas para optimizar recursos gráficos, asegurando que cada elemento visual encaje perfectamente en la experiencia final. Siempre en busca de innovación, sigue tendencias y perfecciona sus habilidades para ofrecer diseños impactantes y funcionales.")
                 .build();
         artistaService.save(artista2);
         Artista artista3 = Artista.builder()
@@ -175,8 +176,8 @@ class ApiRestPreProyectoApplicationTests {
                 .email("email@gmail.com")
                 .yearsOfExperience(10)
                 .categorias(categorias2)
-                .descripcionCorta("987Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150")
-                .descripcionLarga("987Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.")
+                .descripcionCorta("Apasionado del arte digital, el diseñador 2D crea ilustraciones, personajes y escenarios para juegos, apps y animaciones. Domina herramientas como Photoshop e Illustrator, combinando creatividad y técnica para transmitir ideas visuales con estilo y coherencia estética.")
+                .descripcionLarga("Creativo y apasionado por el arte digital, el diseñador 2D transforma ideas en ilustraciones, personajes y escenarios para videojuegos, animaciones y aplicaciones. Domina herramientas como Photoshop, Illustrator y Aseprite, combinando técnica y visión artística para dar vida a mundos envolventes. Su enfoque en la composición, color y estilo le permite crear diseños coherentes y atractivos, adaptándose a distintas estéticas y proyectos. Colabora estrechamente con desarrolladores y otros artistas para optimizar recursos gráficos, asegurando que cada elemento visual encaje perfectamente en la experiencia final. Siempre en busca de innovación, sigue tendencias y perfecciona sus habilidades para ofrecer diseños impactantes y funcionales.")
                 .build();
         artistaService.save(artista3);
         Artista artista4 = Artista.builder()
@@ -186,8 +187,8 @@ class ApiRestPreProyectoApplicationTests {
                 .email("email@gmail.com")
                 .yearsOfExperience(10)
                 .categorias(categorias2)
-                .descripcionCorta("444Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150")
-                .descripcionLarga("444Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.")
+                .descripcionCorta("Apasionado del arte digital, el diseñador 2D crea ilustraciones, personajes y escenarios para juegos, apps y animaciones. Domina herramientas como Photoshop e Illustrator, combinando creatividad y técnica para transmitir ideas visuales con estilo y coherencia estética.")
+                .descripcionLarga("Creativo y apasionado por el arte digital, el diseñador 2D transforma ideas en ilustraciones, personajes y escenarios para videojuegos, animaciones y aplicaciones. Domina herramientas como Photoshop, Illustrator y Aseprite, combinando técnica y visión artística para dar vida a mundos envolventes. Su enfoque en la composición, color y estilo le permite crear diseños coherentes y atractivos, adaptándose a distintas estéticas y proyectos. Colabora estrechamente con desarrolladores y otros artistas para optimizar recursos gráficos, asegurando que cada elemento visual encaje perfectamente en la experiencia final. Siempre en busca de innovación, sigue tendencias y perfecciona sus habilidades para ofrecer diseños impactantes y funcionales.")
                 .build();
         artistaService.save(artista4);
         Artista artista5 = Artista.builder()
@@ -197,8 +198,8 @@ class ApiRestPreProyectoApplicationTests {
                 .email("email@gmail.com")
                 .yearsOfExperience(10)
                 .categorias(categorias3)
-                .descripcionCorta("678Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 150")
-                .descripcionLarga("678Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas \"Letraset\", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.")
+                .descripcionCorta("Soy un diseñador 2D especializado en estilo manga. Me apasiona crear personajes expresivos, ilustraciones dinámicas y fondos detallados. Domino herramientas como Clip Studio Paint y Photoshop, y disfruto contar historias a través del arte, transmitiendo emoción en cada trazo.")
+                .descripcionLarga("Soy un diseñador 2D especializado en arte manga, apasionado por crear personajes expresivos, escenas dinámicas y composiciones impactantes. Mi trabajo combina narrativa visual y emoción en cada ilustración, enfocándome en capturar gestos, perspectivas y detalles que dan vida a cada imagen. Domino herramientas como Clip Studio Paint y Photoshop, además de técnicas de entintado, color y sombreado para lograr un estilo auténtico. Me inspiro en la cultura japonesa y en diversas influencias artísticas para desarrollar ilustraciones originales y memorables. También tengo experiencia en diseño de portadas, concept art y storyboarding, colaborando con escritores y animadores para llevar historias a la vida. Mi objetivo es transmitir emociones y profundidad en cada obra, asegurando que cada imagen cuente una historia única y cautivadora.")
                 .build();
         artistaService.save(artista5);
 
@@ -369,9 +370,6 @@ class ApiRestPreProyectoApplicationTests {
         //BORRAR
         idiomaService.delete(4L);
 
-        //EDITAR
-        //idioma3.setNombre("Chinese");
-        //idiomaService.save(idioma3);
     }
 
     /////PRUEBA DEL CRUD DE IMAGEN/////

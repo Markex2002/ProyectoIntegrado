@@ -307,4 +307,5 @@ export interface OfertaTrabajo {
   inscripcionHasta: Date,
   salarioBrutoMin : number,
   salarioBrutoMax: number,
+  descripcionPuesto: string
 }

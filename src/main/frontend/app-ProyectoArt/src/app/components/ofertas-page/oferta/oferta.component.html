@@ -22,7 +22,7 @@
       <div class="col-12 col-sm-6">
         <div class="card w-100">
           <div class="card-body">
-            <h3 class="card-title text-center my-3">{{oferta.empresa.nombreEmpresa}}</h3>
+            <p><strong>Nombre Empresa:</strong> {{oferta.empresa.nombreEmpresa}}</p>
             <p><strong>Posiciones disponibles:</strong> {{oferta.avaiablePositions}}</p>
             <p><strong>Duración jornada:</strong> {{oferta.duracionJornada}} horas</p>
             <p><strong>Fecha de publicación:</strong> {{oferta.fechaPublicacion}}</p>
@@ -31,8 +31,9 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-sm-6 d-flex flex-wrap">
-        <div class="d-grid gap-2 col-6 mx-auto align-self-end">
+      <div class="col-12 col-sm-6 py-2 d-flex flex-wrap">
+        <p>{{oferta.descripcionPuesto}}</p>
+        <div class="d-grid gap-2 col-6 my-4 mx-auto align-self-end">
           <!-- Display the message -->
           <div *ngIf="mensaje">
             <p [ngClass]="mensajeClase" >{{ mensaje }}</p>

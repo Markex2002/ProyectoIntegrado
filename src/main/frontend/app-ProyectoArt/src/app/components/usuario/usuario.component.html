@@ -57,9 +57,11 @@
       <!--CATEGORIAS-->
       <div class="bg-secondary row py-2 border">
         <p class="text-white col-md-2 fw-bold my-0 py-0">Categorias:  </p>
-        <p class="text-white col-md-10 py-0 my-0">{{ loggedInArtista?.categorias }}</p>
+        <div class="text-white col-md-10 py-0 my-0">
+          <span *ngFor="let categoria of loggedInArtista?.categorias">{{ categoria }}, </span>
+        </div>
       </div>
-      <!--IDIOMAS-->
+      <!--IDIOMAS
       <div class="bg-secondary-subtle row py-2 border">
         <p class="col-md-2 fw-bold my-0 py-0">Idiomas Hablados:  </p>
         <div class="col-md-10 py-0 my-0">
@@ -68,6 +70,7 @@
           </p>
         </div>
       </div>
+      -->
       <!--OFERTAS-->
       <div class="bg-secondary row py-2 border">
         <p class="text-white col-md-2 fw-bold my-0 py-0">Ofertas:  </p>
@@ -75,8 +78,9 @@
       </div>
 
       <!-- PRUEBA IMAGENES -->
+      <hr class="my-4">
       <div class="my-4">
-        <label for="image" class="form-label">Imagen</label>
+        <label for="image" class="form-label">Añadir Imagen al Portfolio</label>
         <input type="file" id="image" class="form-control" accept="image/*" (change)="upload($event)">
       </div>
 

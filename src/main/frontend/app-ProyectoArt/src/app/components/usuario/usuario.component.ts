@@ -235,6 +235,7 @@ export class UsuarioComponent implements OnInit{
       setTimeout(() => {
         window.location.reload();
       }, 300)
+      alert("Imagen subida correctamente")
     } else {
       this.avisoImagen = "Por favor, adjunte un archivo de tipo .png, .jpg o .gif";
     }
