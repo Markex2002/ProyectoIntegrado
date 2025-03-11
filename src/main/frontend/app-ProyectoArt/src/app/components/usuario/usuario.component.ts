@@ -25,7 +25,9 @@ export class UsuarioComponent implements OnInit{
   loggedInEmpresa: Empresa | null = null;
   isArtista: boolean = false;
   isEmpresa: boolean = false;
+  portfolioVisible: boolean = false;
 
+  imagenesArtista: Imagen[] = [];
 
   //VALIDADORES DE FORMULARIOS
   //ARTISTA
@@ -59,12 +61,17 @@ export class UsuarioComponent implements OnInit{
     if (this.userService.userType == 'artista'){
       this.isArtista = true;
       this.loggedInArtista = this.userService.getArtista();
+      //Cargamos las imagenes del Artista
+      this.databaseService.getAllImagenes().subscribe((data: Imagen[]) => {
+        this.imagenesArtista = data.filter(imagen =>
+          imagen.artista?.id == this.loggedInArtista?.id
+        );
+      });
     } else if (this.userService.userType == 'empresa'){
       this.isEmpresa = true;
       this.loggedInEmpresa = this.userService.getEmpresa();
     }
   }
-
 
   //Activamos el modo edición
   //ARTISTAS
@@ -197,7 +204,9 @@ export class UsuarioComponent implements OnInit{
 
 
 
-
+  verPortfolio(){
+    this.portfolioVisible = true;
+  }
 
   ////////////METODO SUBIR IMAGENES///////////
   avisoImagen = "";

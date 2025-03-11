@@ -48,13 +48,11 @@
             <button class="btn btn-outline-success border-3 mx-2 my-1" type="submit" routerLink="/signUp" routerLinkActive="active">Registrarse</button>
           </ul>
           <div *ngIf="userService.isUserLogged" class="my-0">
-            <p style="color: white" class="my-0">Welcome, user!</p>
-            <button *ngIf="userService.userType == 'artista' || userService.userType == 'empresa'"
+            <button class="btn btn-outline-success border-3 mx-2 my-1" *ngIf="userService.userType == 'artista' || userService.userType == 'empresa'"
                     routerLink="/usuario" routerLinkActive="active" >
               Perfil
             </button>
-            <button (click)="userService.logout()">LogOut</button>
-
+            <button class="btn btn-outline-success border-3 mx-2 my-1" (click)="userService.logout()">LogOut</button>
             <div *ngIf="userService.userType == 'administrador'" class="my-0">
               <button routerLink="/administracion" routerLinkActive="active">Administrar</button>
             </div>
