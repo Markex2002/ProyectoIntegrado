@@ -196,6 +196,13 @@ export class DatabaseServiceService {
         catchError(this.errorHandler)
       )
   }
+  //Funcion para eliminar un Usuario con su Id
+  deleteImage(id: number | undefined): Observable<unknown> {
+    return this.httpClient.delete<void>(
+      this.apiBaseUrl + "imagenes/" + id, this.httpOptions).pipe(
+      catchError(this.errorHandler)
+    );
+  }
 
   //UPLOAD IMAGENES
   uploadFile(formData: FormData): Observable<any>{

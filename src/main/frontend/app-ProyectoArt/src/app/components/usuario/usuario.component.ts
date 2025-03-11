@@ -224,7 +224,6 @@ export class UsuarioComponent implements OnInit{
         return;
       }
 
-
       const formData = new FormData();
       formData.append('file', file);
 
@@ -248,5 +247,15 @@ export class UsuarioComponent implements OnInit{
     } else {
       this.avisoImagen = "Por favor, adjunte un archivo de tipo .png, .jpg o .gif";
     }
+  }
+
+  deleteImage(imageId: number | undefined) {
+    this.databaseService.deleteImage(imageId).subscribe(
+      {next: (() => {}),
+        error:  ((error:any) => {
+          console.log('Error eliminar Imagen', error);
+        })});
+
+    window.location.reload();
   }
 }

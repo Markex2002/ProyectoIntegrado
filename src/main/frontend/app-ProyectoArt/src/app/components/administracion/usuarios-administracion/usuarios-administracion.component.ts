@@ -36,11 +36,10 @@ export class UsuariosAdministracionComponent implements OnInit{
 
   deleteUserInfo(userId: number | undefined) {
     this.databaseService.deleteUser(userId).subscribe(
-      {next: (() => {
-        }),
+      {next: (() => {}),
         error:  ((error:any) => {
           //console.log('Error eliminar producto', error);
-          this.setAviso('Error al eliminar producto.')
+          this.setAviso('Error al eliminar Usuario.')
         })});
 
     window.location.reload();

@@ -95,6 +95,7 @@
         <div *ngIf="portfolioVisible" class="row justify-content-center py-4">
           <div class="col-xl-4 col-md-6 col-sm-12 my-4" *ngFor="let imagen of imagenesArtista">
             <img [src]="imagen.url" class="img-fluid"  alt="">
+            <button class="btn btn-danger" (click)="deleteImage(imagen.idImagen)">Eliminar Imagen</button>
           </div>
         </div>
 
