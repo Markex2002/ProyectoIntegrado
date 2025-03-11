@@ -1,6 +1,7 @@
 package org.vdm.apirestpreproyecto.service;
 
 
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -8,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.vdm.apirestpreproyecto.Exception.AdministradorNotFoundException;
+import org.vdm.apirestpreproyecto.Exception.ArtistaNotFoundException;
 import org.vdm.apirestpreproyecto.domain.Administrador;
 import org.vdm.apirestpreproyecto.repository.AdministradorRepository;
 
@@ -53,12 +55,21 @@ public class AdministradorService {
                 .orElseThrow(() -> new AdministradorNotFoundException(id));
     }
 
+    @Transactional
     public Administrador replace(Long id, Administrador administrador) {
-        administrador.setPassword(passwordEncoder.encode(administrador.getPassword()));
+        return administradorRepository.findById(id).map(existingAdministrador -> {
+            if (administrador.getPassword() != null && !administrador.getPassword().isEmpty()) {
+                if (!passwordEncoder.matches(administrador.getPassword(), existingAdministrador.getPassword())) {
+                    administrador.setPassword(passwordEncoder.encode(administrador.getPassword()));
+                } else {
+                    administrador.setPassword(existingAdministrador.getPassword());
+                }
+            } else {
+                administrador.setPassword(existingAdministrador.getPassword());
+            }
 
-        return this.administradorRepository.findById(id).map(p -> (id.equals(administrador.getId())  ?
-                                                            this.administradorRepository.save(administrador) : null))
-                .orElseThrow(() -> new AdministradorNotFoundException(id));
+            return administradorRepository.save(administrador);
+        }).orElseThrow(() -> new ArtistaNotFoundException(id));
     }
 
     public void delete(Long id) {

@@ -36,6 +36,10 @@
     <input type="text" class="form-control" formControlName="descripcionLarga">
   </div>
 
+    <div *ngIf="aviso" class="alert alert-danger mt-3">
+      {{aviso}}
+    </div>
+
     <button type="submit" class="btn btn-success">Editar</button>
   </form>
 
@@ -74,6 +78,9 @@
       <input type="text" class="form-control" formControlName="nombreRepresentante">
     </div>
 
+    <div *ngIf="aviso" class="alert alert-danger mt-3">
+      {{aviso}}
+    </div>
 
     <button type="submit" class="btn btn-success">Editar</button>
   </form>
@@ -108,7 +115,9 @@
       <input class="form-control" [value]="usuario.privilegeLevel" disabled>
     </div>
 
-
+    <div *ngIf="aviso" class="alert alert-danger mt-3">
+      {{aviso}}
+    </div>
 
     <button type="submit" class="btn btn-success">Editar</button>
   </form>

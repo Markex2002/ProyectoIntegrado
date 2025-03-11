@@ -1,12 +1,14 @@
 package org.vdm.apirestpreproyecto.service;
 
 
+import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.vdm.apirestpreproyecto.Exception.ArtistaNotFoundException;
 import org.vdm.apirestpreproyecto.Exception.EmpresaNotFoundException;
 import org.vdm.apirestpreproyecto.domain.Empresa;
 import org.vdm.apirestpreproyecto.repository.EmpresaRepository;
@@ -53,12 +55,21 @@ public class EmpresaService {
                 .orElseThrow(() -> new EmpresaNotFoundException(id));
     }
 
+    @Transactional
     public Empresa replace(Long id, Empresa empresa) {
-        empresa.setPassword(passwordEncoder.encode(empresa.getPassword()));
+        return empresaRepository.findById(id).map(existingEmpresa -> {
+            if (empresa.getPassword() != null && !empresa.getPassword().isEmpty()) {
+                if (!passwordEncoder.matches(empresa.getPassword(), existingEmpresa.getPassword())) {
+                    empresa.setPassword(passwordEncoder.encode(empresa.getPassword()));
+                } else {
+                    empresa.setPassword(existingEmpresa.getPassword());
+                }
+            } else {
+                empresa.setPassword(existingEmpresa.getPassword());
+            }
 
-        return this.empresaRepository.findById(id).map(p -> (id.equals(empresa.getId())  ?
-                                                            this.empresaRepository.save(empresa) : null))
-                .orElseThrow(() -> new EmpresaNotFoundException(id));
+            return empresaRepository.save(empresa);
+        }).orElseThrow(() -> new ArtistaNotFoundException(id));
     }
 
     public void delete(Long id) {

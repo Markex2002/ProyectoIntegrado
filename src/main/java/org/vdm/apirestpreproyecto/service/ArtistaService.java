@@ -60,11 +60,19 @@ public class ArtistaService {
 
     @Transactional
     public Artista replace(Long id, Artista artista) {
-        artista.setPassword(passwordEncoder.encode(artista.getPassword()));
+        return artistaRepository.findById(id).map(existingArtista -> {
+            if (artista.getPassword() != null && !artista.getPassword().isEmpty()) {
+                if (!passwordEncoder.matches(artista.getPassword(), existingArtista.getPassword())) {
+                    artista.setPassword(passwordEncoder.encode(artista.getPassword()));
+                } else {
+                    artista.setPassword(existingArtista.getPassword());
+                }
+            } else {
+                artista.setPassword(existingArtista.getPassword());
+            }
 
-        return this.artistaRepository.findById(id).map(p -> (id.equals(artista.getId())  ?
-                        this.artistaRepository.save(artista) : null))
-                .orElseThrow(() -> new ArtistaNotFoundException(id));
+            return artistaRepository.save(artista);
+        }).orElseThrow(() -> new ArtistaNotFoundException(id));
     }
 
 

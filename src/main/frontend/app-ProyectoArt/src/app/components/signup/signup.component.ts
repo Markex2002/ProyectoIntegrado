@@ -42,9 +42,9 @@ export class SignupComponent implements OnInit{
     this.artistForm = this.fb.group(
       {
         username: ['', Validators.required],
-        password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]],
+        password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(60)]],
         confirmPassword: ['', Validators.required],
-        email: ['', [Validators.required, Validators.pattern(emailRegex)]], // Email validation
+        email: ['', [Validators.required, Validators.pattern(emailRegex)]],
         userType: ['', Validators.required],
 
         //Campos extra dependiendo de la clase
@@ -133,8 +133,8 @@ export class SignupComponent implements OnInit{
         this.aviso = 'Por favor, introduzca un correo electrónico válido.';
       } else if (this.artistForm.get('password')?.value !== this.artistForm.get('confirmPassword')?.value) {
         this.aviso = 'Las contraseñas no coinciden.';
-      } else if (this.artistForm.get('password')?.value.length < 6) {
-        this.aviso = 'La contraseña debe tener más de 6 carácteres.';
+      } else if (this.artistForm.get('password')?.value.length < 6 || this.artistForm.get('password')?.value.length > 60) {
+        this.aviso = 'La contraseña debe tener entre 6 y 60 carácteres.';
       } else if (this.artistForm.get('nombre')?.value.lenght < 4 || this.artistForm.get('nombre')?.value.lenght > 20) {
         this.aviso = 'Su nombre no debe tener menos de 4 carácteres o mas de 20.';
       } else if (this.artistForm.get('yearsOfExperience')?.value < 0 || this.artistForm.get('yearsOfExperience')?.value > 99) {
@@ -148,16 +148,5 @@ export class SignupComponent implements OnInit{
       }
       return;
     }
-}
-
-
-
-
-
-
-  /////AVISO ERROR/////
-  setAviso(texto:string){
-    this.aviso=texto;
-    setTimeout(()=> this.aviso="",2000);
-  }
+ }
 }
