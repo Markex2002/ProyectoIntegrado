@@ -20,7 +20,7 @@ public class Imagen {
     private long idImagen;
     private String url;
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne()
     @JoinColumn(name = "id", nullable = false)
     private Artista artista;
 }
