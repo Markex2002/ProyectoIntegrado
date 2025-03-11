@@ -383,9 +383,6 @@ class ApiRestPreProyectoApplicationTests {
         Artista artista4 = artistaService.one(4L);
         Artista artista5 = artistaService.one(5L);
 
-
-
-
         //CREAR
         Imagen imagen1 = Imagen.builder()
                 .artista(artista1)
@@ -407,6 +404,8 @@ class ApiRestPreProyectoApplicationTests {
                 .artista(artista5)
                 .url("/assets/Portfolio5.jpg")
                 .build();
+
+
         imagenService.save(imagen1);
         imagenService.save(imagen2);
         imagenService.save(imagen3);
