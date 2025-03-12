@@ -39,6 +39,33 @@ export class DatabaseServiceService {
       catchError(this.errorHandler)
     )
   }
+  //Funcion para eliminar un Usuario con su Id
+  deleteIdioma(id: number | undefined): Observable<unknown> {
+    return this.httpClient.delete<void>(
+      this.apiBaseUrl + "idiomas/" + id, this.httpOptions).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+  //Metodo para buscar un Idioma por su Id
+  findIdioma(id: number): Observable<Idioma> {
+    return this.httpClient.get<Idioma>(this.apiBaseUrl + "idiomas/" + id)
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+  //Metodo para Actualizar Idiomas
+  updateIdioma(idioma: Idioma | null): Observable<Idioma> {
+    if (idioma === null) {
+      throw new Error("Idioma no puede ser null");
+    }
+    return this.httpClient.put<Idioma>((this.apiBaseUrl + "idiomas/" + idioma.id), idioma, this.httpOptions
+    ).pipe(
+      catchError((error) => {
+        console.error("Error updating Idioma:", error);
+        return throwError(() => new Error("Failed to update Idioma"));
+      })
+    );
+  }
 
 
   //////USUARIO//////
@@ -261,8 +288,8 @@ export class DatabaseServiceService {
 export interface Idioma {
   id?: number,
   nombre: string,
-  ultimaActualizacion: string,
-  id_oferta: number
+  ultimaActualizacion: Date,
+  ofertaTrabajo: Oferta_trabajo
 }
 
 export interface Usuario {

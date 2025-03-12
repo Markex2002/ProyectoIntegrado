@@ -13,6 +13,12 @@ import {
   EditarUsuarioComponent
 } from './components/administracion/usuarios-administracion/editar-usuario/editar-usuario.component';
 import {CrearOfertaComponent} from './components/usuario/crear-oferta/crear-oferta.component';
+import {
+  IdiomasAdministracionComponent
+} from './components/administracion/idiomas-administracion/idiomas-administracion.component';
+import {
+  EditarIdiomaComponent
+} from './components/administracion/idiomas-administracion/editar-idioma/editar-idioma.component';
 
 
 export const routes: Routes = [
@@ -34,8 +40,13 @@ export const routes: Routes = [
   { path: 'ofertas/:nombrePuesto', component: OfertaComponent},
 
   { path: 'administracion', component: AdministracionComponent},
+
   { path: 'usuariosAdministracion', component: UsuariosAdministracionComponent},
   { path: 'editar-usuario/:id', component: EditarUsuarioComponent},
+
+  { path: 'idiomasAdministracion', component: IdiomasAdministracionComponent},
+  { path: 'editar-idioma/:id', component: EditarIdiomaComponent},
+
 
 
 

@@ -25,6 +25,9 @@ Creacion de Ofertas, Y que se apunten los usuarios
 
 Administracion  (Ofertas Idiomas)
 
+Perfeccionar el eliminado de Idiomas, actualmente borra a los artistas a los que pertenece de uno en uno
+Asi que hay que pulsar borrar varias veces
+
 
 
 

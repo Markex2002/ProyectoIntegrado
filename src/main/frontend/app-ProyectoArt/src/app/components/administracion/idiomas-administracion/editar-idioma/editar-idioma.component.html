@@ -1,0 +1,25 @@
+<div class="container-xl my-4 min-vh-100">
+  <h2>Editar Idioma</h2>
+  <hr>
+
+  <!--ARTISTA-->
+  <form [formGroup]="editarIdiomaForm" (ngSubmit)="submitIdioma()">
+    <div class="mb-3">
+      <label class="form-label">Id:</label>
+      <input class="form-control" [value]="idioma.id" disabled>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Nombre:</label>
+      <input type="text" class="form-control" [value]="idioma.nombre" formControlName="nombre">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Fecha Última Actualizacion:</label>
+      <input class="form-control" [value]="idioma.ultimaActualizacion | date:'dd/MM/yyyy'" disabled>
+    </div>
+
+    <div *ngIf="aviso" class="alert alert-danger mt-3">
+      {{aviso}}
+    </div>
+    <button type="submit" class="btn btn-success">Editar</button>
+  </form>
+</div>

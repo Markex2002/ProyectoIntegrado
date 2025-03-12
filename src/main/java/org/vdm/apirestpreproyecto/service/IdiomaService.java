@@ -8,10 +8,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.vdm.apirestpreproyecto.Exception.AdministradorNotFoundException;
 import org.vdm.apirestpreproyecto.Exception.IdiomaNotFoundException;
-import org.vdm.apirestpreproyecto.domain.Administrador;
-import org.vdm.apirestpreproyecto.domain.Idioma;
+import org.vdm.apirestpreproyecto.domain.*;
 import org.vdm.apirestpreproyecto.repository.AdministradorRepository;
+import org.vdm.apirestpreproyecto.repository.ArtistaRepository;
 import org.vdm.apirestpreproyecto.repository.IdiomaRepository;
+import org.vdm.apirestpreproyecto.repository.OfertaRepository;
 
 import java.util.*;
 
@@ -19,9 +20,13 @@ import java.util.*;
 public class IdiomaService {
 
     private final IdiomaRepository idiomaRepository;
+    private final OfertaRepository ofertaRepository;
+    private final ArtistaRepository artistaRepository;
 
-    public IdiomaService(IdiomaRepository idiomaRepository) {
+    public IdiomaService(IdiomaRepository idiomaRepository, OfertaRepository ofertaRepository, ArtistaRepository artistaRepository) {
         this.idiomaRepository = idiomaRepository;
+        this.ofertaRepository = ofertaRepository;
+        this.artistaRepository = artistaRepository;
     }
 
     public List<Idioma> all() {
@@ -59,10 +64,34 @@ public class IdiomaService {
     }
 
     public void delete(Long id) {
-        this.idiomaRepository.findById(id).map(p -> {this.idiomaRepository.delete(p);
-                                                        return p;})
-                .orElseThrow(() -> new IdiomaNotFoundException(id));
+        System.out.println("Deleting idioma with ID: " + id);
+
+        Idioma idioma = idiomaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Oferta not found"));
+
+        System.out.println("Idioma belongs to oferta: " + (idioma.getOfertaTrabajo() != null ? idioma.getOfertaTrabajo().getId_oferta() : "none"));
+        System.out.println("Idioma belongs to " + idioma.getArtistas().size() + " artistas");
+
+
+
+        //ANTES DE ELIMINAR EL IDIOMA HAY QUE QUITARLO DE LA OFERTA A LA QUE PERTENECE
+        OfertaTrabajo ofertaTrabajo = idioma.getOfertaTrabajo();
+        if (ofertaTrabajo != null) {
+            ofertaTrabajo.getIdiomasRequeridos().remove(idioma);
+            ofertaRepository.save(ofertaTrabajo);
+        }
+
+        //ANTES DE ELIMINAR EL IDIOMA HAY QUE QUITARLO DE LOS ARTISTAS A LA QUE PERTENEZCA
+        Iterator<Artista> iterator = idioma.getArtistas().iterator();
+        while (iterator.hasNext()) {
+            Artista artista = iterator.next();
+            iterator.remove(); // Correcto
+        }
+
+        //Eliminamos la Oferta
+        idiomaRepository.delete(idioma);
     }
+
     //
     public List<Idioma>allByQueryFiltersStream(Optional<String> buscarOptional, Optional<String> ordenarOptional){
         List<Idioma> resultado = new ArrayList<>();
