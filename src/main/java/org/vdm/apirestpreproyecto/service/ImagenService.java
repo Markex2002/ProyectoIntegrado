@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.vdm.apirestpreproyecto.Exception.AdministradorNotFoundException;
 import org.vdm.apirestpreproyecto.Exception.ImagenNotFoundException;
 import org.vdm.apirestpreproyecto.domain.Administrador;
+import org.vdm.apirestpreproyecto.domain.Artista;
 import org.vdm.apirestpreproyecto.domain.Imagen;
 import org.vdm.apirestpreproyecto.repository.AdministradorRepository;
+import org.vdm.apirestpreproyecto.repository.ArtistaRepository;
 import org.vdm.apirestpreproyecto.repository.ImagenRepository;
 
 import java.util.*;
@@ -19,9 +21,11 @@ import java.util.*;
 public class ImagenService {
 
     private final ImagenRepository imagenRepository;
+    private final ArtistaRepository artistaRepository;
 
-    public ImagenService(ImagenRepository imagenRepository) {
+    public ImagenService(ImagenRepository imagenRepository, ArtistaRepository artistaRepository) {
         this.imagenRepository = imagenRepository;
+        this.artistaRepository = artistaRepository;
     }
 
     public List<Imagen> all() {
@@ -58,10 +62,20 @@ public class ImagenService {
                 .orElseThrow(() -> new ImagenNotFoundException(id));
     }
 
+
     public void delete(Long id) {
-        this.imagenRepository.findById(id).map(p -> {this.imagenRepository.delete(p);
-                                                        return p;})
-                .orElseThrow(() -> new ImagenNotFoundException(id));
+        Imagen imagen = imagenRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Imagen not found"));
+
+        //ANTES DE ELIMINAR LA IMAGEN HAY QUE QUITARLA DEL ARTISTA AL QUE PERTENECE
+        Artista artista = imagen.getArtista();
+        if (artista != null) {
+            artista.getPortfolio().remove(imagen); // Remove from the list
+            artistaRepository.save(artista); // Save the update
+        }
+
+        //Eliminamos la Imagen
+        imagenRepository.delete(imagen);
     }
     //
     public List<Imagen>allByQueryFiltersStream(Optional<String> buscarOptional, Optional<String> ordenarOptional){

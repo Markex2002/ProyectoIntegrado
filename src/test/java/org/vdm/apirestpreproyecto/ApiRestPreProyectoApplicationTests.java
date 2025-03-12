@@ -389,6 +389,7 @@ class ApiRestPreProyectoApplicationTests {
         Imagen imagen1 = Imagen.builder()
                 .artista(artista1)
                 .url("/assets/Portfolio1.jpg")
+                //.url("../../../resources/media/Portfolio1.jpg")
                 .build();
         Imagen imagen2 = Imagen.builder()
                 .artista(artista2)
