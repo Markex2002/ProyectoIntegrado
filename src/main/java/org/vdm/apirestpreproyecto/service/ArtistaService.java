@@ -84,7 +84,6 @@ public class ArtistaService {
 
     public List<Artista>allByQueryFiltersStream(Optional<String> buscarOptional, Optional<String> ordenarOptional){
         List<Artista> resultado = new ArrayList<>();
-
         if(buscarOptional.isPresent()){
             resultado = artistaRepository.findByNombreContainingIgnoreCase(buscarOptional.get());
         }
@@ -99,7 +98,6 @@ public class ArtistaService {
                 resultado = artistaRepository.findAllByOrderByNombreDesc();
             }
         }
-
         return resultado;
     }
 }

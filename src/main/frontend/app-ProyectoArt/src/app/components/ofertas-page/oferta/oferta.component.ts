@@ -65,22 +65,22 @@ export class OfertaComponent {
 
 
   aplicarOfertas(): void{
-    if (this.userService.isUserLogged){
+    if (this.userService.userType == 'artista'){
       this.mensaje = 'Oferta Aplicada';
       this.mensajeClase = 'mensaje-exito';
     } else {
-      this.mensaje = 'Debe estar registrado para hacer esto';
+      this.mensaje = 'Solo un artista puede hacer esto';
       this.mensajeClase = 'mensaje-error';
     }
   }
 
 
   guardarOfertas(): void{
-    if (this.userService.isUserLogged){
-      this.mensaje = 'Oferta Guardada';
+    if (this.userService.userType == 'artista'){
+      this.mensaje = 'Oferta Aplicada';
       this.mensajeClase = 'mensaje-exito';
     } else {
-      this.mensaje = 'Debe estar registrado para hacer esto';
+      this.mensaje = 'Solo un artista puede hacer esto';
       this.mensajeClase = 'mensaje-error';
     }
   }

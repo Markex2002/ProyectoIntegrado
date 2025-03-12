@@ -242,11 +242,6 @@ export class DatabaseServiceService {
 
 
 
-
-
-
-
-
   //ERROR HANDLER
   errorHandler(error: any) {
     let errorMessage = '';
@@ -287,7 +282,7 @@ export interface Artista {
   idiomasHablados: Idioma[],
   portfolio: Imagen[],
   id_oferta: number,
-  ofertasTrabajo: Oferta_trabajo[],
+  ofertasTrabajos: Oferta_trabajo[],
   descripcionCorta: string,
   descripcionLarga: string
   categorias: string[],

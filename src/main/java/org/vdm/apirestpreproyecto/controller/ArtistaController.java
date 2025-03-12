@@ -66,9 +66,6 @@ public class ArtistaController {
         return ResponseEntity.ok(responseAll);
     }
 
-
-
-
     @PostMapping({"","/"})
     public Artista newArtista(@RequestBody Artista artista) {
         return this.artistaService.save(artista);
@@ -85,7 +82,6 @@ public class ArtistaController {
              @PathVariable("id") Long id) {
         return this.artistaService.replace(id, artista);
     }
-
 
     @ResponseBody
     @ResponseStatus(HttpStatus.NO_CONTENT)

@@ -8,8 +8,11 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.vdm.apirestpreproyecto.Exception.ImagenNotFoundException;
 import org.vdm.apirestpreproyecto.Exception.OfertaNotFoundException;
+import org.vdm.apirestpreproyecto.domain.Artista;
+import org.vdm.apirestpreproyecto.domain.Empresa;
 import org.vdm.apirestpreproyecto.domain.Imagen;
 import org.vdm.apirestpreproyecto.domain.OfertaTrabajo;
+import org.vdm.apirestpreproyecto.repository.EmpresaRepository;
 import org.vdm.apirestpreproyecto.repository.ImagenRepository;
 import org.vdm.apirestpreproyecto.repository.OfertaRepository;
 
@@ -19,9 +22,11 @@ import java.util.*;
 public class OfertaService {
 
     private final OfertaRepository ofertaRepository;
+    private final EmpresaRepository empresaRepository;
 
-    public OfertaService(OfertaRepository ofertaRepository) {
+    public OfertaService(OfertaRepository ofertaRepository, EmpresaRepository empresaRepository) {
         this.ofertaRepository = ofertaRepository;
+        this.empresaRepository = empresaRepository;
     }
 
     public List<OfertaTrabajo> all() {
@@ -59,10 +64,20 @@ public class OfertaService {
     }
 
     public void delete(Long id) {
-        this.ofertaRepository.findById(id).map(p -> {this.ofertaRepository.delete(p);
-                                                        return p;})
-                .orElseThrow(() -> new OfertaNotFoundException(id));
+        OfertaTrabajo ofertaTrabajo = ofertaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Oferta not found"));
+
+        //ANTES DE ELIMINAR LA OFERTA HAY QUE QUITARLA DE LA EMPRESA A LA QUE PERTENECE
+        Empresa empresa = ofertaTrabajo.getEmpresa();
+        if (empresa != null) {
+            empresa.getListadoOfertas().remove(ofertaTrabajo);
+            empresaRepository.save(empresa);
+        }
+
+        //Eliminamos la Oferta
+        ofertaRepository.delete(ofertaTrabajo);
     }
+
     //
     public List<OfertaTrabajo>allByQueryFiltersStream(Optional<String> buscarOptional, Optional<String> ordenarOptional){
         List<OfertaTrabajo> resultado = new ArrayList<>();

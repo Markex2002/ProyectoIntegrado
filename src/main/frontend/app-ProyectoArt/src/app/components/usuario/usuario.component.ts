@@ -93,6 +93,7 @@ export class UsuarioComponent implements OnInit{
     }
   }
 
+
   //Activamos el modo edición
   //ARTISTAS
   editandoNombre: boolean = false;
