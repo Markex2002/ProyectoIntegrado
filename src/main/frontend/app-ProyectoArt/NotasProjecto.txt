@@ -21,16 +21,14 @@ no se podian ver las imagenes.
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Creacion de Ofertas, Y que se apunten los usuarios
 //CREACION DE OFERTAS LOGRADA
-
-Media Queries Administracion
+//@JsonIgnore hace que no se puedan sacar los atributos
+  de la listaOfertas del Artista, o su relacion ManytoMany, INVESTIGAR
 
 Prompt/Modal Eliminacion de Usuarios
 
-Que se vea la contarseña (login/register)
+Que se vea la contraseña (login/register)
 
 Administracion  (Ofertas Idiomas)
-
-Cambiar formato de fechas //HECHO
 
 
 

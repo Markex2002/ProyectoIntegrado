@@ -1,4 +1,4 @@
-<div class="container-xl my-4 min-vh-100">
+<div class="container-xl bg-light py-4 min-vh-100">
   <div class="my-4">
     <button routerLink="/usuariosAdministracion" routerLinkActive="active">Usuarios</button>
     <button>Ofertas</button>
@@ -9,18 +9,24 @@
   <hr>
 
   <div class="row py-2">
-    <p class="col-1">id</p>
-    <p class="col-2">username</p>
-    <p class="col-2">email</p>
+    <p class="fw-bold col-md-1 col-sm-12">id</p>
+    <p class="fw-bold col-md-2 col-sm-12">username</p>
+    <p class="fw-bold col-md-2 col-sm-12">email</p>
   </div>
 
-  <div *ngFor="let usuario of usuarios" class="row py-2">
-    <p class="col-1">{{usuario.id}}</p>
-    <p class="col-2">{{usuario.username}}</p>
-    <p class="col-2">{{usuario.email}}</p>
+  <div *ngFor="let usuario of usuarios; let i = index">
+    <div class="row py-2" [ngClass]="{'bg-secondary': i %2 === 0,'bg-secondary-subtle': i %2 !== 0,}">
+      <p class="col-md-1 col-sm-12">{{usuario.id}}</p>
+      <p class="col-md-2 col-sm-12">{{usuario.username}}</p>
+      <p class="col-md-5 col-sm-12">{{usuario.email}}</p>
 
-    <button class="mx-2 col-2 btn btn-warning" [routerLink]="['/editar-usuario', usuario.id]">Editar</button>
-    <button (click)="deleteUserInfo(usuario.id)" class="mx-2 col-2 btn btn-danger">Eliminar</button>
+      <div class="px-2 py-1 col-md-2 col-sm-4 ">
+        <button class="btn btn-warning w-100" [routerLink]="['/editar-usuario', usuario.id]">Editar</button>
+      </div>
+      <div class="px-2 py-1 col-md-2 col-sm-4 ">
+        <button class="btn btn-danger w-100" (click)="deleteUserInfo(usuario.id)">Eliminar</button>
+      </div>
+    </div>
   </div>
 </div>
 

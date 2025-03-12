@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {DatabaseServiceService, Usuario} from '../../../services/database-service.service';
-import {NgForOf, NgIf} from '@angular/common';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-usuarios-administracion',
@@ -10,7 +10,8 @@ import {NgForOf, NgIf} from '@angular/common';
     RouterLink,
     RouterLinkActive,
     NgForOf,
-    NgIf
+    NgIf,
+    NgClass
   ],
   templateUrl: './usuarios-administracion.component.html',
   styleUrl: './usuarios-administracion.component.scss'
