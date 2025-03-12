@@ -22,7 +22,6 @@ Creacion de Ofertas, Y que se apunten los usuarios
 //@JsonIgnore hace que no se puedan sacar los atributos
   de la listaOfertas del Artista, o su relacion ManytoMany, INVESTIGAR
 
-Que se vea la contraseña (login/register)
 
 Administracion  (Ofertas Idiomas)
 
