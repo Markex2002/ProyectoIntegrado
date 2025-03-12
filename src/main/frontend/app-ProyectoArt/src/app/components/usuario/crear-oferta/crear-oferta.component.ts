@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {NgIf} from '@angular/common';
 import {Router, RouterLink, RouterLinkActive} from '@angular/router';
-import {Artista, DatabaseServiceService, Empresa, Oferta_trabajo} from '../../../services/database-service.service';
+import {DatabaseServiceService, Empresa, Oferta_trabajo} from '../../../services/database-service.service';
 import {UserLoginService} from '../../../services/user-login.service';
 
 @Component({
@@ -20,10 +20,13 @@ import {UserLoginService} from '../../../services/user-login.service';
 })
 export class CrearOfertaComponent implements OnInit{
   //Atributos
+  loggedInEmpresa: Empresa | null = null;
   crearOfertaForm: FormGroup;
   aviso:string = "";
 
   ngOnInit(): void {
+    //Cargamos la Empresa Logeada
+    this.loggedInEmpresa = this.userService.getEmpresa();
   }
 
   constructor(
@@ -34,16 +37,14 @@ export class CrearOfertaComponent implements OnInit{
 
     this.crearOfertaForm = this.fb.group(
       {
-        username: ['', Validators.required],
-        password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(60)]],
-        confirmPassword: ['', Validators.required],
-        userType: ['', Validators.required],
-
-        //Campos extra dependiendo de la clase
-        nombre: ['', [Validators.minLength(4), Validators.maxLength(20)]],
-        yearsOfExperience: ['', [Validators.min(0), Validators.max(99)]],
-        nombreEmpresa: ['', [Validators.minLength(4), Validators.maxLength(20)]],
-        nombreRepresentante: ['', [Validators.minLength(4), Validators.maxLength(20)]]
+        nombrePuesto: ['', Validators.required],
+        salarioBrutoMin: ['', [Validators.required, Validators.min(0)]],
+        salarioBrutoMax: ['', [Validators.required, Validators.min(0)]],
+        avaiablePositions: ['', [Validators.required, Validators.min(0)]],
+        duracionJornada: ['', [Validators.required, Validators.min(0)]],
+        descripcionPuesto: ['', [Validators.required, Validators.minLength(0)]],
+        fechaPublicacion: ['', [Validators.required]],
+        inscripcionHasta: ['', [Validators.required]],
       },
       {}
     );
@@ -57,10 +58,14 @@ export class CrearOfertaComponent implements OnInit{
     this.aviso= '' ;
     if (this.crearOfertaForm.valid) {
       //Creamos la Oferta con los datos y la mandamos a la Database
-        const newOferta: Oferta_trabajo = this.crearOfertaForm.value
-        this.databaseService.createOferta(newOferta).subscribe(res => {
-          this.crearOfertaForm.reset();
-        })
+      const newOferta: Oferta_trabajo = this.crearOfertaForm.value;
+      //Insertamos la Empresa en la Oferta
+      if (this.loggedInEmpresa) {
+        newOferta.empresa = this.loggedInEmpresa;
+      }
+      this.databaseService.createOferta(newOferta).subscribe(() => {
+        this.crearOfertaForm.reset();
+      })
 
       //Volvemos a Usuario
       this.router.navigate(['/usuario']).then(() => {
