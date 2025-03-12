@@ -8,9 +8,9 @@ FontAwesome instalado de la misma manera
 
 INSTALAR BOOTSTRAP DE FORMA DISTINTA, PARA PODER EDITAR ESTILOS
 
-
-
-
-
 La ruta a los assets tambien ha tenido que ser configurada en el angular.json, si no,
 no se podian ver las imagenes.
+
+
+
+//Para iniciar el proyecto y que se tenga en cuenta la subida de imagenes

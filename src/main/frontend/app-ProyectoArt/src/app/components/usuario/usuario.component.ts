@@ -4,6 +4,7 @@ import {UserLoginService} from '../../services/user-login.service';
 import {Artista, DatabaseServiceService, Empresa, Imagen} from '../../services/database-service.service';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {RebuildService} from '../../services/rebuild.service';
 
 @Component({
   selector: 'app-usuario',
@@ -52,6 +53,7 @@ export class UsuarioComponent implements OnInit{
   constructor(
     protected userService: UserLoginService,
     protected databaseService: DatabaseServiceService,
+    protected rebuildService: RebuildService,
   ){}
 
 
@@ -229,7 +231,7 @@ export class UsuarioComponent implements OnInit{
 
       //Con el archivo que hemos recibido, vamos a crear un nuevo Objeto de la clase IMAGEN
       const imagenNueva: Imagen = {
-        url: "/assets/" + file.name,
+        url: "/assets/media/" + file.name,
         artista: this.loggedInArtista
       };
 
@@ -239,6 +241,8 @@ export class UsuarioComponent implements OnInit{
       //Mandamos el Archivo a la carpeta Assets
       this.databaseService.uploadFile(formData).subscribe(response =>
         console.log('response', response))
+
+      this.rebuildService.triggerRebuild();
 
       setTimeout(() => {
         window.location.reload();

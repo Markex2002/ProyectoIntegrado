@@ -37,7 +37,10 @@
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/assets/bootstrap/dist/css/bootstrap.css"
             ],
-            "scripts": ["src/assets/bootstrap/dist/js/bootstrap.bundle.js"]
+            "scripts": [
+              "src/assets/bootstrap/dist/js/bootstrap.bundle.js",
+              "src/assets/media/watch-trigger.js"
+            ]
           },
           "configurations": {
             "production": {

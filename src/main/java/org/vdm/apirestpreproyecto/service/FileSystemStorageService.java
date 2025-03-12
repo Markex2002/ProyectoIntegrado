@@ -19,7 +19,7 @@ import java.nio.file.StandardCopyOption;
 public class FileSystemStorageService implements StorageService{
 
     ////////LA RUTA EN EL QUE APARECERA EL DIRECTORIO EN EL QUE SE GUARDARA LOS ASSETS///////
-    @Value("src/main/frontend/app-ProyectoArt/src/assets")
+    @Value("src/main/frontend/app-ProyectoArt/src/assets/media")
     //@Value("mediafiles")
     private String mediaLocation;
 

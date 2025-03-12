@@ -58,7 +58,7 @@
                  [ngClass]="{'bg-secondary': i %2 === 0,'bg-secondary-subtle': i %2 !== 0,}"
         >
 
-          <a (click)="databaseService.setIdOferta(oferta.id_oferta)" [routerLink]="[oferta.nombrePuesto]"
+          <a (click)="databaseService.setIdOferta(oferta.id_oferta)" [routerLink]="'ofertas/'+[oferta.nombrePuesto]"
              [ngClass]="{'text-light': i %2 === 0,'text-black': i %2 !== 0,}"
              class="text-light col-12 col-sm-4">
             {{oferta.nombrePuesto}}

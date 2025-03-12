@@ -388,24 +388,24 @@ class ApiRestPreProyectoApplicationTests {
         //CREAR
         Imagen imagen1 = Imagen.builder()
                 .artista(artista1)
-                .url("/assets/Portfolio1.jpg")
+                .url("/assets/media/Portfolio1.jpg")
                 //.url("../../../resources/media/Portfolio1.jpg")
                 .build();
         Imagen imagen2 = Imagen.builder()
                 .artista(artista2)
-                .url("/assets/Portfolio2.jpg")
+                .url("/assets/media/Portfolio2.jpg")
                 .build();
         Imagen imagen3 = Imagen.builder()
                 .artista(artista3)
-                .url("/assets/Portfolio3.jpg")
+                .url("/assets/media/Portfolio3.jpg")
                 .build();
         Imagen imagen4 = Imagen.builder()
                 .artista(artista4)
-                .url("/assets/Portfolio4.png")
+                .url("/assets/media/Portfolio4.png")
                 .build();
         Imagen imagen5 = Imagen.builder()
                 .artista(artista5)
-                .url("/assets/Portfolio5.jpg")
+                .url("/assets/media/Portfolio5.jpg")
                 .build();
         imagenService.save(imagen1);
         imagenService.save(imagen2);

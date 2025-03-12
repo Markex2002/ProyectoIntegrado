@@ -17,6 +17,7 @@ import {
 export const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'home/artistas/:nombre', component: ArtistaComponent},
+  { path: 'home/ofertas/:nombrePuesto', component: OfertaComponent},
 
   { path: 'signUp', component: SignupComponent },
   { path: 'login', component: LoginComponent },
@@ -26,7 +27,7 @@ export const routes: Routes = [
   { path: 'artistas/:nombre', component: ArtistaComponent},
 
   { path: 'ofertas', component: OfertasPageComponent},
-  { path: 'ofertas/:nombre', component: OfertaComponent},
+  { path: 'ofertas/:nombrePuesto', component: OfertaComponent},
 
   { path: 'administracion', component: AdministracionComponent},
   { path: 'usuariosAdministracion', component: UsuariosAdministracionComponent},
