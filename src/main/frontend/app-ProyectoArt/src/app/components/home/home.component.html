@@ -65,9 +65,9 @@
           </a>
 
           <p class="col-12 col-sm-3" [ngClass]="{'text-light': i %2 === 0}">
-            {{oferta.fechaPublicacion}}</p>
+            {{oferta.fechaPublicacion | date:'dd/MM/yyyy'}}</p>
           <p class="text-light col-12 col-sm-3" [ngClass]="{'text-light': i %2 === 0}">
-            {{oferta.inscripcionHasta}}</p>
+            {{oferta.inscripcionHasta | date:'dd/MM/yyyy'}}</p>
           <p class="text-light col-12 col-sm-2" [ngClass]="{'text-light': i %2 === 0}">
             {{oferta.empresa.nombreEmpresa}}</p>
         </section>

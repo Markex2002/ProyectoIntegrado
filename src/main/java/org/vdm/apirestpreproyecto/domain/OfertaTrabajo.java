@@ -33,9 +33,9 @@ public class OfertaTrabajo {
     @Column(columnDefinition = "TEXT")
     private String descripcionPuesto;
 
-    @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss",  shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm", shape = JsonFormat.Shape.STRING)
     private Date fechaPublicacion;
-    @JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss",  shape = JsonFormat.Shape.STRING)
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm", shape = JsonFormat.Shape.STRING)
     private Date inscripcionHasta;
 
     //OneToMany en el que insertaremos una lista de idiomas

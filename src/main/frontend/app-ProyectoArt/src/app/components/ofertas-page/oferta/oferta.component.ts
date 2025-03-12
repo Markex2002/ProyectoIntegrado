@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {Artista, DatabaseServiceService, Oferta_trabajo} from '../../../services/database-service.service';
-import {NgClass, NgForOf, NgIf, SlicePipe} from '@angular/common';
+import {DatePipe, NgClass, NgForOf, NgIf, SlicePipe} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {UserLoginService} from '../../../services/user-login.service';
 
@@ -12,7 +12,8 @@ import {UserLoginService} from '../../../services/user-login.service';
     NgForOf,
     NgIf,
     SlicePipe,
-    NgClass
+    NgClass,
+    DatePipe
   ],
   templateUrl: './oferta.component.html',
   styleUrl: './oferta.component.scss'

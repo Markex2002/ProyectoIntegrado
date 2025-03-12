@@ -1,55 +1,61 @@
 {
-  "hash": "82899c87",
-  "configHash": "d540618e",
-  "lockfileHash": "10002191",
-  "browserHash": "ccae057f",
+  "hash": "446aa8c8",
+  "configHash": "d986a9ff",
+  "lockfileHash": "d59fa6b2",
+  "browserHash": "8e34eb1b",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "0ac69516",
+      "fileHash": "09d06c4b",
       "needsInterop": false
     },
     "@angular/common/http": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
       "file": "@angular_common_http.js",
-      "fileHash": "8f94ca52",
+      "fileHash": "3e1a8c41",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "909e2a34",
+      "fileHash": "286bc750",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "60cd185e",
+      "fileHash": "ad4cda63",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "d395e307",
+      "fileHash": "beb8f1c5",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "25aab14c",
-      "needsInterop": false
-    },
-    "rxjs": {
-      "src": "../../../../../../node_modules/rxjs/dist/esm5/index.js",
-      "file": "rxjs.js",
-      "fileHash": "a9d8a437",
+      "fileHash": "e1cd485f",
       "needsInterop": false
     },
     "bcryptjs": {
       "src": "../../../../../../node_modules/bcryptjs/index.js",
       "file": "bcryptjs.js",
-      "fileHash": "8f8f0c62",
+      "fileHash": "0b54e631",
+      "needsInterop": false
+    },
+    "date-fns": {
+      "src": "../../../../../../node_modules/date-fns/index.js",
+      "file": "date-fns.js",
+      "fileHash": "419a5838",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "619a5f53",
       "needsInterop": false
     }
   },

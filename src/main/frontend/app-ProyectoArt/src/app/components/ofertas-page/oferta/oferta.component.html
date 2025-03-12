@@ -25,8 +25,8 @@
             <p><strong>Nombre Empresa:</strong> {{oferta.empresa.nombreEmpresa}}</p>
             <p><strong>Posiciones disponibles:</strong> {{oferta.avaiablePositions}}</p>
             <p><strong>Duración jornada:</strong> {{oferta.duracionJornada}} horas</p>
-            <p><strong>Fecha de publicación:</strong> {{oferta.fechaPublicacion}}</p>
-            <p><strong>Inscripción hasta:</strong> {{oferta.inscripcionHasta}}</p>
+            <p><strong>Fecha de publicación:</strong> {{oferta.fechaPublicacion | date:'dd/MM/yyyy'}}</p>
+            <p><strong>Inscripción hasta:</strong> {{oferta.inscripcionHasta | date:'dd/MM/yyyy'}}</p>
             <p><strong>Salario bruto:</strong> {{oferta.salarioBrutoMin}} - {{oferta.salarioBrutoMax}} €</p>
           </div>
         </div>

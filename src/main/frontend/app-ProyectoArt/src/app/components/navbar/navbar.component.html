@@ -52,10 +52,8 @@
                     routerLink="/usuario" routerLinkActive="active" >
               Perfil
             </button>
+            <button *ngIf="userService.userType == 'administrador'"  class="btn btn-outline-success border-3 mx-2 my-1" routerLink="/administracion" routerLinkActive="active">Administrar</button>
             <button class="btn btn-outline-success border-3 mx-2 my-1" (click)="userService.logout()">LogOut</button>
-            <div *ngIf="userService.userType == 'administrador'" class="my-0">
-              <button routerLink="/administracion" routerLinkActive="active">Administrar</button>
-            </div>
           </div>
         </div>
       </div>

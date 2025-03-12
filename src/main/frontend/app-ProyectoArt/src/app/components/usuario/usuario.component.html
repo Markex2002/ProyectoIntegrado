@@ -1,6 +1,14 @@
 <div class="container-xl py-4 min-vh-100">
   <div class="row">
-    <h1 class="p-0 m-0">Perfil</h1>
+
+    <div class="row">
+      <h1 class="p-0 m-0 col-6">Perfil</h1>
+
+      <div *ngIf="isEmpresa" class="col-6 d-flex justify-content-end align-items-center">
+        <button routerLink="/usuario/crearOferta" routerLinkActive="active" class="btn btn-success">Crear Oferta</button>
+      </div>
+    </div>
+
     <hr class="my-4">
 
     <div *ngIf="isArtista">
@@ -103,6 +111,7 @@
 
 
     <div *ngIf="isEmpresa">
+
       <!--USERNAME-->
       <div class="bg-secondary row py-2 border">
         <p class="text-white col-md-2 fw-bold my-0 py-0">Username:  </p>
@@ -145,20 +154,16 @@
         <button class="col-md-2 my-0 py-0 btn btn-warning" *ngIf="editandoNumTelefono" (click)="guardarCampo()">Guardar</button>
       </div>
       <!--LISTADO OFERTAS-->
-      <div class="bg-secondary-subtle row py-2 border">
-        <p class="col-md-2 fw-bold my-0 py-0">Ofertas:</p>
-
-        <div class="col-md-10 py-0 my-0" *ngFor="let oferta of ofertasEmpresa">
-          <p class="fw-bold">{{oferta.nombrePuesto}}</p>
+      <div *ngFor="let oferta of ofertasEmpresa" class="bg-secondary-subtle row py-2 border">
+        <p class="col-md-2 fw-bold my-0 py-0">{{oferta.nombrePuesto}}:</p>
+        <div class="col-md-10 py-0 my-0">
           <p>Duracion Jornada: {{oferta.duracionJornada}}h/semanales</p>
-          <p>Fecha Limite: {{oferta.inscripcionHasta}}</p>
+          <p>Fecha Publicacion: {{ oferta.fechaPublicacion | date:'dd/MM/yyyy' }}</p>
+          <p>Fecha Limite: {{oferta.inscripcionHasta | date:'dd/MM/yyyy' }}</p>
           <p>Min: {{oferta.salarioBrutoMin}}€ Max: {{oferta.salarioBrutoMax}}€</p>
+          <p>{{oferta.descripcionPuesto}}</p>
         </div>
       </div>
-
-      <hr>
-
-      <button routerLink="/usuario/crearOferta" routerLinkActive="active" class="btn btn-success">Crear Oferta</button>
     </div>
   </div>
 </div>

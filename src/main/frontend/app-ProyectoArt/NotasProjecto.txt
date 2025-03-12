@@ -14,3 +14,23 @@ no se podian ver las imagenes.
 
 
 //Para iniciar el proyecto y que se tenga en cuenta la subida de imagenes
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+Creacion de Ofertas, Y que se apunten los usuarios
+
+Media Queries Administracion
+
+Prompt/Modal Eliminacion de Usuarios
+
+Que se vea la contarseña (login/register)
+
+Administracion  (Ofertas Idiomas)
+
+Cambiar formato de fechas
+
+
+
+
