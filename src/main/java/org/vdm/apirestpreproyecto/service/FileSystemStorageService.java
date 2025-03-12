@@ -22,9 +22,7 @@ public class FileSystemStorageService implements StorageService{
     @Value("src/main/frontend/app-ProyectoArt/src/assets/media")
     //@Value("mediafiles")
     private String mediaLocation;
-
     private Path rootLocation;
-
 
     //VIGILAR PROBLEMAS CON LOS IOEXCEPTION
     @Override
@@ -33,8 +31,6 @@ public class FileSystemStorageService implements StorageService{
         rootLocation = Paths.get(mediaLocation);
         Files.createDirectories(rootLocation);
     }
-
-
 
     //METODO PARA ALMACENAR EL ARCHIVO
     @Override
