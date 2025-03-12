@@ -16,8 +16,6 @@ no se podian ver las imagenes.
 //Para iniciar el proyecto y que se tenga en cuenta la subida de imagenes
 
 
-
-
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Creacion de Ofertas, Y que se apunten los usuarios
 //CREACION DE OFERTAS LOGRADA

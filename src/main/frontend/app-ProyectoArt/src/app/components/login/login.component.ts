@@ -25,7 +25,6 @@ import * as bcrypt from 'bcryptjs';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit{
-
   loginForm: FormGroup;
   usuarios: Usuario[] = [];
   todosUsuarios: Usuario[] = [];
@@ -96,7 +95,6 @@ export class LoginComponent implements OnInit{
   }
 
 
-
   //METODO PARA COMPROBAR QUE TIPO DE USUARIO SE HA LOGEADO
   checkUserType(idUser: number | undefined){
     let artistas: Artista[] = [];
@@ -131,5 +129,12 @@ export class LoginComponent implements OnInit{
         }
       });
     })
+  }
+
+
+  //CAMBIAR VISIBILIDAD DE LA PASSWORD//
+  showPassword: boolean = false;
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
 }

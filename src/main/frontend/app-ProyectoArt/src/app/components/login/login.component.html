@@ -8,9 +8,17 @@
         <label for="username" class="form-label">Username</label>
         <input type="text" class="form-control" id="username" formControlName="username" aria-describedby="emailHelp">
       </div>
-      <div class="mb-3">
+      <div class="mb-3 position-relative">
         <label for="password" class="form-label">Password</label>
-        <input type="password"  class="form-control" id="password" formControlName="password">
+        <div class="input-group">
+          <input [type]="showPassword ? 'text' : 'password'"
+                 class="form-control"
+                 id="password"
+                 formControlName="password">
+          <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+            <i class="fa-solid fa-eye-slash" [ngClass]="showPassword ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash'"></i>
+          </button>
+        </div>
       </div>
       <!--
       <div class="mb-3 form-check">

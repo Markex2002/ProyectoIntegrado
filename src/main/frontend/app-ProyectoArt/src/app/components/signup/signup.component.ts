@@ -85,13 +85,9 @@ export class SignupComponent implements OnInit{
     this.userType = this.artistForm.get('userType')?.value;
   }
 
-
-
   submit(){
     this.aviso= '' ;
-
     if (this.artistForm.valid) {
-
       //Controlamos si el nuevo usuario es un Artista o una Empresa
       if (this.userType == "artist"){
         const newArtist: Artista = this.artistForm.value
@@ -148,5 +144,15 @@ export class SignupComponent implements OnInit{
       }
       return;
     }
- }
+  }
+
+  //CAMBIAR VISIBILIDAD DE LA PASSWORD//
+  showPassword: boolean = false;
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+  showRepeatedPassword: boolean = false;
+  toggleRepeatedPasswordVisibility() {
+    this.showRepeatedPassword = !this.showRepeatedPassword;
+  }
 }
