@@ -195,7 +195,7 @@ export class DatabaseServiceService {
         catchError(this.errorHandler)
       )
   }
-  //Funcion para eliminar un Usuario con su Id
+  //Funcion para eliminar una Imagen por su Id
   deleteImage(id: number | undefined): Observable<unknown> {
     return this.httpClient.delete<void>(
       this.apiBaseUrl + "imagenes/" + id, this.httpOptions).pipe(
@@ -229,6 +229,12 @@ export class DatabaseServiceService {
       .pipe(
         catchError(this.errorHandler)
       )
+  }
+  deleteOferta(id: number | undefined): Observable<unknown> {
+    return this.httpClient.delete<void>(
+      this.apiBaseUrl + "ofertas/" + id, this.httpOptions).pipe(
+      catchError(this.errorHandler)
+    );
   }
 
 

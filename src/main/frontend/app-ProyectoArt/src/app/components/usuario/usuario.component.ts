@@ -271,11 +271,25 @@ export class UsuarioComponent implements OnInit{
     }
   }
 
+
+  //METODO PARA ELIMINAR UNA IMAGEN DE ARTISTA
   deleteImage(imageId: number | undefined) {
     this.databaseService.deleteImage(imageId).subscribe(
       {next: (() => {}),
         error:  ((error:any) => {
           console.log('Error eliminar Imagen', error);
+        })});
+
+    window.location.reload();
+  }
+
+
+  //METODO PARA ELIMINAR UNA OFERTA DE EMPRESA
+  deleteOferta(imageId: number | undefined) {
+    this.databaseService.deleteOferta(imageId).subscribe(
+      {next: (() => {}),
+        error:  ((error:any) => {
+          console.log('Error eliminar Oferta', error);
         })});
 
     window.location.reload();

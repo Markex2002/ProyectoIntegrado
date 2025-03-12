@@ -156,13 +156,15 @@
       <!--LISTADO OFERTAS-->
       <div *ngFor="let oferta of ofertasEmpresa" class="bg-secondary-subtle row py-2 border">
         <p class="col-md-2 fw-bold my-0 py-0">{{oferta.nombrePuesto}}:</p>
-        <div class="col-md-10 py-0 my-0">
+        <div class="col-md-8 py-0 my-0">
           <p>Duracion Jornada: {{oferta.duracionJornada}}h/semanales</p>
           <p>Fecha Publicacion: {{ oferta.fechaPublicacion | date:'dd/MM/yyyy' }}</p>
           <p>Fecha Limite: {{oferta.inscripcionHasta | date:'dd/MM/yyyy' }}</p>
           <p>Min: {{oferta.salarioBrutoMin}}€ Max: {{oferta.salarioBrutoMax}}€</p>
           <p>{{oferta.descripcionPuesto}}</p>
         </div>
+
+        <button class="btn btn-danger col-md-2 h-25" (click)="deleteOferta(oferta.id_oferta)">Eliminar</button>
       </div>
     </div>
   </div>
