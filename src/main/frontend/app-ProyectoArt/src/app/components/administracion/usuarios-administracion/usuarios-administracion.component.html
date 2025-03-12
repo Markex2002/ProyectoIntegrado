@@ -24,7 +24,27 @@
         <button class="btn btn-warning w-100" [routerLink]="['/editar-usuario', usuario.id]">Editar</button>
       </div>
       <div class="px-2 py-1 col-md-2 col-sm-4 ">
-        <button class="btn btn-danger w-100" (click)="deleteUserInfo(usuario.id)">Eliminar</button>
+        <button class="btn btn-danger w-100" (click)="openDeleteModal(usuario.id)">Eliminar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Confirmation Modal -->
+  <div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmar Eliminación</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>¿Estás seguro de que deseas eliminar este usuario?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" (click)="deleteUserInfo()">Eliminar</button>
+        </div>
       </div>
     </div>
   </div>

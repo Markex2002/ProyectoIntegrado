@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {DatabaseServiceService, Usuario} from '../../../services/database-service.service';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
+declare var bootstrap: any; //DECLARAMOS MANUALMENTE BOOSTRAP
+
 
 @Component({
   selector: 'app-usuarios-administracion',
@@ -17,30 +19,38 @@ import {NgClass, NgForOf, NgIf} from '@angular/common';
   styleUrl: './usuarios-administracion.component.scss'
 })
 export class UsuariosAdministracionComponent implements OnInit{
-
   usuarios: Usuario[] = [];
   aviso:string = "";
+
+  userIdToDelete: number | undefined;
+
 
   //Inicializamos los services
   constructor(protected databaseService: DatabaseServiceService) {}
 
   //Cargamos nuestros usuarios
   ngOnInit(): void{
-
     this.databaseService.getAllUsuarios().subscribe((data: Usuario[]) =>{
       this.usuarios = data;
     })
   }
 
+  // Open modal and store user ID
+  openDeleteModal(userId: number | undefined) {
+    this.userIdToDelete = userId;
+    let modalElement = document.getElementById('deleteModal');
+    if (modalElement) {
+      let modal = new bootstrap.Modal(modalElement);
+      modal.show();
+    }
+  }
 
-
-
-  deleteUserInfo(userId: number | undefined) {
-    this.databaseService.deleteUser(userId).subscribe(
+  deleteUserInfo() {
+    this.databaseService.deleteUser(this.userIdToDelete).subscribe(
       {next: (() => {}),
         error:  ((error:any) => {
-          //console.log('Error eliminar producto', error);
           this.setAviso('Error al eliminar Usuario.')
+          console.log(error)
         })});
 
     window.location.reload();
