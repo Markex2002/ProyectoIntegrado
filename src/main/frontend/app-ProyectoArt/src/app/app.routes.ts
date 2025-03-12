@@ -12,6 +12,7 @@ import {UsuarioComponent} from './components/usuario/usuario.component';
 import {
   EditarUsuarioComponent
 } from './components/administracion/usuarios-administracion/editar-usuario/editar-usuario.component';
+import {CrearOfertaComponent} from './components/usuario/crear-oferta/crear-oferta.component';
 
 
 export const routes: Routes = [
@@ -21,7 +22,10 @@ export const routes: Routes = [
 
   { path: 'signUp', component: SignupComponent },
   { path: 'login', component: LoginComponent },
+
   {path: 'usuario', component: UsuarioComponent},
+  {path: 'usuario/crearOferta', component: CrearOfertaComponent},
+
 
   { path: 'artistas', component: ArtistasPageComponent},
   { path: 'artistas/:nombre', component: ArtistaComponent},
@@ -32,6 +36,7 @@ export const routes: Routes = [
   { path: 'administracion', component: AdministracionComponent},
   { path: 'usuariosAdministracion', component: UsuariosAdministracionComponent},
   { path: 'editar-usuario/:id', component: EditarUsuarioComponent},
+
 
 
 

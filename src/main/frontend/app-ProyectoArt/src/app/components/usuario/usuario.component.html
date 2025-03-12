@@ -88,7 +88,6 @@
         </div>
 
         <p *ngIf="avisoImagen" class="bg-danger-subtle p-2">{{avisoImagen}}</p>
-
         <button (click)="verPortfolio()" class="btn btn-outline-primary">Ver PortFolio</button>
 
         <!-- ////PORTFOLIO//// -->
@@ -98,7 +97,6 @@
             <button class="btn btn-danger w-100 my-2" (click)="deleteImage(imagen.idImagen)">Eliminar Imagen</button>
           </div>
         </div>
-
       </div>
     </div>
 
@@ -148,9 +146,19 @@
       </div>
       <!--LISTADO OFERTAS-->
       <div class="bg-secondary-subtle row py-2 border">
-        <p class="col-md-2 fw-bold my-0 py-0">Ofertas:  </p>
-        <p class="col-md-10 py-0 my-0">{{ loggedInEmpresa?.listadoOfertas }}</p>
+        <p class="col-md-2 fw-bold my-0 py-0">Ofertas:</p>
+
+        <div class="col-md-10 py-0 my-0" *ngFor="let oferta of ofertasEmpresa">
+          <p class="fw-bold">{{oferta.nombrePuesto}}</p>
+          <p>Duracion Jornada: {{oferta.duracionJornada}}h/semanales</p>
+          <p>Fecha Limite: {{oferta.inscripcionHasta}}</p>
+          <p>Min: {{oferta.salarioBrutoMin}}€ Max: {{oferta.salarioBrutoMax}}€</p>
+        </div>
       </div>
+
+      <hr>
+
+      <button routerLink="/usuario/crearOferta" routerLinkActive="active" class="btn btn-success">Crear Oferta</button>
     </div>
   </div>
 </div>

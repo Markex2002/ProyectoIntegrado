@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import {Artista, DatabaseServiceService, Imagen, OfertaTrabajo} from '../../services/database-service.service';
+import {Artista, DatabaseServiceService, Imagen, Oferta_trabajo} from '../../services/database-service.service';
 import {CommonModule, NgForOf} from '@angular/common';
 
 @Component({
@@ -12,8 +12,8 @@ import {CommonModule, NgForOf} from '@angular/common';
 })
 export class HomeComponent implements OnInit {
 
-  ofertas: OfertaTrabajo[] = [];
-  todosOfertas: OfertaTrabajo[] = [];
+  ofertas: Oferta_trabajo[] = [];
+  todosOfertas: Oferta_trabajo[] = [];
   artistas: Artista[] = [];
   imagenes: Imagen[] = [];
   aviso:string = "";
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     this.databaseService.getAllImagenes().subscribe((data: Imagen[]) =>{
       this.imagenes = data;
     })
-    this.databaseService.getAllOfertas().subscribe((data: OfertaTrabajo[]) =>{
+    this.databaseService.getAllOfertas().subscribe((data: Oferta_trabajo[]) =>{
       this.ofertas = data;
       this.todosOfertas = data;
     })

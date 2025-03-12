@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Artista, DatabaseServiceService, OfertaTrabajo} from '../../../services/database-service.service';
+import {Artista, DatabaseServiceService, Oferta_trabajo} from '../../../services/database-service.service';
 import {NgClass, NgForOf, NgIf, SlicePipe} from '@angular/common';
 import {RouterLink} from '@angular/router';
 import {UserLoginService} from '../../../services/user-login.service';
@@ -19,9 +19,9 @@ import {UserLoginService} from '../../../services/user-login.service';
 })
 export class OfertaComponent {
 
-  ofertas: OfertaTrabajo[] = [];
-  oferta!: OfertaTrabajo;
-  ofertasRecomendadas: OfertaTrabajo[] = [];
+  ofertas: Oferta_trabajo[] = [];
+  oferta!: Oferta_trabajo;
+  ofertasRecomendadas: Oferta_trabajo[] = [];
   aviso:string = "";
   mensaje: string = '';
   mensajeClase: string = '';
@@ -54,7 +54,7 @@ export class OfertaComponent {
       this.databaseService.idOferta = + valorIdOferta;
     }
 
-    this.databaseService.getAllOfertas().subscribe((data: OfertaTrabajo[]) =>{
+    this.databaseService.getAllOfertas().subscribe((data: Oferta_trabajo[]) =>{
       this.ofertas = data;
       this.oferta = this.ofertas.find(a => a.id_oferta === this.databaseService.idOferta)!;
       console.log(this.oferta.nombrePuesto)

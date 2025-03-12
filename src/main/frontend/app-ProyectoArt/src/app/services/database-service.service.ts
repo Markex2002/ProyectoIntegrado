@@ -126,7 +126,6 @@ export class DatabaseServiceService {
   }
 
 
-
   /////EMPRESA/////
   getAllEmpresa(): Observable<Empresa[]>{
     return this.httpClient.get<Empresa[]>(this.apiBaseUrl + "empresas/")
@@ -215,8 +214,18 @@ export class DatabaseServiceService {
 
 
   //OFERTAS
-  getAllOfertas(): Observable<OfertaTrabajo[]>{
-    return this.httpClient.get<OfertaTrabajo[]>(this.apiBaseUrl + "ofertas/")
+  getAllOfertas(): Observable<Oferta_trabajo[]>{
+    return this.httpClient.get<Oferta_trabajo[]>(this.apiBaseUrl + "ofertas/")
+      .pipe(
+        catchError(this.errorHandler)
+      )
+  }
+  createOferta(ofertaTrabajo: Oferta_trabajo): Observable<Oferta_trabajo> {
+    return this.httpClient.post<Oferta_trabajo>(
+      this.apiBaseUrl + "ofertas/",
+      JSON.stringify(ofertaTrabajo),
+      this.httpOptions
+    )
       .pipe(
         catchError(this.errorHandler)
       )
@@ -272,7 +281,7 @@ export interface Artista {
   idiomasHablados: Idioma[],
   portfolio: Imagen[],
   id_oferta: number,
-  ofertasTrabajo: OfertaTrabajo[],
+  ofertasTrabajo: Oferta_trabajo[],
   descripcionCorta: string,
   descripcionLarga: string
   categorias: string[],
@@ -292,7 +301,7 @@ export interface Empresa {
   nombreEmpresa: string,
   numTlf: number,
   nombreRepresentante: string,
-  listadoOfertas: OfertaTrabajo[]
+  listadoOfertas: Oferta_trabajo[]
 }
 
 export interface Administrador {
@@ -304,7 +313,7 @@ export interface Administrador {
   privilegeLevel: number,
 }
 
-export interface OfertaTrabajo {
+export interface Oferta_trabajo {
   id_oferta?: number,
   nombrePuesto: string,
   avaiablePositions: number,

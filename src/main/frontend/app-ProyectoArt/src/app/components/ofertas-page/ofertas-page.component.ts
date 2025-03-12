@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DatabaseServiceService, OfertaTrabajo} from '../../services/database-service.service';
+import {DatabaseServiceService, Oferta_trabajo} from '../../services/database-service.service';
 import {CommonModule, NgFor} from '@angular/common';
 import {RouterLink, RouterOutlet} from '@angular/router';
 
@@ -12,8 +12,8 @@ import {RouterLink, RouterOutlet} from '@angular/router';
 })
 export class OfertasPageComponent implements OnInit{
 
-  ofertas: OfertaTrabajo[] = [];
-  todosOfertas: OfertaTrabajo[] = [];
+  ofertas: Oferta_trabajo[] = [];
+  todosOfertas: Oferta_trabajo[] = [];
   filtrosSeleccionados: String[] = []
   aviso:string = "";
 
@@ -23,7 +23,7 @@ export class OfertasPageComponent implements OnInit{
   //Cargamos nuestros artistas y su base de datos de Imagenes
   ngOnInit(): void{
 
-    this.databaseService.getAllOfertas().subscribe((data: OfertaTrabajo[]) =>{
+    this.databaseService.getAllOfertas().subscribe((data: Oferta_trabajo[]) =>{
       this.ofertas = data;
       this.todosOfertas = data;
     })

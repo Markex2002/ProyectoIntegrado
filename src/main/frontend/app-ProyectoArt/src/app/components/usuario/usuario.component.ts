@@ -1,7 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {RouterLink, RouterLinkActive} from '@angular/router';
 import {UserLoginService} from '../../services/user-login.service';
-import {Artista, DatabaseServiceService, Empresa, Imagen} from '../../services/database-service.service';
+import {
+  Artista,
+  DatabaseServiceService,
+  Empresa,
+  Imagen,
+  Oferta_trabajo
+} from '../../services/database-service.service';
 import {CommonModule} from '@angular/common';
 import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {RebuildService} from '../../services/rebuild.service';
@@ -21,14 +27,17 @@ import {RebuildService} from '../../services/rebuild.service';
 })
 
 export class UsuarioComponent implements OnInit{
-  //Atributos que nos sirven para almacenar los datos del usuario Logeado
+  //Atributos Artista
   loggedInArtista: Artista | null = null;
-  loggedInEmpresa: Empresa | null = null;
   isArtista: boolean = false;
-  isEmpresa: boolean = false;
+  imagenesArtista: Imagen[] = [];
   portfolioVisible: boolean = false;
 
-  imagenesArtista: Imagen[] = [];
+  //Atributos Empresa
+  loggedInEmpresa: Empresa | null = null;
+  isEmpresa: boolean = false;
+  ofertasEmpresa: Oferta_trabajo[] = [];
+
 
   //VALIDADORES DE FORMULARIOS
   //ARTISTA
@@ -48,6 +57,8 @@ export class UsuarioComponent implements OnInit{
     new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]);
   nombreRepresentanteControl =
     new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]);
+
+  //CREAR_OFERTA
 
 
   constructor(
@@ -72,6 +83,13 @@ export class UsuarioComponent implements OnInit{
     } else if (this.userService.userType == 'empresa'){
       this.isEmpresa = true;
       this.loggedInEmpresa = this.userService.getEmpresa();
+
+      //CARGAMOS LAS OFERTAS DE LA EMPRESA
+      this.databaseService.getAllOfertas().subscribe((data: Oferta_trabajo[]) => {
+        this.ofertasEmpresa = data.filter(oferta =>
+          oferta.empresa?.id == this.loggedInEmpresa?.id
+        );
+      });
     }
   }
 
