@@ -20,6 +20,7 @@ no se podian ver las imagenes.
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 Creacion de Ofertas, Y que se apunten los usuarios
+//CREACION DE OFERTAS LOGRADA
 
 Media Queries Administracion
 
@@ -29,7 +30,7 @@ Que se vea la contarseña (login/register)
 
 Administracion  (Ofertas Idiomas)
 
-Cambiar formato de fechas
+Cambiar formato de fechas //HECHO
 
 
 
